@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="pageLayoutRN" amDefName="oracle.apps.sfc.clm.PaymentForm.server.CLMPaymentAM" windowTitle="CLM Payment Home Page" title="CLM Payment Home" controllerClass="oracle.apps.sfc.clm.PaymentForm.webui.CLMPaymentHomePGCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:header id="region1">
+               <ui:contents>
+                  <oa:query id="region9" mode="autoCustomizationCriteria">
+                     <ui:contents>
+                        <oa:table id="CLMIdSearchVO" width="100%" blockSize="10">
+                           <ui:contents>
+                              <oa:messageStyledText id="Clmid" dataType="NUMBER" prompt="Clm Id" viewName="CLMIdSearchVO" viewAttr="ClmId" sortState="descending"/>
+                              <oa:messageStyledText id="BandWidthReqNoId" dataType="NUMBER" prompt="Band Width Req No" viewName="CLMIdSearchVO" viewAttr="BandWidhReqNo" sortState="yes"/>
+                              <oa:link id="poNo" viewName="CLMIdSearchVO" viewAttr="EbsPoNum" text="PO Number" destination="OA.jsp?page=/oracle/apps/sfc/clm/PaymentForm/webui/CLMPaymentHistoryPG&amp;retainAM=Y&amp;param1={@ClmId}&amp;param2={@EbsPoNum}&amp;param3=InvoiceHome" styleClass="OraLinkText"/>
+                              <oa:messageStyledText id="SupplierName" dataType="VARCHAR2" prompt="Supplier Name" viewName="CLMIdSearchVO" viewAttr="SifySupplierName" maximumLength="240" rendered="true"/>
+                              <oa:messageStyledText id="SifyShipTo" dataType="VARCHAR2" prompt="Ship To Location" viewName="CLMIdSearchVO" viewAttr="SifyShipTo" maximumLength="240"/>
+                              <oa:messageStyledText id="SifyBillTo" dataType="VARCHAR2" prompt="Bill To Location" viewName="CLMIdSearchVO" viewAttr="SifyBillTo" maximumLength="240"/>
+                              <oa:messageStyledText id="capacity" viewName="CLMIdSearchVO" viewAttr="Capacity" prompt="Capacity"/>
+                              <oa:messageStyledText id="FromLocation" dataType="VARCHAR2" prompt="From Location" viewName="CLMIdSearchVO" viewAttr="FromLocation" maximumLength="240"/>
+                              <oa:messageStyledText id="ToLocation" dataType="VARCHAR2" prompt="To Location" viewName="CLMIdSearchVO" viewAttr="ToLocation" maximumLength="240"/>
+                              <oa:messageStyledText id="activityId" viewName="CLMIdSearchVO" viewAttr="Activity" prompt="Activity"/>
+                              <oa:messageStyledText id="currencyId" viewName="CLMIdSearchVO" viewAttr="Currency" prompt="Currency"/>
+                              <oa:messageStyledText id="linkStatus" viewName="CLMIdSearchVO" viewAttr="LinkStatus" prompt="Link Status"/>
+                              <oa:messageStyledText id="distance" viewName="CLMIdSearchVO" viewAttr="Distance" prompt="Distance"/>
+                              <oa:messageStyledText id="commissionedDateId" viewName="CLMIdSearchVO" viewAttr="CommissionedDate" prompt="Commissioned Date"/>
+                              <oa:messageStyledText id="surrenderDated" viewName="CLMIdSearchVO" viewAttr="SurrenderedDate" prompt="End Date"/>
+                           </ui:contents>
+                           <ui:tableActions>
+                              <oa:flowLayout id="region3">
+                                 <ui:contents>
+                                    <oa:button id="CreateInvoiveBtn" text="Create Invoice" prompt="Create Invoice">
+                                       <ui:primaryClientAction>
+                                          <ui:fireAction event="NewInvoice" id="fireAction2"/>
+                                       </ui:primaryClientAction>
+                                    </oa:button>
+                                    <oa:button id="AdvPayBtn" text="Advance Payment" prompt="Advance Payment" rendered="false">
+                                       <ui:primaryClientAction>
+                                          <ui:fireAction event="AdvancePayment" id="fireAction1"/>
+                                       </ui:primaryClientAction>
+                                    </oa:button>
+                                    <oa:button id="CreditMemoBtn" text="Credit Memo" prompt="Credit Memo">
+                                       <ui:primaryClientAction>
+                                          <ui:fireAction event="CreditMemoPayment" id="fireAction11"/>
+                                       </ui:primaryClientAction>
+                                    </oa:button>
+                                    <oa:button id="DebitMemoBtn" text="Debit Memo" prompt="Debit Memo" rendered="true">
+                                       <ui:primaryClientAction>
+                                          <ui:fireAction event="DebitMemoPayment" id="fireAction111"/>
+                                       </ui:primaryClientAction>
+                                    </oa:button>
+                                 </ui:contents>
+                              </oa:flowLayout>
+                           </ui:tableActions>
+                           <ui:tableSelection>
+                              <oa:singleSelection id="singleSelection1" viewName="CLMIdSearchVO" viewAttr="SelectFlag"/>
+                           </ui:tableSelection>
+                        </oa:table>
+                     </ui:contents>
+                     <oa:simpleSearchPanel>
+                        <oa:header text="Simple Search" id="region11">
+                           <ui:contents>
+                              <oa:messageComponentLayout id="region10">
+                                 <ui:contents>
+                                    <oa:messageLovInput id="ClmIdLovId" prompt="Clm Id">
+                                       <lovContents>
+                                          <oa:listOfValues id="region6">
+                                             <ui:contents>
+                                                <oa:table name="region6" id="ClmIdLovVO">
+                                                   <ui:contents>
+                                                      <oa:messageStyledText id="ClmId1" dataType="VARCHAR2" prompt="Clm Id" viewName="CLMIdLovVO" viewAttr="ClmId" maximumLength="240" queryable="true"/>
+                                                   </ui:contents>
+                                                </oa:table>
+                                             </ui:contents>
+                                          </oa:listOfValues>
+                                       </lovContents>
+                                       <lovMappings>
+                                          <lovMap id="lovMap1" lovItem="ClmId1" resultTo="ClmIdLovId" criteriaFrom="ClmIdLovId"/>
+                                       </lovMappings>
+                                    </oa:messageLovInput>
+                                 </ui:contents>
+                              </oa:messageComponentLayout>
+                           </ui:contents>
+                        </oa:header>
+                     </oa:simpleSearchPanel>
+                     <oa:simpleSearchMappings>
+                        <oa:queryCriteriaMap id="queryCriteriaMap1" criteriaItem="ClmIdLovId" resultsItem="Clmid"/>
+                     </oa:simpleSearchMappings>
+                  </oa:query>
+               </ui:contents>
+            </oa:header>
+            <oa:pageButtonBar id="region8">
+               <ui:contents>
+                  <oa:submitButton id="cancelBtn" text="Go Back" prompt="Go Back"/>
+                  <oa:submitButton id="advancePayBtn" text="Advance Payment" prompt="Advance Payment"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>
