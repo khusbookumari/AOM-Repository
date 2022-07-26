@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="region1" amDefName="oracle.apps.sfc.clm.PaymentForm.server.CLMPaymentAM" controllerClass="oracle.apps.sfc.clm.PaymentForm.webui.CLMPaymentHistoryCO" windowTitle="Invoice History" title="Invoice History">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:table id="InvoiceHistoryVO1">
+               <ui:contents>
+                  <oa:messageStyledText id="BandWidhReqNo" dataType="VARCHAR2" prompt="BandWidh Req No" viewName="CLMInvoiceHistoryVO1" viewAttr="BandWidhReqNo" maximumLength="240"/>
+                  <oa:messageStyledText id="ClmId" dataType="VARCHAR2" prompt="CLM ID" viewName="CLMInvoiceHistoryVO1" viewAttr="ClmId" maximumLength="240"/>
+                  <oa:messageStyledText id="PoNumber" dataType="VARCHAR2" prompt="Po Number" viewName="CLMInvoiceHistoryVO1" viewAttr="PoNumber" maximumLength="240"/>
+                  <oa:messageStyledText id="PoLineAmount" dataType="NUMBER" prompt="Po Line Amount" viewName="CLMInvoiceHistoryVO1" viewAttr="PoLineAmount" maximumLength="15"/>
+                  <oa:messageStyledText id="ClmInvoiceType" dataType="VARCHAR2" prompt="Invoice Type" viewName="CLMInvoiceHistoryVO1" viewAttr="InvoiceType" maximumLength="240"/>
+                  <oa:messageStyledText id="ClmInvoiceNumber" dataType="VARCHAR2" prompt="Clm Invoice Number" viewName="CLMInvoiceHistoryVO1" viewAttr="ClmInvoiceNumber" maximumLength="240">
+                     <ui:primaryClientAction>
+                        <ui:fireAction event="checkDetails"/>
+                     </ui:primaryClientAction>
+                  </oa:messageStyledText>
+                  <oa:messageStyledText id="InvoiceDate" dataType="DATE" prompt="Invoice Date" viewName="CLMInvoiceHistoryVO1" viewAttr="InvoiceDate"/>
+                  <oa:messageStyledText id="InvPeriodFromDate" dataType="DATE" prompt="Invoice Period From Date" viewName="CLMInvoiceHistoryVO1" viewAttr="InvPeriodFromDate"/>
+                  <oa:messageStyledText id="InvPeriodToDate" dataType="DATE" prompt="Invoce Period To Date" viewName="CLMInvoiceHistoryVO1" viewAttr="InvPeriodToDate"/>
+                  <oa:messageStyledText id="InvoiceAmount" dataType="NUMBER" prompt="Invoice Amount" viewName="CLMInvoiceHistoryVO1" viewAttr="InvoiceAmount" maximumLength="15"/>
+                  <oa:messageStyledText id="amtPaidCol" dataType="NUMBER" prompt="Amount Paid" viewName="CLMInvoiceHistoryVO1" viewAttr="AmountPaid" maximumLength="15"/>
+                  <oa:messageStyledText id="BalAmt" dataType="NUMBER" prompt="Bal Amt" viewName="CLMInvoiceHistoryVO1" viewAttr="BalAmt" maximumLength="15"/>
+                  <oa:messageStyledText id="InvoiceWfStatus" dataType="VARCHAR2" prompt="CLM Invoice Workflow Status" viewName="CLMInvoiceHistoryVO1" viewAttr="InvoiceWfStatus" maximumLength="240"/>
+                  <oa:messageStyledText id="ClmInvoiceStatus" dataType="VARCHAR2" prompt="CLM Invoice Status" viewName="CLMInvoiceHistoryVO1" viewAttr="InvoiceStatus" maximumLength="240"/>
+                  <oa:messageStyledText id="EBSInvoiceStatus" dataType="VARCHAR2" prompt="EBS Invoice Status" viewName="CLMInvoiceHistoryVO1" viewAttr="EbsInvoiceStatus" maximumLength="240"/>
+                  <oa:messageStyledText id="ConcReqId" viewName="CLMInvoiceHistoryVO1" viewAttr="ConcProgramId" prompt="CP Request Id"/>
+                  <oa:messageStyledText id="inverrMsg" dataType="VARCHAR2" prompt="Error Message" viewName="CLMInvoiceHistoryVO1" viewAttr="ErrorMsg" maximumLength="240"/>
+                  <oa:messageStyledText id="CommissionedDate" dataType="DATE" prompt="Commissioned Date" viewName="CLMInvoiceHistoryVO1" viewAttr="CommissionedDate"/>
+                  <oa:messageStyledText id="SurrenderedDate" dataType="DATE" prompt="Surrendered Date" viewName="CLMInvoiceHistoryVO1" viewAttr="SurrenderedDate"/>
+                  <oa:messageStyledText id="payTermId" dataType="VARCHAR2" prompt="Payment Term" viewName="CLMInvoiceHistoryVO1" viewAttr="PaymentTerm" maximumLength="240"/>
+                  <oa:messageStyledText id="Supplier" dataType="VARCHAR2" prompt="Supplier" viewName="CLMInvoiceHistoryVO1" viewAttr="Supplier" maximumLength="240"/>
+                  <oa:messageStyledText id="SupplierSite" dataType="VARCHAR2" prompt="Supplier Site" viewName="CLMInvoiceHistoryVO1" viewAttr="SupplierSite" maximumLength="240"/>
+                  <oa:messageStyledText id="ItemCode" dataType="VARCHAR2" prompt="Item Code" viewName="CLMInvoiceHistoryVO1" viewAttr="ItemCode" maximumLength="240"/>
+                  <oa:messageStyledText id="ItemDesc" dataType="VARCHAR2" prompt="Item Description" viewName="CLMInvoiceHistoryVO1" viewAttr="ItemDesc" maximumLength="240"/>
+                  <oa:messageStyledText id="FromLocation" dataType="VARCHAR2" prompt="From Location" viewName="CLMInvoiceHistoryVO1" viewAttr="FromLocation" maximumLength="240"/>
+                  <oa:messageStyledText id="ToLocation" dataType="VARCHAR2" prompt="To Location" viewName="CLMInvoiceHistoryVO1" viewAttr="ToLocation" maximumLength="240"/>
+                  <oa:messageStyledText id="reasonForReject" dataType="VARCHAR2" prompt="Reason For Rejection" viewName="CLMInvoiceHistoryVO1" viewAttr="RejectionReason" maximumLength="240"/>
+                  <oa:messageStyledText id="Remarks" dataType="VARCHAR2" prompt="Remarks" viewName="CLMInvoiceHistoryVO" viewAttr="Attribute15" maximumLength="240"/>
+               </ui:contents>
+               <ui:tableActions>
+                  <oa:flowLayout id="region3">
+                     <ui:contents>
+                        <oa:submitButton id="viewCPOutputBtn" text="View CP Output" prompt="View CP Output" rendered="false"/>
+                     </ui:contents>
+                  </oa:flowLayout>
+               </ui:tableActions>
+            </oa:table>
+            <oa:spacer id="space" height="6"/>
+            <oa:table id="InvCheckDetailsVO" text="Payment Details" width="100%">
+               <ui:contents>
+                  <oa:messageStyledText id="SupplierNumber" dataType="VARCHAR2" prompt="Supplier Number" viewName="CLMInvCheckDetailsVO" viewAttr="SupplierNumber" maximumLength="30"/>
+                  <oa:messageStyledText id="VendorName" dataType="VARCHAR2" prompt="Supplier Name" viewName="CLMInvCheckDetailsVO" viewAttr="VendorName" maximumLength="240"/>
+                  <oa:messageStyledText id="InvoiceNum" dataType="VARCHAR2" prompt="Invoice Number" viewName="CLMInvCheckDetailsVO" viewAttr="InvoiceNum" maximumLength="50"/>
+                  <oa:messageStyledText id="InvoiceAmount1" dataType="NUMBER" prompt="Invoice Amount" viewName="CLMInvCheckDetailsVO" viewAttr="InvoiceAmount"/>
+                  <oa:messageStyledText id="InvoiceAmountPaid" dataType="NUMBER" prompt="Invoice Amount Paid" viewName="CLMInvCheckDetailsVO" viewAttr="InvoiceAmountPaid"/>
+                  <oa:messageStyledText id="PaymentDate" dataType="DATE" prompt="Payment Date" viewName="CLMInvCheckDetailsVO" viewAttr="PaymentDate"/>
+                  <oa:messageStyledText id="CheckNumber" dataType="NUMBER" prompt="Check Number" viewName="CLMInvCheckDetailsVO" viewAttr="CheckNumber" maximumLength="15"/>
+                  <oa:messageStyledText id="CheckAmount" dataType="NUMBER" prompt="Check Amount" viewName="CLMInvCheckDetailsVO" viewAttr="CheckAmount"/>
+                  <oa:messageStyledText id="PaymentReconcilationStatus" dataType="VARCHAR2" prompt="Payment Reconcilation Status" viewName="CLMInvCheckDetailsVO" viewAttr="PaymentReconcilationStatus" maximumLength="25" rendered="false"/>
+                  <oa:messageStyledText id="CurrencyCode" dataType="VARCHAR2" prompt="Currency Code" viewName="CLMInvCheckDetailsVO" viewAttr="CurrencyCode" maximumLength="15"/>
+                  <oa:messageStyledText id="InvoiceAcctStatus" dataType="VARCHAR2" prompt="Invoice Status" viewName="CLMInvCheckDetailsVO" viewAttr="InvoiceAcctStatus" maximumLength="4000" rendered="false"/>
+               </ui:contents>
+            </oa:table>
+            <oa:pageButtonBar id="region2">
+               <ui:contents>
+                  <oa:submitButton id="backBtn" text="Back To Home" prompt="Back To Home"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>
