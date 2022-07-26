@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:messageComponentLayout version="10.1.3_" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$" amDefName="oracle.apps.sfc.clm.PaymentForm.server.LmsInvHistoryAM" controllerClass="oracle.apps.sfc.clm.PaymentForm.webui.LmsInvHistoryPopCO">
+   <ui:contents>
+      <oa:messageLayout id="messageLayout1">
+         <ui:contents>
+            <oa:table id="LmsInvPopupVO">
+               <ui:contents>
+                  <oa:messageStyledText id="BandWidhReqId" dataType="VARCHAR2" prompt="BandWidh Req No" viewName="LmsInvPopupVO" viewAttr="BandWidhReqNo" maximumLength="240"/>
+                  <oa:messageStyledText id="LmsId" dataType="VARCHAR2" prompt="Lms Id" viewName="LmsInvPopupVO" viewAttr="LmsId" maximumLength="240"/>
+                  <oa:messageStyledText id="PoNumber" dataType="VARCHAR2" prompt="Po Number" viewName="LmsInvPopupVO" viewAttr="PoNumber" maximumLength="240"/>
+                  <oa:messageStyledText id="PoLineAmount" dataType="NUMBER" prompt="Po Line Amount" viewName="LmsInvPopupVO" viewAttr="PoLineAmount" maximumLength="15"/>
+                  <oa:messageStyledText id="LmsInvoiceNumber" dataType="VARCHAR2" prompt="Lms Invoice Number" viewName="LmsInvPopupVO" viewAttr="LmsInvoiceNumber" maximumLength="240"/>
+                  <oa:messageStyledText id="InvoiceAmount" dataType="NUMBER" prompt="Invoice Amount" viewName="LmsInvPopupVO" viewAttr="InvoiceAmount" maximumLength="15"/>
+                  <oa:messageStyledText id="amtPaidCol" dataType="NUMBER" prompt="Amount Paid" viewName="LmsInvPopupVO" viewAttr="AmountPaid" maximumLength="15"/>
+                  <oa:messageStyledText id="BalAmt" dataType="NUMBER" prompt="Bal Amt" viewName="LmsInvPopupVO" viewAttr="BalAmt" maximumLength="15"/>
+                  <oa:messageStyledText id="InvoiceWfStatus" dataType="VARCHAR2" prompt="Invoice Status" viewName="LmsInvPopupVO" viewAttr="InvoiceWfStatus" maximumLength="240"/>
+                  <oa:messageStyledText id="InvoiceDate" dataType="DATE" prompt="Invoice Date" viewName="LmsInvPopupVO" viewAttr="InvoiceDate"/>
+                  <oa:messageStyledText id="ItemCode" dataType="VARCHAR2" prompt="Item Code" viewName="LmsInvPopupVO" viewAttr="ItemCode" maximumLength="240"/>
+                  <oa:messageStyledText id="ItemDesc" dataType="VARCHAR2" prompt="Item Description" viewName="LmsInvPopupVO" viewAttr="ItemDesc" maximumLength="240"/>
+                  <oa:messageStyledText id="ItemType" dataType="VARCHAR2" prompt="Item Type" viewName="LmsInvPopupVO" viewAttr="ItemType" maximumLength="100"/>
+                  <oa:messageStyledText id="PoLineNumber" dataType="NUMBER" prompt="Po Line No" viewName="LmsInvPopupVO" viewAttr="PoLineNumber"/>
+                  <oa:messageStyledText id="CommissionedDate" dataType="DATE" prompt="Commissioned Date" viewName="LmsInvPopupVO" viewAttr="CommissionedDate"/>
+                  <oa:messageStyledText id="InvPeriodFromDate" dataType="DATE" prompt="Invoice Period From Date" viewName="LmsInvPopupVO" viewAttr="InvPeriodFromDate"/>
+                  <oa:messageStyledText id="InvPeriodToDate" dataType="DATE" prompt="Invoce Period To Date" viewName="LmsInvPopupVO" viewAttr="InvPeriodToDate"/>
+                  <oa:messageStyledText id="Supplier" dataType="VARCHAR2" prompt="Supplier" viewName="LmsInvPopupVO" viewAttr="Supplier" maximumLength="240"/>
+                  <oa:messageStyledText id="SupplierSite" dataType="VARCHAR2" prompt="Supplier Site" viewName="LmsInvPopupVO" viewAttr="SupplierSite" maximumLength="240"/>
+                  <oa:messageStyledText id="FromLocation" dataType="VARCHAR2" prompt="From Location" viewName="LmsInvPopupVO" viewAttr="FromLocation" maximumLength="240"/>
+                  <oa:messageStyledText id="ToLocation" dataType="VARCHAR2" prompt="To Location" viewName="LmsInvPopupVO" viewAttr="ToLocation" maximumLength="240"/>
+                  <oa:messageStyledText id="payTermId" dataType="VARCHAR2" prompt="Payment Term" viewName="LmsInvPopupVO" viewAttr="PaymentTerm" maximumLength="240"/>
+                  <oa:messageStyledText id="amtRef" dataType="VARCHAR2" prompt="Invoice Reference Amount" viewName="LmsInvPopupVO" viewAttr="InvAmtRef" maximumLength="240"/>
+                  <oa:messageStyledText id="CircuitId" dataType="VARCHAR2" prompt="Circuit Id" viewName="LmsInvPopupVO" viewAttr="CircuitId" maximumLength="240"/>
+                  <oa:messageStyledText id="PoUom" dataType="VARCHAR2" prompt="Po Uom" viewName="LmsInvPopupVO" viewAttr="PoUom" maximumLength="80"/>
+                  <oa:messageStyledText id="PoTax" dataType="NUMBER" prompt="Po Tax" viewName="LmsInvPopupVO" viewAttr="PoTax" maximumLength="10"/>
+                  <oa:messageStyledText id="Capacity" dataType="VARCHAR2" prompt="Capacity" viewName="LmsInvPopupVO" viewAttr="Capacity" maximumLength="240"/>
+                  <oa:messageStyledText id="SurrenderedDate" dataType="DATE" prompt="Surrendered Date" viewName="LmsInvPopupVO" viewAttr="SurrenderedDate"/>
+                  <oa:messageStyledText id="ConversionRate" dataType="NUMBER" prompt="Conversion Rate" viewName="LmsInvPopupVO" viewAttr="ConversionRate"/>
+                  <oa:messageStyledText id="ChargeAccount" dataType="VARCHAR2" prompt="Charge Account" viewName="LmsInvPopupVO" viewAttr="ChargeAccount" maximumLength="240"/>
+                  <oa:messageStyledText id="InvoiceType" dataType="VARCHAR2" prompt="Invoice Type" viewName="LmsInvPopupVO" viewAttr="InvoiceType" maximumLength="100"/>
+                  <oa:messageStyledText id="Activity" dataType="VARCHAR2" prompt="Activity" viewName="LmsInvPopupVO" viewAttr="Activity" maximumLength="240"/>
+                  <oa:messageStyledText id="LinkType" dataType="VARCHAR2" prompt="Link Type" viewName="LmsInvPopupVO" viewAttr="LinkType" maximumLength="240"/>
+                  <oa:messageStyledText id="BwDistance" dataType="NUMBER" prompt="Bw Distance" viewName="LmsInvPopupVO" viewAttr="BwDistance"/>
+               </ui:contents>
+            </oa:table>
+         </ui:contents>
+      </oa:messageLayout>
+   </ui:contents>
+</oa:messageComponentLayout>
