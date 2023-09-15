@@ -1,0 +1,6844 @@
+# $Header$
+
+# dbdrv: exec fnd bin FNDLOAD bin &phase=daa+51 checkfile:~PROD:~PATH:~FILE &ui_apps 0 Y UPLOAD @FND:patch/115/import/afsload.lct @~PROD:~PATH/~FILE
+LANGUAGE = "US"
+LDRCONFIG = "afsload.lct 120.5.12020000.1"
+
+#Source Database R1224DEV
+
+#RELEASE_NAME 12.2.4
+
+# -- Begin Entity Definitions -- 
+
+DEFINE MENU
+  KEY   MENU_NAME                       VARCHAR2(4000)
+  BASE  TYPE                            VARCHAR2(30)
+  BASE  LAST_UPDATE_DATE                VARCHAR2(10)
+  TRANS USER_MENU_NAME                  VARCHAR2(80)
+  TRANS DESCRIPTION                     VARCHAR2(240)
+  CTX   OWNER                           VARCHAR2(4000)
+
+  DEFINE ENTRY
+    TRANS PROMPT                          VARCHAR2(60)
+    TRANS DESCRIPTION                     VARCHAR2(240)
+    BASE  GRANT_FLAG                      VARCHAR2(1)
+    BASE  LAST_UPDATE_DATE                VARCHAR2(10)
+    CTX   SUBMENU                         REFERENCES MENU
+    CTX   FUNCTION                        REFERENCES FUNCTION
+    CTX   OWNER                           VARCHAR2(4000)
+  END ENTRY
+END MENU
+
+DEFINE FUNCTION
+  KEY   FUNCTION_NAME                   VARCHAR2(4000)
+  BASE  FORM                            REFERENCES FORM
+  BASE  TYPE                            VARCHAR2(30)
+  BASE  PARAMETERS                      VARCHAR2(4000)
+  BASE  WEB_HOST_NAME                   VARCHAR2(4000)
+  BASE  WEB_AGENT_NAME                  VARCHAR2(4000)
+  BASE  WEB_HTML_CALL                   VARCHAR2(4000)
+  BASE  WEB_ENCRYPT_PARAMETERS          VARCHAR2(4000)
+  BASE  WEB_SECURED                     VARCHAR2(4000)
+  BASE  WEB_ICON                        VARCHAR2(4000)
+  BASE  FUNC_OBJECT                     REFERENCES OBJECT
+  BASE  OBJECT_NAME                     REFERENCES OBJECT
+  BASE  REGION_APPLICATION_SHORT_NAME   VARCHAR2(50)
+  BASE  REGION_APPLICATION_NAME         VARCHAR2(50)
+  BASE  REGION_CODE                     VARCHAR2(4000)
+  BASE  LAST_UPDATE_DATE                VARCHAR2(10)
+  BASE  MAINTENANCE_MODE_SUPPORT        VARCHAR2(8)
+  BASE  CONTEXT_DEPENDENCE              VARCHAR2(8)
+  BASE  JRAD_REF_PATH                   VARCHAR2(4000)
+  TRANS USER_FUNCTION_NAME              VARCHAR2(80)
+  TRANS DESCRIPTION                     VARCHAR2(240)
+  CTX   OWNER                           VARCHAR2(4000)
+END FUNCTION
+
+DEFINE OBJECT
+  KEY   OBJ_NAME                        VARCHAR2(4000)
+  BASE  APPLICATION_SHORT_NAME          VARCHAR2(50)
+  BASE  DATABASE_OBJECT_NAME            VARCHAR2(30)
+  BASE  PK1_COLUMN_NAME                 VARCHAR2(30)
+  BASE  PK2_COLUMN_NAME                 VARCHAR2(30)
+  BASE  PK3_COLUMN_NAME                 VARCHAR2(30)
+  BASE  PK4_COLUMN_NAME                 VARCHAR2(30)
+  BASE  PK5_COLUMN_NAME                 VARCHAR2(30)
+  BASE  PK1_COLUMN_TYPE                 VARCHAR2(8)
+  BASE  PK2_COLUMN_TYPE                 VARCHAR2(8)
+  BASE  PK3_COLUMN_TYPE                 VARCHAR2(8)
+  BASE  PK4_COLUMN_TYPE                 VARCHAR2(8)
+  BASE  PK5_COLUMN_TYPE                 VARCHAR2(8)
+  BASE  LAST_UPDATE_DATE                VARCHAR2(10)
+  TRANS DISPLAY_NAME                    VARCHAR2(240)
+  TRANS DESCRIPTION                     VARCHAR2(2000)
+  CTX   OWNER                           VARCHAR2(4000)
+END OBJECT
+
+DEFINE FORM
+  KEY   APPLICATION_SHORT_NAME          VARCHAR2(4000)
+  KEY   FORM_NAME                       VARCHAR2(4000)
+  BASE  AUDIT_ENABLED_FLAG              VARCHAR2(1)
+  BASE  LAST_UPDATE_DATE                VARCHAR2(10)
+  TRANS USER_FORM_NAME                  VARCHAR2(80)
+  TRANS DESCRIPTION                     VARCHAR2(240)
+  CTX   OWNER                           VARCHAR2(4000)
+END FORM
+
+# -- End Entity Definitions -- 
+
+
+BEGIN MENU "*NULL*"
+  LAST_UPDATE_DATE = "2011/11/15"
+  USER_MENU_NAME = "*NULL*"
+  OWNER = "ORACLE12.2.4"
+
+END MENU
+
+BEGIN FUNCTION "CSZ_ITIL_T2_H_FN_PULL"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?OAFunc=CSZ_ITIL_DB_FN_PULL&OASF=CSZ_ITIL_DB_FN_PULL&OAHP=CSZ_ITIL_T2_AGENT_HOME_PAGE&addBreadCrumb=RP"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Agent Dashboard Pull"
+  DESCRIPTION = "Incident Manager - System Work Selection"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_ITIL_T2_H_FN_PUSH"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?OAFunc=CSZ_ITIL_DB_FN_PUSH&OASF=CSZ_ITIL_DB_FN_PUSH&OAHP=CSZ_ITIL_T2_AGENT_HOME_PAGE&addBreadCrumb=RP"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Agent Dashboard Push"
+  DESCRIPTION =
+ "Incident Manager - Manual Work Selection - Auto Assigned Owner"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_ITIL_T2_H_FN_CHERRYPICK"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?OAFunc=CSZ_ITIL_DB_FN_CHERRYPICK&OASF=CSZ_ITIL_DB_FN_CHERRYPICK&OAHP=CSZ_ITIL_T2_AGENT_HOME_PAGE&addBreadCrumb=RP"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Agent Dashboard Cherry Pick"
+  DESCRIPTION =
+ "Incident Manager - Manual Work Selection - Auto Assigned Group"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_ITIL_T2_H_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?OAFunc=CSZ_ITIL_DB_FN&OASF=CSZ_ITIL_DB_FN&OAHP=CSZ_ITIL_T2_AGENT_HOME_PAGE&addBreadCrumb=RP"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Agent Dashboard"
+  DESCRIPTION = "Incident Manager Agent Dashboard"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CSZ_ITIL_T2_AGENT_GLOBAL_MENU"
+  TYPE = "GLOBAL"
+  LAST_UPDATE_DATE = "2010/08/26"
+  USER_MENU_NAME = "Incident Manager Tier 2 Agent Global Menu"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Global Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "Agent Dashboard"
+    DESCRIPTION = "Incident Manager - System Work Selection"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_T2_H_FN_PULL"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "Agent Dashboard"
+    DESCRIPTION =
+ "Incident Manager - Manual Work Selection - Auto Assigned Owner"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_T2_H_FN_PUSH"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "Agent Dashboard"
+    DESCRIPTION =
+ "Incident Manager - Manual Work Selection - Auto Assigned Group"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_T2_H_FN_CHERRYPICK"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "Agent Dashboard"
+    DESCRIPTION = "Incident Manager - Agent Dashboard"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_T2_H_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "ICX_CLOSE"
+  FORM = "" "*NULL*"
+  TYPE = "WWW"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "OALogout.jsp"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "Close.png"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2014/05/12"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Close"
+  DESCRIPTION = "Global Function to close the window"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "ICX_RETURN_TO_PORTAL"
+  FORM = "" "*NULL*"
+  TYPE = "WWW"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "OracleNavigate.Responsibility"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "home.png"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2014/05/12"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Return to Portal"
+  DESCRIPTION = "Function to return you to the Self Service Home Page"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "ICX_LOGOUT"
+  FORM = "" "*NULL*"
+  TYPE = "WWW"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "OALogout.jsp"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "signout.png"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2014/05/12"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Logout"
+  DESCRIPTION =
+ "Global Function to logout of the system and take you to the main login screen"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "ICX_USER_PREFERENCES"
+  FORM = "" "*NULL*"
+  TYPE = "WWW"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "OracleApps.DU"
+  WEB_ENCRYPT_PARAMETERS = "Y"
+  WEB_SECURED = "N"
+  WEB_ICON = "FNDPREFS.gif"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_APPLICATION_SHORT_NAME = "FND"
+  REGION_APPLICATION_NAME = "FND"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2014/05/12"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "General Preferences"
+  DESCRIPTION = "Set personal information including password and language."
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "ICX_HELP"
+  FORM = "" "*NULL*"
+  TYPE = "WWW"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "fndgfm/fnd_help.get/US/FND/@ICXPHP"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "help.png"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2014/05/12"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Self Service Help"
+  DESCRIPTION = "Function to show help page"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "ICX_SSWA_USER_PREFERENCES"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/fnd/preferences/webui/PreferencesPG&retainAM=Y"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "FNDPREFS.gif"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2014/05/12"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "NONE"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "New General Preferences"
+  DESCRIPTION =
+ "This Preference Function points to new SSWA Pref Function (OAF5.7C Above)"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "OAM_UALERT_PAGE"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?region=/oracle/apps/fnd/oam/diag/alerts/ReportProblemPage"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2014/05/12"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "OAM User Alert Page"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "UMX_MY_APP_ACCESS"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/fnd/umx/accessRequest/webui/MyAppAccessPG&akRegionApplicationId=0"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2014/05/12"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "User Management - My Application Access"
+  DESCRIPTION = "Function for My Application Access (ART)"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "FND_MANAGE_PROXIES"
+  FORM = "" "*NULL*"
+  TYPE = "WWW"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/fnd/umx/proxy/webui/ManageProxiesPG&akRegionApplicationId=0"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2014/05/12"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "NONE"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Manage Proxies Page"
+  DESCRIPTION = "Function for the Manage Proxies Page UI"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "FND_GEN_PREF_MENU"
+  LAST_UPDATE_DATE = "2014/05/12"
+  USER_MENU_NAME = "General Pref Menu"
+  DESCRIPTION = "OA Based Apps General Preference Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "Display Preferences"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/05/12"
+    SUBMENU = "*NULL*"
+    FUNCTION = "ICX_SSWA_USER_PREFERENCES"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "Access Requests"
+    DESCRIPTION = "Self Service Requests for Additional Access"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/05/12"
+    SUBMENU = "*NULL*"
+    FUNCTION = "UMX_MY_APP_ACCESS"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "Manage Proxies"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/05/12"
+    SUBMENU = "*NULL*"
+    FUNCTION = "FND_MANAGE_PROXIES"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN MENU "FND_PREF_MENU_SIDEBAR"
+  TYPE = "SIDEBAR"
+  LAST_UPDATE_DATE = "2014/05/12"
+  USER_MENU_NAME = "Pref Menu SideBar"
+  DESCRIPTION = "OA based Preference Menu Sidebar"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "General"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/05/12"
+    SUBMENU = "FND_GEN_PREF_MENU"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN MENU "ICX_STANDARD_GLOBAL_MENU"
+  TYPE = "GLOBAL"
+  LAST_UPDATE_DATE = "2014/05/12"
+  USER_MENU_NAME = "ICX_STANDARD_GLOBAL_MENU"
+  DESCRIPTION = "Global Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "Close Window"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/05/12"
+    SUBMENU = "*NULL*"
+    FUNCTION = "ICX_CLOSE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "Home"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/05/12"
+    SUBMENU = "*NULL*"
+    FUNCTION = "ICX_RETURN_TO_PORTAL"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "Logout"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/05/12"
+    SUBMENU = "*NULL*"
+    FUNCTION = "ICX_LOGOUT"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "Preferences"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/05/12"
+    SUBMENU = "*NULL*"
+    FUNCTION = "ICX_USER_PREFERENCES"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "Help"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/05/12"
+    SUBMENU = "*NULL*"
+    FUNCTION = "ICX_HELP"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION =
+ "This Preference Function points to new SSWA Perf Function (OAF5.7C Above)"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/05/12"
+    SUBMENU = "*NULL*"
+    FUNCTION = "ICX_SSWA_USER_PREFERENCES"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "Contact Admin"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/05/12"
+    SUBMENU = "*NULL*"
+    FUNCTION = "OAM_UALERT_PAGE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Preference Menu(5.10C above)"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/05/12"
+    SUBMENU = "FND_PREF_MENU_SIDEBAR"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN MENU "CSZ_ITIL_T2_AGENT_HOME_PAGE"
+  TYPE = "HOMEPAGE"
+  LAST_UPDATE_DATE = "2010/08/26"
+  USER_MENU_NAME = "Incident Manager Tier 2 Home Page Menu"
+  DESCRIPTION = "Incident Manager Tier 2 Home Page Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "CSZ_ITIL_T2_AGENT_GLOBAL_MENU"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "ICX_STANDARD_GLOBAL_MENU"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CSZ_ITIL_CR_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/incident/webui/SDeskCreationPG&OAFunc=CSZ_ITIL_CR_FN&cszPageFlow=Create"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Tier 2 Agent Create Ticket"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Create Ticket"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_ITIL_UP_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/incident/webui/UpdateSDeskPG&OAFunc=CSZ_ITIL_UP_FN&cszPageFlow=Update"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Tier 2 Agent Update Ticket"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Update Ticket"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_ITIL_ADV_SRCH_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/search/webui/AdvSrchSDeskPG&OAFunc=CSZ_ITIL_ADV_SRCH_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Tier 2 Agent Advanced Search"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Advanced Search"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_ITIL_UP_RO_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/incident/webui/UpdateSDeskROPG&OAFunc=CSZ_ITIL_UP_RO_FN&cszPageFlow=Readonly"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2012/01/23"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Tier 2 Agent Read-Only Ticket"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Read-Only Ticket"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_ITIL_SRCH_SIMILAR_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/search/webui/SrchForSimilarPG&OAFunc=CSZ_ITIL_SRCH_SIMILAR_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Tier 2 Agent Search For Similar"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Search For Similar"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_SDESK_ADV_SRCH_RES_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/search/webui/AdvSrchResultsSDeskPG&OAFunc=CSZ_SDESK_ADV_SRCH_RES_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Service Desk Tier 2 Agent Advanced Search Results"
+  DESCRIPTION = "Service Desk Tier 2 Agent Advanced Search Results"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_ITIL_DB_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/dashboard/webui/DashboardSDeskPG&OAFunc=CSZ_ITIL_DB_FN&addBreadCrumb=RS"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Tier 2 Agent Dashboard"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Dashboard"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_ITIL_DB_FN_PULL"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/dashboard/webui/DashboardSDeskPG&OAFunc=CSZ_ITIL_DB_FN_PULL&addBreadCrumb=RS"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Tier 2 Agent Dashboard Pull Model"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Dashboard Pull Model"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_ITIL_DB_FN_PUSH"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/dashboard/webui/DashboardSDeskPG&OAFunc=CSZ_ITIL_DB_FN_PUSH&addBreadCrumb=RS"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Tier 2 Agent Dashboard Push Model"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Dashboard Push Model"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_ITIL_DB_FN_CHERRYPICK"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/dashboard/webui/DashboardSDeskPG&OAFunc=CSZ_ITIL_DB_FN_CHERRYPICK&addBreadCrumb=RS"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME =
+ "Incident Manager Tier 2 Agent Dashboard Cherry Pick Model"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Dashboard Cherry Pick Model"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_SR_UP_CONTACTS_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/contact/webui/IncidentContactPG&OAFunc=CSZ_SR_UP_CONTACTS_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Contact Point"
+  DESCRIPTION = "Customer Support Tier 2 Agent Contact Point"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_SAV_SRCH_RES_ITIL_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/search/webui/SavedSrchResultsSDeskPG&OAFunc=CSZ_SAV_SRCH_RES_ITIL_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Tier 2 Agent Saved Search Results"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Saved Search Results"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_SAV_SRCH_UPDATE_ITIL_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/search/webui/SavedSrchUpdateSDeskPG&OAFunc=CSZ_SAV_SRCH_UPDATE_ITIL_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME =
+ "Incident Manager Tier 2 Agent Create/Update Saved Search"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Create/Update Saved Search"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_PARTY_INFO_FN_SDESK"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/PartyInformationPG&OAFunc=CSZ_TCA_PARTY_INFO_FN_SDESK"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Service Desk Tier 2 Agent Party Information"
+  DESCRIPTION = "Service Desk Tier 2 Agent Party Information"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_CSI_OA_CREATE_PROD_ITIL"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/csi/instance/general/webui/CreateProductPG&OAFunc=CSZ_CSI_OA_CREATE_PROD_ITIL&PageMode=3"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Create Configuration Item for ITIL"
+  DESCRIPTION = "Create Configuration Item for ITIL"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_CSI_OA_INST_DETAILS_ITIL"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/csi/instance/general/webui/InstanceDetailsPG&OAFunc=CSZ_CSI_OA_INST_DETAILS_ITIL"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Configuration Item Details for ITIL"
+  DESCRIPTION = "Configuration Item Details for ITIL"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TICKET_SRCH_BY_CUS_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/search/customer/webui/SrchCustBinLinkPG&OAFunc=CSZ_TICKET_SRCH_BY_CUS_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/08/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Tier 2 Agent Search By Customer"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Search By Customer"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_SR_UP_ITIL_RESTRICTED_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/incident/webui/UpdateSDeskRestrictedPG&OAFunc=CSZ_SR_UP_ITIL_RESTRICTED_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2012/01/23"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Tier 2 Agent Update Ticket Restricted"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Update Ticket Restricted"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_ITIL_DUPLICATE_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/duplicate/webui/DuplicateSRPG&OAFunc=CSZ_ITIL_DUPLICATE_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2012/02/09"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Potential Duplicate Tickets"
+  DESCRIPTION = "Incident Manager Potential Duplicate Tickets"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_ITIL_POTENTIAL_SIMILAR_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/duplicate/webui/SimilarSRPG&OAFunc=CSZ_ITIL_POTENTIAL_SIMILAR_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2012/02/09"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Potential Similar Tickets"
+  DESCRIPTION = "Incident Manager Potential Similar Tickets"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_UP_ITIL_DUPLICATE_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/duplicate/webui/DuplicateSRUpModePG&OAFunc=CSZ_UP_ITIL_DUPLICATE_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2012/02/09"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME =
+ "Incident Manager - Search Mode Potential Duplicate Tickets"
+  DESCRIPTION = "Incident Manager - Search Mode Potential Duplicate Tickets"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TASK_SEARCH_PG_ITIL"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tasksearch/webui/TaskSearchPG&OAFunc=CSZ_TASK_SEARCH_PG_ITIL&retainAM=Y"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2012/07/24"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Task Search"
+  DESCRIPTION = "Incident Manager Task Search"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TASK_SRCH_RESULTS_PG_ITIL"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tasksearch/webui/TaskSearchResultsPG&OAFunc=CSZ_TASK_SRCH_RESULTS_PG_ITIL"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2012/07/24"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Task Search Results"
+  DESCRIPTION = "Incident Manager Task Search Results"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_TASK_SEARCH_PARTY_INFO"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/PartyInformationPG&OAFunc=CSZ_TCA_TASK_SEARCH_PARTY_INFO"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2012/07/24"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Task Search Party Info"
+  DESCRIPTION = "Customer Support Tier 2 Task Search Party Info"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TASK_SRCH_EMP_RO_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/jtf/resource/webui/JtfRsEmployeeReadOnlyPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2012/07/24"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Task Search Employee Read Only"
+  DESCRIPTION = "Customer Support Task Search Employee Read Only"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TASK_SRCH_GROUP_RO_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/jtf/resource/webui/JtfRsGroupReadOnlyPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2012/07/24"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Task Search Group Read Only"
+  DESCRIPTION = "Customer Support Task Search Group Read Only"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_ITIL_ESCALATION_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/escalation/webui/SREscalationPG&OAFunc=CSZ_ITIL_ESCALATION_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2012/07/24"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Incident Manager Tier 2 Ticket Escalation"
+  DESCRIPTION = "Incident Manager Tier 2 Ticket Escalation"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TASK_SRCH_TEAM_RO_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "OA.jsp?page=/oracle/apps/jtf/resource/webui/JtfRsTeamViewPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2012/12/13"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Task Search Team read Only"
+  DESCRIPTION = "Customer Support Task Search Team read Only"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_SAVED_TASK_SEARCH_PG_ITIL"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tasksearch/webui/SavedTaskSearchPG&OAFunc=CSZ_SAVED_TASK_SEARCH_PG_ITIL"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/04/05"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "ITIL Saved Task Search"
+  DESCRIPTION = "ITIL Saved Task Search"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSF_CREATE_UPDATE_TASK_ITIL"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/csf/portal/task/webui/CsfTaskPG&OAFunc=CSF_CREATE_UPDATE_TASK_ITIL"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/04/05"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Create and Update Task in ITIL"
+  DESCRIPTION = "Create and Update Task in ITIL"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CSZ_ITIL_S_AGENT_SRV_GRANT"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2010/08/26"
+  USER_MENU_NAME =
+ "Incident Manager Tier 2 Agent Specific Service Security Menu"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Specific Service Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Tier 2 Agent Create Ticket"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_CR_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Tier 2 Agent Update Ticket"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_UP_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Tier 2 Agent Advanced Search"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_ADV_SRCH_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Tier 2 Agent Read-Only Service Request"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_UP_RO_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Tier 2 Agent Search For Similar"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_SRCH_SIMILAR_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Service Desk Tier 2 Agent Advanced Search Results"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_SDESK_ADV_SRCH_RES_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Tier 2 Agent Dashboard"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_DB_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Tier 2 Agent Dashboard Pull Model"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_DB_FN_PULL"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Tier 2 Agent Dashboard Push Model"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_DB_FN_PUSH"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Tier 2 Agent Dashboard Cherry Pick Model"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_DB_FN_CHERRYPICK"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Agent Dashboard"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_T2_H_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Agent Dashboard Pull"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_T2_H_FN_PULL"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Agent Dashboard Push"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_T2_H_FN_PUSH"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Agent Dashboard Cherry Pick"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_T2_H_FN_CHERRYPICK"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Service Desk Tier 2 Agent Contact Point"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_SR_UP_CONTACTS_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Tier 2 Agent Saved Search Results"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_SAV_SRCH_RES_ITIL_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Tier 2 Agent Create/Update Saved Search"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_SAV_SRCH_UPDATE_ITIL_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Service Desk Tier 2 Agent Party Information"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_PARTY_INFO_FN_SDESK"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Create Configuration Item for ITIL"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_CSI_OA_CREATE_PROD_ITIL"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Configuration Item Details for ITIL"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_CSI_OA_INST_DETAILS_ITIL"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Tier 2 Agent Search By Customer"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TICKET_SRCH_BY_CUS_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Tier 2 Agent Update Ticket Restricted"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2012/01/23"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_SR_UP_ITIL_RESTRICTED_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Potential Duplicate Tickets"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2012/02/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_DUPLICATE_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Potential Similar Tickets"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2012/02/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_POTENTIAL_SIMILAR_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager - Search Mode Potential Duplicate Tickets"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2012/02/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_UP_ITIL_DUPLICATE_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Task Search"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2012/07/24"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TASK_SEARCH_PG_ITIL"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Task Search Results"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2012/07/24"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TASK_SRCH_RESULTS_PG_ITIL"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Task Search Party Info"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2012/07/24"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_TASK_SEARCH_PARTY_INFO"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Task Search Employee Read Only"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2012/07/24"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TASK_SRCH_EMP_RO_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Task Search Group Read Only"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2012/07/24"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TASK_SRCH_GROUP_RO_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Incident Manager Tier 2 Ticket Escalation"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2012/07/24"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_ESCALATION_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Task Search Team read Only"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/01/08"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TASK_SRCH_TEAM_RO_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "ITIL Saved Task Search"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/04/05"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_SAVED_TASK_SEARCH_PG_ITIL"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Create and Update Task in ITIL"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/04/05"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSF_CREATE_UPDATE_TASK_ITIL"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CSZ_SR_SRCH_BY_CUS_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/search/customer/webui/SrchCustBinLinkPG&OAFunc=CSZ_SR_SRCH_BY_CUS_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Search By Customer"
+  DESCRIPTION = "Customer Support Tier 2 Agent Search By Customer"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_CR_UP_PHONE_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/PhonePG&OAFunc=CSZ_TCA_CR_UP_PHONE_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Update Phone"
+  DESCRIPTION = "Customer Support Tier 2 Agent Update Phone"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_CR_UP_EMAIL_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/EmailPG&OAFunc=CSZ_TCA_CR_UP_EMAIL_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Update Email"
+  DESCRIPTION = "Customer Support Tier 2 Agent Update Email"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_CR_UP_ADDRESS_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/AddressPG&OAFunc=CSZ_TCA_CR_UP_ADDRESS_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Update Address"
+  DESCRIPTION = "Customer Support Tier 2 Agent Update Address"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_CR_CONTACT_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/CreateContactPG&HzPuiAddressEvent=CREATE&OAFunc=CSZ_TCA_CR_CONTACT_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Create Contact"
+  DESCRIPTION = "Customer Support Tier 2 Agent Create Contact"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_CR_ORGANIZATION_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/CreateOrgPG&HzPuiAddressEvent=CREATE&OAFunc=CSZ_TCA_CR_ORGANIZATION_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Create Organization"
+  DESCRIPTION = "Customer Support Tier 2 Agent Create Organization"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_CR_PERSON_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/CreatePrsnPG&HzPuiAddressEvent=CREATE&OAFunc=CSZ_TCA_CR_PERSON_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Create Person"
+  DESCRIPTION = "Customer Support Tier 2 Agent Create Person"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_SR_SK_SEARCH_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/incident/webui/SIDefaultPG&OAFunc=CSZ_SR_SK_SEARCH_FN&cszPageFlow=Create"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Key Search"
+  DESCRIPTION = "Customer Support Tier 2 Agent Key Search"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_ORG_DEDUP_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/OrgDupPreventionPG&OAFunc=CSZ_TCA_ORG_DEDUP_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME =
+ "Customer Support Tier 2 Agent Prevent Duplicate Organization"
+  DESCRIPTION = "Customer Support Tier 2 Agent Prevent Duplicate Organization"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_PER_DEDUP_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/PrsnDupPreventionPG&OAFunc=CSZ_TCA_PER_DEDUP_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Prevent Duplicate Person"
+  DESCRIPTION = "Customer Support Tier 2 Agent Prevent Duplicate Person"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_SR_LOG_ATTACHMENT_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/history/webui/LogAttachmentPG&OAFunc=CSZ_SR_LOG_ATTACHMENT_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent View Attachments"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "EAM_ASSIGNED_WORK_ORDER"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/eam/requests/webui/EAM_ASSIGNED_WO_PAGE&akRegionApplicationId=426"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/11/29"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Eam Assigned Work Order"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_SAV_SRCH_LIST_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/search/webui/SavedSrchListPG&OAFunc=CSZ_SAV_SRCH_LIST_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent List of Saved Searches"
+  DESCRIPTION = "Customer Support Tier 2 Agent List of Saved Searches"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_SEL_CLASSIFICATION_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/SelectClassificationPG&OAFunc=CSZ_TCA_SEL_CLASSIFICATION_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Select Classification"
+  DESCRIPTION = "Customer Support Tier 2 Agent Select Classification"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_CON_CLASSIFICATION_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/ConfirmClassificationPG&OAFunc=CSZ_TCA_CON_CLASSIFICATION_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Confirm Classification"
+  DESCRIPTION = "Customer Support Tier 2 Agent Confirm Classification"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_UP_CLASSIFICATION_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/UpdateClassificationPG&OAFunc=CSZ_TCA_UP_CLASSIFICATION_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Update Classification"
+  DESCRIPTION = "Customer Support Tier 2 Agent Update Classification"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_VW_CLASSIFICATION_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/ViewClassificationHistoryPG&OAFunc=CSZ_TCA_VW_CLASSIFICATION_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent View Classification"
+  DESCRIPTION = "Customer Support Tier 2 Agent View Classification"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_VW_ADDRESS_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/ViewRemovedAddressPG&OAFunc=CSZ_TCA_VW_ADDRESS_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent View Address"
+  DESCRIPTION = "Customer Support Tier 2 Agent View Address"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_CR_UP_URL_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/UrlPG&OAFunc=CSZ_TCA_CR_UP_URL_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Create and Update URL"
+  DESCRIPTION = "Customer Support Tier 2 Agent Create and Update URL"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_VW_REL_HISTORY_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/ViewRelationshipPG&OAFunc=CSZ_TCA_VW_REL_HISTORY_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent View Relationship"
+  DESCRIPTION = "Customer Support Tier 2 Agent View Relationship"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_VW_CON_REL_HISTORY_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/ViewContactRelationshipPG&OAFunc=CSZ_TCA_VW_CON_REL_HISTORY_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME =
+ "Customer Support Tier 2 Agent View Contacts Relationship"
+  DESCRIPTION = "Customer Support Tier 2 Agent View Contacts Relationship"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_CR_PER_ORG_REL_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/CreatePerOrgRelationshipPG&OAFunc=CSZ_TCA_CR_PER_ORG_REL_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME =
+ "Customer Support Tier 2 Agent Create Person Org Relationship"
+  DESCRIPTION = "Customer Support Tier 2 Agent Create Person Org Relationship"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_CR_PER_REL_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/CreatePerPerRelationshipPG&OAFunc=CSZ_TCA_CR_PER_REL_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME =
+ "Customer Support Tier 2 Agent Create Person Relationship"
+  DESCRIPTION = "Customer Support Tier 2 Agent Create Person Relationship"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_CR_ORG_REL_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/CreateOrgOrgRelationshipPG&OAFunc=CSZ_TCA_CR_ORG_REL_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Create Org Relationship"
+  DESCRIPTION = "Customer Support Tier 2 Agent Create Org Relationship"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_UP_REL_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/UpdateRelationshipPG&OAFunc=CSZ_TCA_UP_REL_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Update Relationship"
+  DESCRIPTION = "Customer Support Tier 2 Agent Update Relationship"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_CONTACT_DEDUP_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/ContactDupPreventionPG&OAFunc=CSZ_TCA_CONTACT_DEDUP_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME =
+ "Customer Support Tier 2 Agent Contact Duplicate Prevention"
+  DESCRIPTION = "Customer Support Tier 2 Agent Contact Duplicate Prevention"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_CR_PER_ORG_DEDUPE_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/CreatePerOrgRelDedupePG&OAFunc=CSZ_TCA_CR_PER_ORG_DEDUPE_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME =
+ "Customer Support Tier 2 Agent Person Org Duplicate Prevention"
+  DESCRIPTION = "Customer Support Tier 2 Agent Person Org Duplicate Prevention"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_WF_NOTIFICATION_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/dashboard/webui/WFNotificationPG&OAFunc=CSZ_WF_NOTIFICATION_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Workflow Notification"
+  DESCRIPTION = "Customer Support Tier 2 Agent Workflow Notification"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_CREDIT_CARD_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/creditcards/webui/CreditCardPG&OAFunc=CS_CREDIT_CARD_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2010/11/18"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Credit Card Create/Update Page"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_SR_AUDIT_DETAILS_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/audit/webui/AuditReportPG&OAFunc=CSZ_SR_AUDIT_DETAILS_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/02/12"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Audit Details"
+  DESCRIPTION = "Customer Support Audit Details"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TCA_CR_CONTACT_SEL_ADDR_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/tca/webui/SelectContactAddressPG&OA_Func=CSZ_TCA_CR_CONTACT_SEL_ADDR_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2014/04/01"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Select Contact Address"
+  DESCRIPTION = "Customer Support Tier 2 Agent Select Contact Address"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CSZ_CS_AGENT_COM_SERVICE_GRANT"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2008/03/27"
+  USER_MENU_NAME =
+ "Customer Support Tier 2 Agent - Common Service Security Menu"
+  DESCRIPTION = "Customer Support Tier 2 Agent - Common Service Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Search By Customer"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_SR_SRCH_BY_CUS_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Update Phone"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_CR_UP_PHONE_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Update Email"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_CR_UP_EMAIL_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Update Address"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_CR_UP_ADDRESS_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Create Contact"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_CR_CONTACT_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Create Organization"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_CR_ORGANIZATION_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Create Person"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_CR_PERSON_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Key Search"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_SR_SK_SEARCH_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION =
+ "Customer Support Tier 2 Agent Prevent Duplicate Organization"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_ORG_DEDUP_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Prevent Duplicate Person"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_PER_DEDUP_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent View Attachments"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_SR_LOG_ATTACHMENT_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Eam Assigned Work Order"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "EAM_ASSIGNED_WORK_ORDER"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent List of Saved Searches"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_SAV_SRCH_LIST_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Select Classification"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_SEL_CLASSIFICATION_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Confirm Classification"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_CON_CLASSIFICATION_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Update Classification"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_UP_CLASSIFICATION_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent View Classification"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_VW_CLASSIFICATION_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent View Address"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_VW_ADDRESS_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Create and Update URL"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_CR_UP_URL_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent View Relationship"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_VW_REL_HISTORY_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent View Contacts Relationship"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_VW_CON_REL_HISTORY_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION =
+ "Customer Support Tier 2 Agent Create Person Org Relationship"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_CR_PER_ORG_REL_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Create Person Relationship"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_CR_PER_REL_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Create Org Relationship"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_CR_ORG_REL_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Update Relationship"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_UP_REL_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Contact Duplicate Prevention"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_CONTACT_DEDUP_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION =
+ "Customer Support Tier 2 Agent Person Org Duplicate Prevention"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_CR_PER_ORG_DEDUPE_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Workflow Notification"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_WF_NOTIFICATION_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Credit Card Create/Update Page"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/11/18"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_CREDIT_CARD_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Audit Details"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/02/12"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_SR_AUDIT_DETAILS_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Select Contact Address"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/01/02"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TCA_CR_CONTACT_SEL_ADDR_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CSI_FS_INSTANCE_DETAILS_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update All Instance Details"
+  DESCRIPTION = "Update All Instance Details"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_INSTANCE_EXPIRE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Allow Expire Item Instance"
+  DESCRIPTION = "Allow Expire Item Instance"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_INSTANCE_EXPORT"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Allow Export Item Instance List"
+  DESCRIPTION = "Allow Export Item Instance List"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_INSTANCE_CREATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Create Item Instance"
+  DESCRIPTION = "Create Item Instance"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_CHANGE_OWNER"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Change Owner"
+  DESCRIPTION = "Change Owner"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_CURRENT_LOCATION_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update Current Location"
+  DESCRIPTION = "Update Current Location"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_INSTALL_LOCATION_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update Install Location"
+  DESCRIPTION = "Update Install Location"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_BILLTO_LOCATION_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update Bill To location"
+  DESCRIPTION = "Update Bill To location"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_SHIPTO_LOCATION_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update Ship To Location"
+  DESCRIPTION = "Update Ship To Location"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_ASSOCIATIONS_ADD"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Add Associations"
+  DESCRIPTION = "Add Associations"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_ASSOCIATIONS_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update Associations"
+  DESCRIPTION = "Update Associations"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_CONTACTS_ADD"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Add Contacts"
+  DESCRIPTION = "Add Contacts"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_CONTACTS_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update Contacts"
+  DESCRIPTION = "Update Contacts"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_ACCOUNTS_ADD"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Add Accounts"
+  DESCRIPTION = "Add Accounts"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_ACCOUNTS_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update Accounts"
+  DESCRIPTION = "Update Accounts"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_SERVICE_REQ_CREATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Create Service Requests"
+  DESCRIPTION = "Create Service Requests"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_CONFIGURATION_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update Configuration"
+  DESCRIPTION = "Update Configuration"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_COUNTERS_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update Counters"
+  DESCRIPTION = "Update Counters"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_OPERATING_UNIT_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update Operating units"
+  DESCRIPTION = "Update Operating units"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_SYSTEMS_CREATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Create Systems"
+  DESCRIPTION = "Create Systems"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_SYSTEMS_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update Systems"
+  DESCRIPTION = "Update Systems"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_GENERAL_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update General Attributes"
+  DESCRIPTION = "Update General Attributes"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_INSTANCE_NOTES_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update Instance Notes"
+  DESCRIPTION = "Update Instance Notes"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_SERIAL_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update Serial Number"
+  DESCRIPTION = "Serial Number Updation"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_SPLIT_QUANTITY"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Split Quantity"
+  DESCRIPTION = "Split Quantity"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_ORDERS_UPDATE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Update Orders"
+  DESCRIPTION = "Update Orders"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CSI_OA_UPD_PERMISSION_SET"
+  LAST_UPDATE_DATE = "2014/02/27"
+  USER_MENU_NAME = "Installed Base Update Permission Set Menu"
+  DESCRIPTION = "Installed Base Update Permission Set Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_INSTANCE_DETAILS_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_INSTANCE_EXPIRE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_INSTANCE_EXPORT"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_INSTANCE_CREATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_CHANGE_OWNER"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_CURRENT_LOCATION_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_INSTALL_LOCATION_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_BILLTO_LOCATION_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_SHIPTO_LOCATION_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_ASSOCIATIONS_ADD"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_ASSOCIATIONS_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_CONTACTS_ADD"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_CONTACTS_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_ACCOUNTS_ADD"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_ACCOUNTS_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_SERVICE_REQ_CREATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_CONFIGURATION_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_COUNTERS_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_OPERATING_UNIT_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_SYSTEMS_CREATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_SYSTEMS_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_GENERAL_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_INSTANCE_NOTES_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_SERIAL_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_SPLIT_QUANTITY"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_ORDERS_UPDATE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CSI_FS_INSTANCE_SEARCH_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Instance Search Page"
+  DESCRIPTION = "View Instance Search Page"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_INSTANCE_DETAILS_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View All Instance Details"
+  DESCRIPTION = "View All Instance Details"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_INSTANCE_LOCATIONS_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View All Instance Locations"
+  DESCRIPTION = "View All Instance Locations"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_CURRENT_LOCATION_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Current Location"
+  DESCRIPTION = "View Current Location"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_INSTALL_LOCATION_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Install Location"
+  DESCRIPTION = "View Install Location"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_BILLTO_LOCATION_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Bill To location"
+  DESCRIPTION = "View Bill To location"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_SHIPTO_LOCATION_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Ship To Location"
+  DESCRIPTION = "View Ship To Location"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_ASSOCIATIONS_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Associations"
+  DESCRIPTION = "View Associations"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_CONTACTS_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Contacts"
+  DESCRIPTION = "View Contacts"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_ACCOUNTS_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Accounts"
+  DESCRIPTION = "View Accounts"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_CONTRACTS_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Contracts"
+  DESCRIPTION = "View Contracts"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_ORDERS_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Orders"
+  DESCRIPTION = "View Orders"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_SERVICE_REQ_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Service Requests"
+  DESCRIPTION = "View Service Requests"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_CONFIGURATION_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Configuration"
+  DESCRIPTION = "View Configuration"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_COUNTERS_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Counters"
+  DESCRIPTION = "View Counters"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_TXN_HISTORY_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Transactional history"
+  DESCRIPTION = "View Transactional history"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_INSTANCE_HISTORY_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Instance History"
+  DESCRIPTION = "View Instance History"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_OPERATING_UNIT_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Operating units"
+  DESCRIPTION = "View Operating units"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_SYSTEMS_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Systems"
+  DESCRIPTION = "View Systems"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_TRANSACTIONS_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Transactions"
+  DESCRIPTION = "View Transactions"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_GENERAL_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View General Attributes"
+  DESCRIPTION = "View General Attributes"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_REPAIR_ORDERS_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Repair Orders"
+  DESCRIPTION = "View Repair Orders"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_INSTANCE_NOTES_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Instance Notes"
+  DESCRIPTION = "View Instance Notes"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_ASSETS_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Assets"
+  DESCRIPTION = "View Assets"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_MAINTENANCE_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Maintenance"
+  DESCRIPTION = "View Maintenance"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_WORK_REQUESTS_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Work Requests"
+  DESCRIPTION = "View Work Requests"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_WORK_ORDERS_VIEW"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Work Orders"
+  DESCRIPTION = "View Work Orders"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSI_FS_OP_RESTRICT_INSTANCE"
+  FORM = "" "*NULL*"
+  TYPE = "SUBFUNCTION"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "*NULL*"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Restrict Instance Search by Operating Unit"
+  DESCRIPTION =
+ "Restrict Instance Search by Operating Unit specified in profile CSI: Operating Unit"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CSI_OA_VIEW_PERMISSION_SET"
+  LAST_UPDATE_DATE = "2013/12/09"
+  USER_MENU_NAME = "Installed Base View Permission Set Menu"
+  DESCRIPTION = "Installed Base View Permission Set Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_INSTANCE_SEARCH_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_INSTANCE_DETAILS_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_INSTANCE_LOCATIONS_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_CURRENT_LOCATION_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_INSTALL_LOCATION_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_BILLTO_LOCATION_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_SHIPTO_LOCATION_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_ASSOCIATIONS_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_CONTACTS_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_ACCOUNTS_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_CONTRACTS_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_ORDERS_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_SERVICE_REQ_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_CONFIGURATION_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_COUNTERS_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_TXN_HISTORY_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_INSTANCE_HISTORY_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_OPERATING_UNIT_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_SYSTEMS_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_TRANSACTIONS_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_GENERAL_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_REPAIR_ORDERS_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_INSTANCE_NOTES_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_ASSETS_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_MAINTENANCE_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_WORK_REQUESTS_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/12/09"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_WORK_ORDERS_VIEW"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "N"
+    LAST_UPDATE_DATE = "2014/03/03"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSI_FS_OP_RESTRICT_INSTANCE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN MENU "CSZ_SR_T2_AGENT_IB_GRANT"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2008/03/27"
+  USER_MENU_NAME = "Customer Support Tier 2 Agent Installed Base Security Menu"
+  DESCRIPTION = "Customer Support Tier 2 Agent Installed Base Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Installed Base Update Permission Set Menu"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/28"
+    SUBMENU = "CSI_OA_UPD_PERMISSION_SET"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Installed Base View Permission Set Menu"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2014/02/27"
+    SUBMENU = "CSI_OA_VIEW_PERMISSION_SET"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CAC_NOTES_DETAILS_PAGE"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/jtf/cac/notes/webui/CacNotesDetailsPG&akRegionApplicationId=690"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "ATG OA Notes Details Page"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CSZ_SR_T2_AGENT_NOTES_GRANT"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2008/03/27"
+  USER_MENU_NAME = "Customer Support Tier 2 Agent Notes Security Menu"
+  DESCRIPTION = "Customer Support Tier 2 Agent Notes Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Notes"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CAC_NOTES_DETAILS_PAGE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CS_KB_BROWSE_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/search/webui/SolBBrowsePG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_BROWSE_FN"
+  DESCRIPTION = "OA Browse Page (Without OASF and OAHP)"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_INTEGRATION_UNISRCH_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/search/webui/SolBSearchResultPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_INTEGRATION_UNISRCH_FN"
+  DESCRIPTION = "KM: Unified Search Result (integration)"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_UNISRCH_RESULT_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/search/webui/SolBSearchResultPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_UNISRCH_RESULT_FN"
+  DESCRIPTION = "KM : Unified Search Result"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_SMS_SOLN_VIEWSOL2_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/search/webui/SolViewFrontPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_SMS_SOLN_VIEWSOL2_FN"
+  DESCRIPTION = "View Solution Page 2"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_INTEGRATION_VIEW_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/search/webui/SolViewFrontPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_INTEGRATION_VIEW_FN"
+  DESCRIPTION = "KM: View Solution Integration"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_STATEMENT_VIEW_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/search/webui/StmtViewPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_STATEMENT_VIEW_FN"
+  DESCRIPTION = "KM : View Statement"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_COMMENT_ADD_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/common/comments/webui/CommentsCreatePG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_COMMENT_ADD_FN"
+  DESCRIPTION = "KM: Common - Add Comment"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_COMMENT_VIEW_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/common/comments/webui/CommentsReviewPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_COMMENT_VIEW_FN"
+  DESCRIPTION = "KM: Common - View Comment"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_TASKTMPL_APPLY_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/search/webui/ApplyTaskTemplateGroupPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_TASKTMPL_APPLY_FN"
+  DESCRIPTION = "KM : Apply Task Template Group Page"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_SOLUTION_VIEW_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/search/webui/SolViewPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Knowledge: View Solution Page"
+  DESCRIPTION = "Knowledge: View Solution Page"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TASK_TEMPLATE_CR_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/task/webui/TaskTemplCreatePG&OAFunc=CSZ_TASK_TEMPLATE_CR_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME =
+ "Customer Support Tier 2 Agent Create Task From Template"
+  DESCRIPTION = "Customer Support Tier 2 Agent Create Task From Template"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CS_KB_VIEW_GRANT"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2013/09/17"
+  USER_MENU_NAME = "KM View Solution and Statement Security Menu"
+  DESCRIPTION = "KM View Solution and Statement Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "View Solution"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_SMS_SOLN_VIEWSOL2_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "View Solution for Integration"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_INTEGRATION_VIEW_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "View Statement"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_STATEMENT_VIEW_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Add Comment"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_COMMENT_ADD_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "View Comment"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_COMMENT_VIEW_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Apply Task Template for Integration"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_TASKTMPL_APPLY_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "View Solution"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_SOLUTION_VIEW_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Apply Task Template for Service"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TASK_TEMPLATE_CR_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CS_KB_FORUM_VIEW_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/forum/webui/ForumMessageViewPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_FORUM_VIEW_FN"
+  DESCRIPTION = "KM: View Forum"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_INTEGRATION_BROWSE_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/search/webui/SolBBrowsePG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_INTEGRATION_BROWSE_FN"
+  DESCRIPTION = "KM: Browse"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_BROWSE_MAIN_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/search/webui/SolBBrowsePG&OASF=CS_KB_BROWSE_FN&OAHP=CS_KB_HOMEPAGE"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_BROWSE_MAIN_FN"
+  DESCRIPTION = "Browse Function for PHP Access"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_SR_UP_RO_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/incident/webui/UpdateSRROPG&OAFunc=CSZ_SR_UP_RO_FN&cszPageFlow=Readonly"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME =
+ "Customer Support Tier 2 Agent Read-Only Service Request"
+  DESCRIPTION = "Customer Support Tier 2 Agent Read-Only Service Request"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CS_KB_UNISRCH_GRANT"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2013/09/17"
+  USER_MENU_NAME = "KM Unified Search Security Menu"
+  DESCRIPTION = "KM Unified Search Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Browse"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_BROWSE_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Unified Search integration"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_INTEGRATION_UNISRCH_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Unified Search Result"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_UNISRCH_RESULT_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "View solution and statement"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "CS_KB_VIEW_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "View forum message"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_FORUM_VIEW_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Browse"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_INTEGRATION_BROWSE_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Browse (PHP Access)"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_BROWSE_MAIN_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "View service request"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_SR_UP_RO_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CS_KB_SMS_SOLN_ASEARCH_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/search/webui/ASearchCrPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_SMS_SOLN_ASEARCH_FN"
+  DESCRIPTION = "Advanced Search Criteria (No OAHP, OASF)"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_INTEGRATION_ADVSRCH_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/search/webui/ASearchCrPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_INTEGRATION_ADVSRCH_FN"
+  DESCRIPTION = "KM: Advanced Search Integration"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_SRCH_MATCH_STMT_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/search/webui/MatchingStatementPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_SRCH_MATCH_STMT_FN"
+  DESCRIPTION = "KM Common : Match Statement"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_SRCH_REL_STMT_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/search/webui/RelatedStatementPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_SRCH_REL_STMT_FN"
+  DESCRIPTION = "KM Common : Related Statement"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_PRODUCT_LOV_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/common/webui/ProductMultiSelLovPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_PRODUCT_LOV_FN"
+  DESCRIPTION = "KM: LOV - Product"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_PLATFORM_LOV_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/common/webui/PlatformMultiSelLovPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_PLATFORM_LOV_FN"
+  DESCRIPTION = "KM: LOV - Platform"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_CATEGORY_LOV_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/common/webui/CategoryLovPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_CATEGORY_LOV_FN"
+  DESCRIPTION = "KM: LOV - Category"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CS_KB_ADVSRCH_CRITERIA_GRANT"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2013/09/17"
+  USER_MENU_NAME = "KM Advanced Search Criteria Page Security Menu"
+  DESCRIPTION = "KM Advanced Search Criteria Page Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Advanced search criteria page"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_SMS_SOLN_ASEARCH_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Advanced search criteria page for integration"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_INTEGRATION_ADVSRCH_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Matching statement"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_SRCH_MATCH_STMT_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Related statement"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_SRCH_REL_STMT_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Add Product"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_PRODUCT_LOV_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Add Platform"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_PLATFORM_LOV_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Add category"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_CATEGORY_LOV_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "View Statement"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_STATEMENT_VIEW_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CS_KB_ADV_SRCH_RESULT_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/search/webui/ASearchRePG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_ADV_SRCH_RESULT_FN"
+  DESCRIPTION = "KM: Advanced Search Result"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CS_KB_ADVSRCH_RESULT_GRANT"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2013/09/17"
+  USER_MENU_NAME = "KM Advanced Search Result Page Security Menu"
+  DESCRIPTION = "KM Advanced Search Result Page Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Advanced Search Result"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_ADV_SRCH_RESULT_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "View solution/statement"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "CS_KB_VIEW_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN MENU "CS_KB_ADVSRCH_GRANT"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2013/09/17"
+  USER_MENU_NAME = "KM Advanced Search Security Menu"
+  DESCRIPTION = "KM Advanced Search Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Advanced search criteria"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "CS_KB_ADVSRCH_CRITERIA_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Advanced search results"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "CS_KB_ADVSRCH_RESULT_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN MENU "CS_KB_SMS_SEARCH_AG_MENU"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2013/09/17"
+  USER_MENU_NAME = "KM Knowledge Security Menu"
+  DESCRIPTION = "KM Knowledge Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Unified Search"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "CS_KB_UNISRCH_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Advanced Search"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "CS_KB_ADVSRCH_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CS_KB_SMS_SOLN_BSEARCH_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "cskmbasicsrch.jsp"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_SMS_SOLN_BSEARCH_FN"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_SMS_SOLN_AUDITMODIFY_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/author/webui/SIPMainPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_SMS_SOLN_AUDITMODIFY_FN"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_WIP_SEARCH_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/author/webui/SIPSearchPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_WIP_SEARCH_FN"
+  DESCRIPTION = "KM : Authoring - Search Solutions In Progress"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_SMS_SOLN_AUTH_PROFILE"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/author/webui/AuthProfPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_SMS_SOLN_AUTH_PROFILE"
+  DESCRIPTION = "Solution Authoring Profile"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CS_KB_WIP_GRANT"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2013/09/17"
+  USER_MENU_NAME = "KM In Progress Solution Security Menu"
+  DESCRIPTION = "KM In Progress Solution Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Solutions in Progress"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_SMS_SOLN_AUDITMODIFY_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Search Solutions in Progress"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_WIP_SEARCH_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "CS_KB_VIEW_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Subscriptions"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_SMS_SOLN_AUTH_PROFILE"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CS_KB_SMS_SOLN_AUDITCREATE_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/author/webui/CreateUpdateSolutionPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_SMS_SOLN_AUDITCREATE_FN"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_INTEGRATION_CREATE_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/author/webui/CreateUpdateSolution"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2014/04/22"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_INTEGRATION_CREATE_FN"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_SMS_STMT_CREATE_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/author/webui/StmtUpdatePG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_SMS_STMT_CREATE_FN"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_STATEMENT_IMPORT_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/author/webui/StmtImportPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_STATEMENT_IMPORT_FN"
+  DESCRIPTION = "KM Authoring : Import Statement"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CS_KB_STMT_CREATE_GRANT"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2013/09/17"
+  USER_MENU_NAME = "KM Create/Update Statement Security Menu"
+  DESCRIPTION = "KM Create/Update Statement Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Create/Update Statement"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_SMS_STMT_CREATE_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Statement Import"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_STATEMENT_IMPORT_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CS_KB_AUTH_SRCH_MATCH_STMT_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/author/webui/StmtMatchPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_AUTH_SRCH_MATCH_STMT_FN"
+  DESCRIPTION = "KM: Authoring - Matching Statement"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_AUTH_STMT_VIEW_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/author/webui/StmtViewPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_AUTH_STMT_VIEW_FN"
+  DESCRIPTION = "KM: Authoring - View Statement"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_AUTH_SOLN_VIEW_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/author/webui/SolViewROPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_AUTH_SOLN_VIEW_FN"
+  DESCRIPTION = "KM: View Solution readonly"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_EXT_LINK_LOV_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/common/webui/ExtLinksTTSearchPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_EXT_LINK_LOV_FN"
+  DESCRIPTION = "KM: LOV - External Link"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_AUTH_PREVIEW_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/author/webui/SolPreviewPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_AUTH_PREVIEW_FN"
+  DESCRIPTION = "KM: Authoring - Preview for Submission"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_AUTH_SELECT_FLOW_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/author/webui/FlowSelPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_AUTH_SELECT_FLOW_FN"
+  DESCRIPTION = "KM: Authoring - Select Flow"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_KB_AUTH_SELECT_STEP_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/knowledge/solution/author/webui/StepSelPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/09/17"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CS_KB_AUTH_SELECT_STEP_FN"
+  DESCRIPTION = "KM: Authoring - Select Step"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CS_KB_SOLUTION_CREATE_GRANT"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2013/09/17"
+  USER_MENU_NAME = "KM Create/Update Solution Security Menu"
+  DESCRIPTION = "KM Create/Update Solution Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Create/Update Solution"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_SMS_SOLN_AUDITCREATE_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "CREATE SOLUTION INTEGRATION"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_INTEGRATION_CREATE_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Create/Update Statement"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "CS_KB_STMT_CREATE_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Matching Statement In Authoring"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_AUTH_SRCH_MATCH_STMT_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Related Statement Search"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_SRCH_REL_STMT_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "View Statement In Authoring"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_AUTH_STMT_VIEW_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Readonly View Solution in Authoring"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_AUTH_SOLN_VIEW_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Add Product"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_PRODUCT_LOV_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Add Platform"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_PLATFORM_LOV_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Add Category"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_CATEGORY_LOV_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Add External Link"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_EXT_LINK_LOV_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Preview for Submission"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_AUTH_PREVIEW_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Select Flow"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_AUTH_SELECT_FLOW_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Select Step"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_AUTH_SELECT_STEP_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "View Comment"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_COMMENT_VIEW_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Add Comment"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_KB_COMMENT_ADD_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "View Solution/Statement"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "CS_KB_VIEW_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN MENU "CS_KB_SMS_SOLUTION_KW_AG_MENU"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2013/09/17"
+  USER_MENU_NAME = "KM Authoring Security Menu"
+  DESCRIPTION = "KM Authoring Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Solutions In Progress"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "CS_KB_WIP_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Create/Update Solution"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/09/17"
+    SUBMENU = "CS_KB_SOLUTION_CREATE_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN MENU "CS_KB_SMS_AG_MENU"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2008/03/27"
+  USER_MENU_NAME = "KM Agent Security Menu"
+  DESCRIPTION = "KM Agent Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Knowledge Security Menu"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "CS_KB_SMS_SEARCH_AG_MENU"
+    FUNCTION = "CS_KB_SMS_SOLN_BSEARCH_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Authoring Security Menu"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "CS_KB_SMS_SOLUTION_KW_AG_MENU"
+    FUNCTION = "CS_KB_SMS_SOLN_AUDITCREATE_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CSZ_TASK_CR_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/task/webui/TaskCreatePG&OAFunc=CSZ_TASK_CR_FN&cacTaskAssigneeSecurityImpl=oracle.apps.cs.csz.task.server.CszTaskSecurityImpl"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Create Task"
+  DESCRIPTION = "Customer Support Tier 2 Agent Create Task"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSZ_TASK_UPD_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csz/task/webui/TaskUpdatePG&OAFunc=CSZ_TASK_UPD_FN&cacTaskAssigneeSecurityImpl=oracle.apps.cs.csz.task.server.CszTaskSecurityImpl"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Customer Support Tier 2 Agent Update Task"
+  DESCRIPTION = "Customer Support Tier 2 Agent Update Task"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CS_DEBRIEF_UPDATE_TASK"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/csf/portal/task/webui/CsfPoUpdateTaskPG&OAFunc=CS_DEBRIEF_UPDATE_TASK"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2012/07/24"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Service Debrief Task"
+  DESCRIPTION = "Service Debrief Task"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSP_PARTS_REQ"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/csp/portal/requirement/webui/PartsRequirementPG&caller1=menu"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "fav_settings.png"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2014/04/24"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Parts Requirement"
+  DESCRIPTION = "Parts Requirement HTML"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CSZ_SR_T2_AGENT_TASK_GRANT"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2008/03/27"
+  USER_MENU_NAME = "Customer Support Tier 2 Agent Tasks Security Menu"
+  DESCRIPTION = "Customer Support Tier 2 Agent Tasks Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Create Task"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TASK_CR_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Create Task From Template"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TASK_TEMPLATE_CR_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent Update Task"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_TASK_UPD_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Service Debrief Task"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2012/07/24"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_DEBRIEF_UPDATE_TASK"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Parts Requirement HTML"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2012/07/24"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSP_PARTS_REQ"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "OKS_VIEW_COVERAGE_DETAILS_WEB"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "OA.jsp?page=/oracle/apps/oks/coverage/webui/ViewCovDetPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Coverage Details"
+  DESCRIPTION = "Read only display of Coverage Details"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "OKS_VIEW_BILLING_RATES_WEB"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "OA.jsp?page=/oracle/apps/oks/coverage/webui/ViewBillRatePG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Billing Rates"
+  DESCRIPTION = "Read only display of Billing Rates"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "OKS_VIEW_INVOICE_SCHEDULE_WEB"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "OA.jsp?page=/oracle/apps/oks/coverage/webui/ViewInvSchdPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Invoice Schedule"
+  DESCRIPTION = "Read only display of Invoice Schedule"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "OKS_VIEW_PREV_MAINTENANCE_WEB"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "OA.jsp?page=/oracle/apps/oks/coverage/webui/ViewPrevMaintPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Preventive Maintenance"
+  DESCRIPTION = "Read only display of Preventive Maintenance"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "OKS_VIEW_SRV_LINE_DETAILS_WEB"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "OA.jsp?page=/oracle/apps/oks/coverage/webui/ViewSrvLnDetPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "View Service Line Details"
+  DESCRIPTION = "Read only display of Service Line Details"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CSZ_SR_T2_AGENT_CONTRACT_GRANT"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2008/03/27"
+  USER_MENU_NAME = "Customer Support Tier 2 Agent Contracts Security Menu"
+  DESCRIPTION = "Customer Support Tier 2 Agent Contracts Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent View Coverage Details"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "OKS_VIEW_COVERAGE_DETAILS_WEB"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Customer Support Tier 2 Agent View Coverage Billing Rates"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "OKS_VIEW_BILLING_RATES_WEB"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION =
+ "Customer Support Tier 2 Agent View Contract Invoice Schedule"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "OKS_VIEW_INVOICE_SCHEDULE_WEB"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION =
+ "Customer Support Tier 2 Agent View Coverage Preventive Maintenance"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "OKS_VIEW_PREV_MAINTENANCE_WEB"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION =
+ "Customer Support Tier 2 Agent View Contract Service Line Details"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "OKS_VIEW_SRV_LINE_DETAILS_WEB"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CSY_MEAN_TIME_RSP_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csy/kpi/webui/CsyMTTRespPG&OAFunc=CSY_MEAN_TIME_RSP_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CSY_MEAN_TIME_RSP_FN"
+  DESCRIPTION = "KPI: Mean Time To Respond"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSY_MEAN_TIME_RSLV_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csy/kpi/webui/CsyMTTReslvPG&OAFunc=CSY_MEAN_TIME_RSLV_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CSY_MEAN_TIME_RSLV_FN"
+  DESCRIPTION = "KPI: Mean Time To Resolve"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSY_SR_QLTY_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csy/kpi/webui/CsySrResolQltyPG&OAFunc=CSY_SR_QLTY_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CSY_SR_QLTY_FN"
+  DESCRIPTION = "KPI: Request Resolution Quality"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSY_SR_RSLVD_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csy/kpi/webui/CsySrResolvedPG&OAFunc=CSY_SR_RSLVD_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CSY_SR_RSLVD_FN"
+  DESCRIPTION = "KPI: Requests Resolved per Agent"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSY_IN_JEOPARDY_SR_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csy/workoverview/webui/CsCsySrInJeopardyPG&OAFunc=CSY_IN_JEOPARDY_SR_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CSY_IN_JEOPARDY_SR_FN"
+  DESCRIPTION = "WO: In Jeopardy Requests"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSY_SEV1_SR_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csy/workoverview/webui/CsCsySev1RequestPG&OAFunc=CSY_SEV1_SR_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CSY_SEV1_SR_FN"
+  DESCRIPTION = "WO: Severity 1 Requests"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSY_CRIT_CUST_SR_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csy/workoverview/webui/CsCsyCritCustPG&OAFunc=CSY_CRIT_CUST_SR_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CSY_CRIT_CUST_SR_FN"
+  DESCRIPTION = "WO: Critical Customer Requests"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN FUNCTION "CSY_WF_COUNT_FN"
+  FORM = "" "*NULL*"
+  TYPE = "JSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "OA.jsp?page=/oracle/apps/cs/csy/workoverview/webui/CsyWfNotifPG&OAFunc=CSY_WF_COUNT_FN"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "CSY_WF_COUNT_FN"
+  DESCRIPTION = "WO: Notifications Count"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CS_CSY_EMBED_ANALYTICS_MENU"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2008/03/27"
+  USER_MENU_NAME = "Embedded Analytics Menu"
+  DESCRIPTION = "Service Analytics Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Mean Time To Respond"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSY_MEAN_TIME_RSP_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Mean Time To Resolve"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSY_MEAN_TIME_RSLV_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Request Resolution Quality"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSY_SR_QLTY_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Requests Resolved per Agent"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSY_SR_RSLVD_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "In Jeopardy Requests"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSY_IN_JEOPARDY_SR_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Severity 1 Requests"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSY_SEV1_SR_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    DESCRIPTION = "Critical Customer Requests"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSY_CRIT_CUST_SR_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSY_WF_COUNT_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CS_ONEBOX_SRSEARCH"
+  FORM = "" "*NULL*"
+  TYPE = "SERVLET"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL =
+ "ONEBOX:oracle.apps.cs.searchprovider.onebox.SRGOneBoxProvider"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2008/03/27"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Service Provider Function for Google Onebox"
+  DESCRIPTION = "Service Provider Function for Google Onebox"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CS_ONEBOX_SRSEARCH"
+  LAST_UPDATE_DATE = "2008/03/27"
+  USER_MENU_NAME = "Service Provider Menu for Google Onebox"
+  DESCRIPTION = "Service Provider Menu for Google Onebox"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_ONEBOX_SRSEARCH"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2008/03/27"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_SR_UP_RO_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN MENU "CSZ_ITIL_T2_AGT_SECURITY_MENU"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2010/08/26"
+  USER_MENU_NAME = "Incident Manager Tier 2 Agent Security Menu"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Security Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "CSZ_ITIL_S_AGENT_SRV_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "CSZ_CS_AGENT_COM_SERVICE_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "CSZ_SR_T2_AGENT_IB_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "CSZ_SR_T2_AGENT_NOTES_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "CS_KB_SMS_AG_MENU"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "CSZ_SR_T2_AGENT_TASK_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "CSZ_SR_T2_AGENT_CONTRACT_GRANT"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "CS_CSY_EMBED_ANALYTICS_MENU"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "CS_ONEBOX_SRSEARCH"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN FUNCTION "CS_UWQ_HTML"
+  FORM = "" "*NULL*"
+  TYPE = "INTEROPJSP"
+  PARAMETERS = "*NULL*"
+  WEB_HOST_NAME = "*NULL*"
+  WEB_AGENT_NAME = "*NULL*"
+  WEB_HTML_CALL = "OA.jsp?page=/oracle/apps/ieu/oa/webui/UWQPG"
+  WEB_ENCRYPT_PARAMETERS = "N"
+  WEB_SECURED = "N"
+  WEB_ICON = "*NULL*"
+  FUNC_OBJECT = "*NULL*"
+  OBJECT_NAME = "*NULL*"
+  REGION_CODE = "*NULL*"
+  LAST_UPDATE_DATE = "2013/03/25"
+  MAINTENANCE_MODE_SUPPORT = "NONE"
+  CONTEXT_DEPENDENCE = "RESP"
+  JRAD_REF_PATH = "*NULL*"
+  USER_FUNCTION_NAME = "Universal Work Queue HTML"
+  DESCRIPTION = "Universal Work Queue HTML"
+  OWNER = "ORACLE12.2.4"
+END FUNCTION
+
+BEGIN MENU "CSZ_ITIL_T2_AGENT_ROOT_MENU"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2010/08/26"
+  USER_MENU_NAME = "Incident Manager Tier 2 Agent Root Menu"
+  DESCRIPTION = "Incident Manager Tier 2 Agent Root Menu"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "CSZ_ITIL_T2_AGENT_HOME_PAGE"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "*NULL*"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "CSZ_ITIL_T2_AGT_SECURITY_MENU"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "Agent Dashboard"
+    DESCRIPTION = "Incident Manager - System Work Selection"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_T2_H_FN_PULL"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "Agent Dashboard"
+    DESCRIPTION =
+ "Incident Manager - Manual Work Selection - Auto Assigned Owner"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/10/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_T2_H_FN_PUSH"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "Agent Dashboard"
+    DESCRIPTION =
+ "Incident Manager - Manual Work Selection - Auto Assigned Group"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_T2_H_FN_CHERRYPICK"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "Agent Dashboard"
+    DESCRIPTION = "Incident Manager - Agent Dashboard"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CSZ_ITIL_T2_H_FN"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+  BEGIN ENTRY
+    PROMPT = "Universal Work Queue HTML"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2013/03/25"
+    SUBMENU = "*NULL*"
+    FUNCTION = "CS_UWQ_HTML"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
+BEGIN MENU "CSZ_ITIL_MENU"
+  TYPE = "STANDARD"
+  LAST_UPDATE_DATE = "2010/08/26"
+  USER_MENU_NAME = "\tITIL Incident manager"
+  DESCRIPTION = "Menu for Incident Manager Responsibility"
+  OWNER = "ORACLE12.2.4"
+
+  BEGIN ENTRY
+    PROMPT = "Incident Manager"
+    DESCRIPTION = "Group menu for HTML Service - Incident Manager functions"
+    GRANT_FLAG = "Y"
+    LAST_UPDATE_DATE = "2010/08/26"
+    SUBMENU = "CSZ_ITIL_T2_AGENT_ROOT_MENU"
+    FUNCTION = "*NULL*"
+    OWNER = "ORACLE12.2.4"
+  END ENTRY
+  
+END MENU
+
