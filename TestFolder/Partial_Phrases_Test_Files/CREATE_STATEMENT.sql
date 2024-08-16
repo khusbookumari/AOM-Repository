@@ -1,0 +1,5 @@
+CREATE TABLE TEST_EMPLOYEE1 (
+    id NUMBER PRIMARY KEY,
+    username VARCHAR2(50),
+    institute VARCHAR2(100)
+);
