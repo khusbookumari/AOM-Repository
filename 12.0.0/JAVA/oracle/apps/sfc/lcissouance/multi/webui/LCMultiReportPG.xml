@@ -1,0 +1,80 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="MainRN" windowTitle="Sify Custom Applications" title="LC Report Details" amDefName="oracle.apps.sfc.lcissuance.multi.server.LCMultiAM" controllerClass="oracle.apps.sfc.lcissuance.multi.webui.LCMultiReportCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:rowLayout id="region612" hAlign="start">
+               <ui:contents>
+                  <oa:messageTextInput id="LCReqNoNE" prompt="LC REQUEST NO.:" readOnly="true" viewName="LCReportEVO" viewAttr="LcRequestId"/>
+               </ui:contents>
+            </oa:rowLayout>
+            <oa:header id="HdrRN" text="LC Acceptance Details">
+               <ui:contents>
+                  <oa:rowLayout id="LcAcceptanceRN">
+                     <ui:contents>
+                        <oa:messageComponentLayout id="region611" rows="1" columns="3" rendered="true">
+                           <ui:contents>
+                              <oa:messageTextInput id="BankRefNumber" required="yes" dataType="VARCHAR2" prompt="Bank Reference Number" viewName="LCReportEVO" viewAttr="BankRefNumber"/>
+                              <oa:messageTextInput id="DueDate" required="yes" dataType="DATE" prompt="Due Date" viewName="LCReportEVO" viewAttr="DueDate"/>
+                              <oa:messageTextInput id="AcceptanceValue" required="yes" dataType="NUMBER" prompt="Acceptance Value" viewName="LCReportEVO" viewAttr="AcceptanceValue"/>
+                              <oa:messageTextInput id="AcceptanceDate" required="yes" dataType="DATE" prompt="Acceptance Date" viewName="LCReportEVO" viewAttr="AcceptanceDate"/>
+                              <oa:messageTextInput id="AmountInINR" required="yes" dataType="NUMBER" prompt="Amount in INR( ₹ )" viewName="LCReportEVO" viewAttr="AmountInInr"/>
+                              <oa:messageTextInput id="ShipmentDate" required="yes" dataType="DATE" prompt="Shipment Date" viewName="LCReportEVO" viewAttr="ShipmentDate"/>
+                              <oa:messageTextInput id="BoeNumber" required="yes" dataType="VARCHAR2" prompt="BOE Number" viewName="LCReportEVO" viewAttr="Attribute2"/>
+                              <oa:messageTextInput id="BoeDate" required="yes" dataType="DATE" prompt="BOE Date" viewName="LCReportEVO" viewAttr="Attribute1"/>
+                              <oa:messageTextInput id="PaymentDetails" required="yes" dataType="VARCHAR2" prompt="Payment Details" viewName="LCReportEVO" viewAttr="Attribute3"/>
+                              <oa:messageTextInput id="Remarks" required="no" dataType="VARCHAR2" prompt="Remarks" viewName="LCReportEVO" viewAttr="Attribute4" rows="5"/>
+                           </ui:contents>
+                        </oa:messageComponentLayout>
+                     </ui:contents>
+                  </oa:rowLayout>
+               </ui:contents>
+            </oa:header>
+            <oa:header id="HdrRn1" text="LC Information">
+               <ui:contents>
+                  <oa:rowLayout id="LcDetailsRN">
+                     <ui:contents>
+                        <oa:messageComponentLayout id="region6" rows="1" columns="3">
+                           <ui:contents>
+                              <oa:messageTextInput id="SourceOfFunds" required="yes" dataType="VARCHAR2" prompt="Source of Funds" viewName="LCReportEVO" viewAttr="SourceOfFunds"/>
+                              <oa:messageTextInput id="LcCommission" required="yes" dataType="NUMBER" prompt="LC Commission ( ₹ )" viewName="LCReportEVO" viewAttr="LcCommission"/>
+                              <oa:messageTextInput id="OtherCharges" required="yes" dataType="NUMBER" prompt="Other Charges ( ₹ )" viewName="LCReportEVO" viewAttr="OtherCharges"/>
+                              <oa:messageTextInput id="ExchangeRate" required="yes" dataType="NUMBER" prompt="Exchange Rate ( ₹ )" viewName="LCReportEVO" viewAttr="ExchangeRate" columns="10"/>
+                              <oa:messageTextInput id="ExchangeDate" required="yes" dataType="DATE" prompt="Exchange Date" viewName="LCReportEVO" viewAttr="ExchangeDate"/>
+                              <oa:messageTextInput id="TLProjectName" required="yes" dataType="VARCHAR2" prompt="TL  Project Name" viewName="LCReportEVO" viewAttr="TlProjectName"/>
+                              <oa:messageTextInput id="MarginValue" required="yes" dataType="NUMBER" prompt="Margin Value ( ₹ )" viewName="LCReportEVO" viewAttr="MarginValue"/>
+                              <oa:messageTextInput id="Purpose" required="yes" dataType="VARCHAR2" prompt="Purpose" viewName="LCReportEVO" viewAttr="Attribute6" columns="25"/>
+                              <oa:messageTextInput id="LCStatus" required="yes" dataType="VARCHAR2" prompt="LC Status" viewName="LCReportEVO" viewAttr="LcStatus"/>
+                              <oa:messageTextInput id="TLAmount" required="yes" dataType="NUMBER" prompt="TL Amount ( ₹ )" viewName="LCReportEVO" viewAttr="Attribute5"/>
+                              <oa:messageTextInput id="EstimatePayDate" required="yes" dataType="DATE" prompt="Estimated Payment Date" viewName="LCReportEVO" viewAttr="EstimatedPaymentDate"/>
+                              <oa:messageTextInput id="ChargesPayable" required="yes" dataType="NUMBER" prompt="Charges Payable ( ₹ )" viewName="LCReportEVO" viewAttr="Attribute7"/>
+                              <oa:messageTextInput id="TLFundingBanker" required="yes" dataType="VARCHAR2" prompt="TL Funding Banker" viewName="LCReportEVO" viewAttr="Attribute8"/>
+                              <oa:messageTextInput id="RemarksLCD" required="no" dataType="VARCHAR2" prompt="Remarks" viewName="LCReportEVO" viewAttr="Attribute9" rows="5"/>
+                           </ui:contents>
+                        </oa:messageComponentLayout>
+                     </ui:contents>
+                  </oa:rowLayout>
+               </ui:contents>
+            </oa:header>
+            <oa:pageButtonBar id="BtnRN">
+               <ui:contents>
+                  <oa:submitButton id="Save" text="Save" prompt="Save">
+                     <ui:primaryClientAction>
+                        <ui:firePartialAction event="save" id="firePartialAction4111"/>
+                     </ui:primaryClientAction>
+                  </oa:submitButton>
+                  <oa:spacer id="Spc" width="18"/>
+                  <oa:submitButton id="Cancel" text="Cancel" prompt="Cancel" unvalidated="true">
+                     <ui:primaryClientAction>
+                        <ui:firePartialAction event="cancel" id="firePartialAction512221"/>
+                     </ui:primaryClientAction>
+                  </oa:submitButton>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>
