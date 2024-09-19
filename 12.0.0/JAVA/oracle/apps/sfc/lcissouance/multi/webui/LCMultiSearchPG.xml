@@ -1,0 +1,284 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="MainRN" amDefName="oracle.apps.sfc.lcissuance.multi.server.LCMultiAM" windowTitle="LC Multi PO Search Page" controllerClass="oracle.apps.sfc.lcissuance.multi.webui.LCMultiSearchCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:header id="HdrInlandRN" text="LC Inland  Request Search" rendered="false">
+               <ui:contents>
+                  <oa:rowLayout id="region21" hAlign="center" vAlign="middle">
+                     <ui:contents>
+                        <oa:defaultDoubleColumn id="region13" headerDisabled="true">
+                           <ui:contents>
+                              <oa:messageTextInput id="LCRequestNo1" dataType="NUMBER" prompt="Request No."/>
+                              <oa:messageChoice id="Status2" prompt="Status" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.LCMultiStatusVO" pickListViewName="LCMultiStatusVO" pickListDispAttr="Meaning" pickListValAttr="Meaning"/>
+                           </ui:contents>
+                        </oa:defaultDoubleColumn>
+                     </ui:contents>
+                  </oa:rowLayout>
+                  <oa:spacer id="item12" height="20"/>
+                  <oa:rowLayout id="region41" hAlign="center">
+                     <ui:contents>
+                        <oa:pageButtonBar id="region61">
+                           <ui:contents>
+                              <oa:submitButton id="Search1" text="Search" prompt="Search">
+                                 <ui:primaryClientAction>
+                                    <ui:firePartialAction event="search" id="firePartialAction1"/>
+                                 </ui:primaryClientAction>
+                              </oa:submitButton>
+                              <oa:submitButton id="CreateReqBtn1" text="Create New  Request" prompt="Create New  Request">
+                                 <ui:primaryClientAction>
+                                    <ui:firePartialAction event="create" id="firePartialAction2"/>
+                                 </ui:primaryClientAction>
+                              </oa:submitButton>
+                              <oa:submitButton id="ClearBtn1" text="Clear" prompt="Clear">
+                                 <ui:primaryClientAction>
+                                    <ui:firePartialAction event="clear" id="firePartialAction3"/>
+                                 </ui:primaryClientAction>
+                              </oa:submitButton>
+                           </ui:contents>
+                        </oa:pageButtonBar>
+                     </ui:contents>
+                  </oa:rowLayout>
+                  <oa:spacer id="item111" height="10"/>
+               </ui:contents>
+            </oa:header>
+            <oa:header id="HdrRN" text="LC  Request Search">
+               <ui:contents>
+                  <oa:rowLayout id="region2" hAlign="center" vAlign="middle">
+                     <ui:contents>
+                        <oa:defaultDoubleColumn id="region1" headerDisabled="true">
+                           <ui:contents>
+                              <oa:messageTextInput id="LCRequestNo" dataType="NUMBER" prompt="Request No." columns="4"/>
+                              <oa:messageChoice id="Status" prompt="Status" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.LCMultiStatusVO" pickListViewName="LCMultiStatusVO" pickListDispAttr="Meaning" pickListValAttr="Meaning"/>
+                           </ui:contents>
+                        </oa:defaultDoubleColumn>
+                     </ui:contents>
+                  </oa:rowLayout>
+                  <oa:spacer id="item1" height="20"/>
+                  <oa:rowLayout id="region4" hAlign="center">
+                     <ui:contents>
+                        <oa:pageButtonBar id="region6">
+                           <ui:contents>
+                              <oa:submitButton id="Search" text="Search" prompt="Search">
+                                 <ui:primaryClientAction>
+                                    <ui:firePartialAction event="search"/>
+                                 </ui:primaryClientAction>
+                              </oa:submitButton>
+                              <oa:submitButton id="CreateReqBtn" text="Create New  Request" prompt="Create New  Request">
+                                 <ui:primaryClientAction>
+                                    <ui:firePartialAction event="create"/>
+                                 </ui:primaryClientAction>
+                              </oa:submitButton>
+                              <oa:submitButton id="ClearBtn" text="Clear" prompt="Clear">
+                                 <ui:primaryClientAction>
+                                    <ui:firePartialAction event="clear"/>
+                                 </ui:primaryClientAction>
+                              </oa:submitButton>
+                           </ui:contents>
+                        </oa:pageButtonBar>
+                     </ui:contents>
+                  </oa:rowLayout>
+                  <oa:spacer id="item11" height="10"/>
+               </ui:contents>
+            </oa:header>
+            <oa:header id="region8" text="Search Results">
+               <ui:contents>
+                  <oa:rowLayout id="RowLayoutRN2" width="100%" hAlign="center">
+                     <ui:contents>
+                        <oa:advancedTable id="AdvancedTable" width="100%" viewName="LCRequestHdrEVO">
+                           <ui:contents>
+                              <oa:column id="LCReqNoC">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader1" prompt="LC Request No."/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="LCReqNo" dataType="NUMBER" readOnly="true" viewAttr="LcRequestId"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="SuppNameC">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader2" prompt="Supplier Name"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="SupplierNameAT" prompt="" readOnly="true" viewAttr="VendorName"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="LcValueC" columnDataFormat="numberFormat">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader4" prompt="LC Value"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="LcValue" readOnly="true" viewAttr="LcValue"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="ExpiryDateC" columnDataFormat="objectNameFormat">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader5" prompt="Expiry Date of LC"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="LCExpiryDate" readOnly="true" dataType="DATE" viewAttr="LcExpiryDate"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="PaymentTermsC" rendered="false">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader6" prompt="Payment Terms"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="PaymentTermsLC" readOnly="true" viewAttr="LcPaymentTerms"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="ModeOfTransportC">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader7" prompt="Mode Of Transport"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="ModeOfTransport" readOnly="true" viewAttr="LcModeOfTransport"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="LastDateofShipC" columnDataFormat="objectNameFormat" rendered="false">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader8" prompt="Last Date of Shipment"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="LastDateofShip" readOnly="true" dataType="DATE" viewAttr="LcLastDateOfShipment"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="SuppBankC" rendered="false">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader9" prompt="Supplier Bank"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="SuppBank" readOnly="true" viewAttr="BankName"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="CurrForImpC">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader10" prompt="LC Currency"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="CurrForImp" readOnly="true" viewAttr="LcCurrencyCode"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="CountryOfOriginC" rendered="false">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader11" prompt="Country Of Origin"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="CountryOfOrigin" readOnly="true" viewAttr="LcCountryOfOrigin"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="StatusC" columnDataFormat="numberFormat">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader12" prompt="Status"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="Status1" readOnly="true" viewAttr="FlowStatus"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="PendingWithC" columnDataFormat="numberFormat">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader13" prompt="Pending With"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="PendingWith" readOnly="true" viewAttr="PendingWith"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="Update" columnDataFormat="iconButtonFormat">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="UpdateSH" prompt="Update"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:switcher id="UpdateSwitchRN" viewAttr="UpdateSwitcher">
+                                       <ui:case name="UpdateEnable">
+                                          <oa:image id="UpdateEnable" source="updateicon_enabled.gif">
+                                             <ui:primaryClientAction>
+                                                <ui:fireAction id="fireAction12">
+                                                   <ui:parameters>
+                                                      <ui:parameter key="p_hdr_id" value="${oa.LCRequestHdrEVO.LcRequestId}"/>
+                                                      <ui:parameter key="p_rev_no" value="${oa.LCRequestHdrEVO.Attribute9}"/>
+                                                   </ui:parameters>
+                                                </ui:fireAction>
+                                             </ui:primaryClientAction>
+                                          </oa:image>
+                                       </ui:case>
+                                       <ui:case name="UpdateDisable">
+                                          <oa:image id="UpdateDisable" source="detailsicon_enabled.gif">
+                                             <ui:primaryClientAction>
+                                                <ui:firePartialAction>
+                                                   <ui:parameters>
+                                                      <ui:parameter key="p_hdr_id" value="${oa.LCRequestHdrEVO.LcRequestId}"/>
+                                                      <ui:parameter key="p_rev_no" value="${oa.LCRequestHdrEVO.Attribute9}"/>
+                                                   </ui:parameters>
+                                                </ui:firePartialAction>
+                                             </ui:primaryClientAction>
+                                          </oa:image>
+                                       </ui:case>
+                                    </oa:switcher>
+                                    <oa:image id="UpdateE" source="updateicon_enabled.gif" rendered="false">
+                                       <ui:primaryClientAction>
+                                          <ui:fireAction id="fireAction121">
+                                             <ui:parameters>
+                                                <ui:parameter key="p_hdr_id" value="${oa.LCRequestHdrEVO.LcRequestId}"/>
+                                             </ui:parameters>
+                                          </ui:fireAction>
+                                       </ui:primaryClientAction>
+                                    </oa:image>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="Rev" columnDataFormat="iconButtonFormat">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader141" prompt="Revision"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:link id="RevCol" viewAttr="Attribute9" popupId="RevPopUpRN" popupEnabled="true"/>
+                                    <oa:flowLayout id="region62">
+                                       <ui:contents>
+                                          <oa:popUp id="RevPopUpRN" popupType="ParameterizedPopup" popupRegion="/oracle/apps/sfc/lcissuance/multi/webui/LCRevDetailsRN" height="1300" popupParameters="p_lc_req_id={@LcRequestId}" width="1900"/>
+                                       </ui:contents>
+                                    </oa:flowLayout>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="AM" columnDataFormat="iconButtonFormat">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader14" prompt="Amendment"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:switcher id="AmendSwitcher" viewAttr="AmendSwitcher">
+                                       <ui:case name="Amend">
+                                          <oa:image id="Amend" source="acceptquote_enabled.gif">
+                                             <ui:primaryClientAction>
+                                                <ui:firePartialAction event="amend">
+                                                   <ui:parameters>
+                                                      <ui:parameter key="p_hdr_id" value="${oa.LCRequestHdrEVO.LcRequestId}"/>
+                                                      <ui:parameter key="p_rev_no" value="${oa.LCRequestHdrEVO.Attribute9}"/>
+                                                   </ui:parameters>
+                                                </ui:firePartialAction>
+                                             </ui:primaryClientAction>
+                                          </oa:image>
+                                       </ui:case>
+                                       <ui:case name="NoAmend">
+                                          <oa:image id="NoAmend" source="acceptquote_disabled.gif"/>
+                                       </ui:case>
+                                    </oa:switcher>
+                                 </ui:contents>
+                              </oa:column>
+                           </ui:contents>
+                           <ui:tableActions>
+                              <oa:flowLayout id="region11">
+                                 <ui:contents>
+                                    <oa:exportButton id="Download" text="Download" exportAllRows="true" viewName="LCRequestHdrEVO"/>
+                                 </ui:contents>
+                              </oa:flowLayout>
+                           </ui:tableActions>
+                        </oa:advancedTable>
+                     </ui:contents>
+                  </oa:rowLayout>
+               </ui:contents>
+            </oa:header>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>
