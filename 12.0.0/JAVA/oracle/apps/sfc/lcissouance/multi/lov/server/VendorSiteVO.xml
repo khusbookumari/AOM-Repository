@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="VendorSiteVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.apps.sfc.lcissuance.multi.lov.server.VendorSiteVORowImpl"
+   ComponentClass="oracle.apps.sfc.lcissuance.multi.lov.server.VendorSiteVOImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT distinct
+    vendor_id,
+    vendor_site_id,
+    lc_country_expire vendor_site_code,
+    site_address vendor_site_addr,
+    po_currency,
+    Decode(upper(po_currency), 'INR','Inland','Import') lc_classification,
+    po_header_id
+FROM
+    xxsify_supp_po_details_v
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="VendorId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="VENDOR_ID"
+      Expression="VENDOR_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="VendorSiteId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="VENDOR_SITE_ID"
+      Expression="VENDOR_SITE_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="VendorSiteCode"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VENDOR_SITE_CODE"
+      Expression="VENDOR_SITE_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="15" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LcCountryExpire"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LC_COUNTRY_EXPIRE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="15" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="VendorSiteAddr"
+      IsPersistent="false"
+      Precision="934"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VENDOR_SITE_ADDR"
+      Expression="VENDOR_SITE_ADDR"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="934" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PoCurrency"
+      IsPersistent="false"
+      Precision="15"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PO_CURRENCY"
+      Expression="PO_CURRENCY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="15" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LcClassification"
+      IsPersistent="false"
+      Precision="6"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LC_CLASSIFICATION"
+      Expression="LC_CLASSIFICATION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="6" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PoHeaderId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PO_HEADER_ID"
+      Expression="PO_HEADER_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>
