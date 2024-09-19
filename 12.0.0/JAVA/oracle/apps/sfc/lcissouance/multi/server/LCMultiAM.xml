@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+
+<AppModule
+   Name="LCMultiAM"
+   ComponentClass="oracle.apps.sfc.lcissuance.multi.server.LCMultiAMImpl" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_deployType" Value="0" />
+   </DesignTime>
+   <ViewUsage
+      Name="OrganizationVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.lov.server.OrganizationVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="VendorVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.lov.server.VendorVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="VendorSiteVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.lov.server.VendorSiteVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="TradeTermsVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.lov.server.TradeTermsVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="PaymentTermsVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.lov.server.PaymentTermsVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="PeriodOfPresentVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.server.PeriodOfPresentVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LCInlandReqEVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.server.LCInlandReqEVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LCImportReqEVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.server.LCImportReqEVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LCDocDetailsEVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.server.LCDocDetailsEVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LCApprHistoryEVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.server.LCApprHistoryEVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LcReqIdVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.lov.server.LcReqIdVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LcReqVendorVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.lov.server.LcReqVendorVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="PoDetailsVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.lov.server.PoDetailsVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LCPoDetailsEVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.server.LCPoDetailsEVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LCIncotermsVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.poplist.server.LCIncotermsVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="PIIncotermsVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.poplist.server.PIIncotermsVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LCValueVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.server.LCValueVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LCRevHistVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.server.LCRevHistVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LCApprHistoryRevVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.server.LCApprHistoryRevVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LCDocDetailsRevVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.server.LCDocDetailsRevVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LCPoDetailsRevVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.server.LCPoDetailsRevVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LCTypeVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.poplist.server.LCTypeVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="CifCatVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.poplist.server.CifCatVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="FobCatVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.poplist.server.FobCatVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="TransientVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.server.TransientVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LCRequestHdrEVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.server.LCRequestHdrEVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LCReportEVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.server.LCReportEVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="LCRequestHdrRevVO"
+      ViewObjectName="oracle.apps.sfc.lcissuance.multi.server.LCRequestHdrRevVO" >
+   </ViewUsage>
+</AppModule>
