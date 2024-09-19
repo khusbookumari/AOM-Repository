@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="LCRevHistVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.apps.sfc.lcissuance.multi.server.LCRevHistVORowImpl"
+   ComponentClass="oracle.apps.sfc.lcissuance.multi.server.LCRevHistVOImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+select  lc_request_id , attribute9 , revision_date
+from    xxsify_lc_rev_hist_v
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="LcRequestId"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="LC_REQUEST_ID"
+      Expression="LC_REQUEST_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute9"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ATTRIBUTE9"
+      Expression="ATTRIBUTE9"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="RevisionDate"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="REVISION_DATE"
+      Expression="REVISION_DATE"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SNo"
+      IsSelected="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="VIEW_ATTR"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+</ViewObject>
