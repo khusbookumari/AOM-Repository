@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="LCDocDetailsEVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.apps.sfc.lcissuance.multi.server.LCDocDetailsEVORowImpl"
+   ComponentClass="oracle.apps.sfc.lcissuance.multi.server.LCDocDetailsEVOImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+select
+    row_id                          ,   lc_doc_id                       ,	lc_request_id					,    
+    documents_required              ,   additional_conditions          	,
+    attribute_category				,	attribute1             			,	attribute2              		,	attribute3             			,
+	attribute4             			,	attribute5             			,	attribute6             			,	attribute7             			,
+	attribute8             			,	attribute9             			,	attribute10            			,	attribute11            			,
+	attribute12            			,	attribute13            			,	attribute14            			,	attribute15            			,
+	creation_date                   ,	created_by                      ,	last_update_date                ,	last_updated_by                 ,         
+	last_update_login
+from xxsify_lc_doc_details_v
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <EntityUsage
+      Name="LCDocDetailsEO"
+      Entity="oracle.apps.sfc.lcissuance.multi.schema.server.LCDocDetailsEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="RowID"
+      IsUpdateable="false"
+      EntityAttrName="RowID"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ROWID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LcDocId"
+      EntityAttrName="LcDocId"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="LC_DOC_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LcRequestId"
+      EntityAttrName="LcRequestId"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="LC_REQUEST_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DocumentsRequired"
+      EntityAttrName="DocumentsRequired"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="DOCUMENTS_REQUIRED" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="AdditionalConditions"
+      EntityAttrName="AdditionalConditions"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ADDITIONAL_CONDITIONS" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="AttributeCategory"
+      EntityAttrName="AttributeCategory"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE_CATEGORY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute1"
+      EntityAttrName="Attribute1"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE1" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute2"
+      EntityAttrName="Attribute2"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE2" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute3"
+      EntityAttrName="Attribute3"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE3" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute4"
+      EntityAttrName="Attribute4"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE4" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute5"
+      EntityAttrName="Attribute5"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE5" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute6"
+      EntityAttrName="Attribute6"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE6" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute7"
+      EntityAttrName="Attribute7"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE7" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute8"
+      EntityAttrName="Attribute8"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE8" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute9"
+      EntityAttrName="Attribute9"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE9" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute10"
+      EntityAttrName="Attribute10"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE10" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute11"
+      EntityAttrName="Attribute11"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE11" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute12"
+      EntityAttrName="Attribute12"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE12" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute13"
+      EntityAttrName="Attribute13"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE13" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute14"
+      EntityAttrName="Attribute14"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE14" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute15"
+      EntityAttrName="Attribute15"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="ATTRIBUTE15" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      EntityAttrName="CreationDate"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="CREATION_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      EntityAttrName="CreatedBy"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="CREATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      EntityAttrName="LastUpdateDate"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="LAST_UPDATE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      EntityAttrName="LastUpdatedBy"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="LAST_UPDATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      EntityAttrName="LastUpdateLogin"
+      EntityUsage="LCDocDetailsEO"
+      AliasName="LAST_UPDATE_LOGIN" >
+   </ViewAttribute>
+</ViewObject>
