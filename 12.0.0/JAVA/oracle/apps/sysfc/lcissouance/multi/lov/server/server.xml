@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="oracle.apps.sfc.lcissuance.multi.lov.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+   </DesignTime>
+   <Containee
+      Name="LcReqIdVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.lov.server.LcReqIdVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LcReqVendorVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.lov.server.LcReqVendorVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="OrganizationVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.lov.server.OrganizationVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PaymentTermsVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.lov.server.PaymentTermsVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PoDetailsVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.lov.server.PoDetailsVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="TradeTermsVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.lov.server.TradeTermsVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="VendorSiteVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.lov.server.VendorSiteVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="VendorVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.lov.server.VendorVO"
+      ObjectType="ViewObject" >
+   </Containee>
+</JboPackage>
