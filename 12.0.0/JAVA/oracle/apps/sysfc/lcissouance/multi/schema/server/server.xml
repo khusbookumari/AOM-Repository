@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="oracle.apps.sfc.lcissuance.multi.schema.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+   </DesignTime>
+   <Containee
+      Name="LCApprHistoryEO"
+      FullName="oracle.apps.sfc.lcissuance.multi.schema.server.LCApprHistoryEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="LCDocDetailsEO"
+      FullName="oracle.apps.sfc.lcissuance.multi.schema.server.LCDocDetailsEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="LCImportReqEO"
+      FullName="oracle.apps.sfc.lcissuance.multi.schema.server.LCImportReqEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="LCInlandReqEO"
+      FullName="oracle.apps.sfc.lcissuance.multi.schema.server.LCInlandReqEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="LCPoDetailsEO"
+      FullName="oracle.apps.sfc.lcissuance.multi.schema.server.LCPoDetailsEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="LCReportEO"
+      FullName="oracle.apps.sfc.lcissuance.multi.schema.server.LCReportEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="LCRequestHdrEO"
+      FullName="oracle.apps.sfc.lcissuance.multi.schema.server.LCRequestHdrEO"
+      ObjectType="Entity" >
+   </Containee>
+</JboPackage>
