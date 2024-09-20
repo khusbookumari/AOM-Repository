@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="oracle.apps.sfc.lcissuance.multi.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+   </DesignTime>
+   <Containee
+      Name="LCApprHistoryEVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.server.LCApprHistoryEVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LCApprHistoryRevVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.server.LCApprHistoryRevVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LCDocDetailsEVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.server.LCDocDetailsEVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LCDocDetailsRevVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.server.LCDocDetailsRevVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LCImportReqEVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.server.LCImportReqEVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LCInlandReqEVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.server.LCInlandReqEVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LCMultiAM"
+      FullName="oracle.apps.sfc.lcissuance.multi.server.LCMultiAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="LCPoDetailsEVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.server.LCPoDetailsEVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LCPoDetailsRevVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.server.LCPoDetailsRevVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LCReportEVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.server.LCReportEVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LCRequestHdrEVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.server.LCRequestHdrEVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LCRequestHdrRevVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.server.LCRequestHdrRevVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LCRevHistVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.server.LCRevHistVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LCValueVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.server.LCValueVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="TransientVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.server.TransientVO"
+      ObjectType="ViewObject" >
+   </Containee>
+</JboPackage>
