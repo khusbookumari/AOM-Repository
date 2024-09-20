@@ -1,0 +1,41 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:header version="10.1.3_" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$" controllerClass="oracle.apps.sfc.lcissuance.multi.webui.LCRevDetailsCO" amDefName="oracle.apps.sfc.lcissuance.multi.server.LCMultiAM" text="LC Revision">
+   <ui:contents>
+      <oa:advancedTable id="region1" width="100%" viewName="LCRevHistVO" text="Revision Results">
+         <ui:contents>
+            <oa:column id="SNo" columnDataFormat="numberFormat">
+               <ui:columnHeader>
+                  <oa:sortableHeader id="sortableHeader1" prompt="S.No"/>
+               </ui:columnHeader>
+               <ui:contents>
+                  <oa:messageTextInput id="SNV" readOnly="true" viewAttr="SNo"/>
+               </ui:contents>
+            </oa:column>
+            <oa:column id="LRN">
+               <ui:columnHeader>
+                  <oa:sortableHeader id="sortableHeader13" prompt="LC Request No."/>
+               </ui:columnHeader>
+               <ui:contents>
+                  <oa:messageTextInput id="LRNV" readOnly="true" viewAttr="LcRequestId"/>
+               </ui:contents>
+            </oa:column>
+            <oa:column id="RN" columnDataFormat="iconButtonFormat">
+               <ui:columnHeader>
+                  <oa:sortableHeader id="sortableHeader12" prompt="Revision No."/>
+               </ui:columnHeader>
+               <ui:contents>
+                  <oa:link id="RNV" viewAttr="Attribute9" destination="OA.jsp?page=/oracle/apps/sfc/lcissuance/multi/webui/LCRevHistoryPG&amp;p_hdr_id={@LcRequestId}&amp;p_rev_no={@Attribute9}"/>
+               </ui:contents>
+            </oa:column>
+            <oa:column id="RD" columnDataFormat="iconButtonFormat">
+               <ui:columnHeader>
+                  <oa:sortableHeader id="sortableHeader11" prompt="Revision Date"/>
+               </ui:columnHeader>
+               <ui:contents>
+                  <oa:messageTextInput id="RDV" readOnly="true" dataType="DATE" viewAttr="RevisionDate"/>
+               </ui:contents>
+            </oa:column>
+         </ui:contents>
+      </oa:advancedTable>
+   </ui:contents>
+</oa:header>
