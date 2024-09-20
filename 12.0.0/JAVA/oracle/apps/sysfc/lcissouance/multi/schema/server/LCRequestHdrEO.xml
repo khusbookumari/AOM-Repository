@@ -1,0 +1,844 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+
+<Entity
+   Name="LCRequestHdrEO"
+   DBObjectType="table"
+   DBObjectName="XXSIFY_LC_REQUEST_HDR_T"
+   AliasName="LCRequestHdrEO"
+   BindingStyle="OracleName"
+   UseGlueCode="false"
+   RowClass="oracle.apps.sfc.lcissuance.multi.schema.server.LCRequestHdrEOImpl"
+   DefClass="oracle.apps.fnd.framework.server.OAEntityDefImpl"
+   CollClass="oracle.apps.fnd.framework.server.OAEntityCache" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <AttrArray Name="_publishEvents">
+      </AttrArray>
+      <Attr Name="_panelSchema" Value="table|alias" />
+      <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML|Val" />
+   </DesignTime>
+   <Attribute
+      Name="LcRequestId"
+      ColumnName="LC_REQUEST_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcOrgId"
+      ColumnName="LC_ORG_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="VendorId"
+      ColumnName="VENDOR_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="VendorSiteId"
+      ColumnName="VENDOR_SITE_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcCurrencyCode"
+      Precision="250"
+      ColumnName="LC_CURRENCY_CODE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="250" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcValue"
+      ColumnName="LC_VALUE"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcClassification"
+      Precision="200"
+      ColumnName="LC_CLASSIFICATION"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="200" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcStatus"
+      Precision="250"
+      ColumnName="LC_STATUS"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="250" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcDate"
+      ColumnName="LC_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="TotalPoValue"
+      ColumnName="TOTAL_PO_VALUE"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="BankId"
+      ColumnName="BANK_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="BankName"
+      Precision="240"
+      ColumnName="BANK_NAME"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="BankAddress"
+      Precision="2000"
+      ColumnName="BANK_ADDRESS"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="2000" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="BankIfscSwiftCode"
+      Precision="240"
+      ColumnName="BANK_IFSC_SWIFT_CODE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="BankIban"
+      Precision="250"
+      ColumnName="BANK_IBAN"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="250" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcPartialShipment"
+      Precision="150"
+      ColumnName="LC_PARTIAL_SHIPMENT"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcTranshipment"
+      Precision="250"
+      ColumnName="LC_TRANSHIPMENT"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="250" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcModeOfTransport"
+      Precision="250"
+      ColumnName="LC_MODE_OF_TRANSPORT"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="250" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcPeriodOfDocument"
+      Precision="250"
+      ColumnName="LC_PERIOD_OF_DOCUMENT"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="250" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcCountryOfOrigin"
+      Precision="250"
+      ColumnName="LC_COUNTRY_OF_ORIGIN"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="250" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcCountryExpire"
+      Precision="250"
+      ColumnName="LC_COUNTRY_EXPIRE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="250" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcLastDateOfShipment"
+      ColumnName="LC_LAST_DATE_OF_SHIPMENT"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcExpiryDate"
+      ColumnName="LC_EXPIRY_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcPortOfDischarge"
+      Precision="250"
+      ColumnName="LC_PORT_OF_DISCHARGE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="250" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcPortOfLoading"
+      Precision="250"
+      ColumnName="LC_PORT_OF_LOADING"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="250" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcPaymentTerms"
+      Precision="250"
+      ColumnName="LC_PAYMENT_TERMS"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="250" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcTradeTerms"
+      Precision="300"
+      ColumnName="LC_TRADE_TERMS"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="300" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LcPagePoMode"
+      Precision="10"
+      ColumnName="LC_PAGE_PO_MODE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="10" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="TreasuryComments"
+      Precision="4000"
+      ColumnName="TREASURY_COMMENTS"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4000" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="SupplierComments"
+      Precision="4000"
+      ColumnName="SUPPLIER_COMMENTS"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4000" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CommheadComments"
+      Precision="4000"
+      ColumnName="COMMHEAD_COMMENTS"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4000" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="OriginalLcNo"
+      Precision="240"
+      ColumnName="ORIGINAL_LC_NO"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="AttributeCategory"
+      Precision="50"
+      ColumnName="ATTRIBUTE_CATEGORY"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="50" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute1"
+      Precision="240"
+      ColumnName="ATTRIBUTE1"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute2"
+      Precision="240"
+      ColumnName="ATTRIBUTE2"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute3"
+      Precision="240"
+      ColumnName="ATTRIBUTE3"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute4"
+      Precision="240"
+      ColumnName="ATTRIBUTE4"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute5"
+      Precision="240"
+      ColumnName="ATTRIBUTE5"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute6"
+      Precision="240"
+      ColumnName="ATTRIBUTE6"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute7"
+      Precision="240"
+      ColumnName="ATTRIBUTE7"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute8"
+      Precision="240"
+      ColumnName="ATTRIBUTE8"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute9"
+      Precision="240"
+      ColumnName="ATTRIBUTE9"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute10"
+      Precision="240"
+      ColumnName="ATTRIBUTE10"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute11"
+      Precision="240"
+      ColumnName="ATTRIBUTE11"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute12"
+      Precision="240"
+      ColumnName="ATTRIBUTE12"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute13"
+      Precision="240"
+      ColumnName="ATTRIBUTE13"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute14"
+      Precision="240"
+      ColumnName="ATTRIBUTE14"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute15"
+      Precision="240"
+      ColumnName="ATTRIBUTE15"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreationDate"
+      ColumnName="CREATION_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreatedBy"
+      ColumnName="CREATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateDate"
+      ColumnName="LAST_UPDATE_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdatedBy"
+      ColumnName="LAST_UPDATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateLogin"
+      ColumnName="LAST_UPDATE_LOGIN"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="RowID"
+      IsUpdateable="false"
+      ColumnName="ROWID"
+      Type="oracle.jbo.domain.RowID"
+      ColumnType="ROWID"
+      SQLType="ROWID"
+      PrimaryKey="true"
+      ChangeIndicator="true" >
+   </Attribute>
+   <Attribute
+      Name="DescOfGoods"
+      Precision="1000"
+      ColumnName="DESC_OF_GOODS"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1000" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastDateOfShipPi"
+      ColumnName="LAST_DATE_OF_SHIP_PI"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="TypeOfLc"
+      Precision="240"
+      ColumnName="TYPE_OF_LC"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="FinanceComments"
+      Precision="240"
+      ColumnName="FINANCE_COMMENTS"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Lcincoterm"
+      Precision="240"
+      ColumnName="LCINCOTERM"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Piincoterm"
+      Precision="240"
+      ColumnName="PIINCOTERM"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute25"
+      Precision="240"
+      ColumnName="ATTRIBUTE25"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute16"
+      Precision="240"
+      ColumnName="ATTRIBUTE16"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute17"
+      Precision="240"
+      ColumnName="ATTRIBUTE17"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute18"
+      Precision="240"
+      ColumnName="ATTRIBUTE18"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute19"
+      Precision="240"
+      ColumnName="ATTRIBUTE19"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute21"
+      Precision="240"
+      ColumnName="ATTRIBUTE21"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute20"
+      Precision="240"
+      ColumnName="ATTRIBUTE20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute22"
+      Precision="240"
+      ColumnName="ATTRIBUTE22"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute23"
+      Precision="240"
+      ColumnName="ATTRIBUTE23"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute24"
+      Precision="240"
+      ColumnName="ATTRIBUTE24"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXSIFY_LC_REQUEST_HDR_T" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+</Entity>
