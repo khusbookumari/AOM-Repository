@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="oracle.apps.sfc.lcissuance.multi.poplist.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+   </DesignTime>
+   <Containee
+      Name="CifCatVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.poplist.server.CifCatVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="ClassificationVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.poplist.server.ClassificationVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="FobCatVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.poplist.server.FobCatVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LCIncotermsVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.poplist.server.LCIncotermsVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LCMultiStatusVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.poplist.server.LCMultiStatusVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LCTypeVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.poplist.server.LCTypeVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PartialShipmentVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.poplist.server.PartialShipmentVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PIIncotermsVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.poplist.server.PIIncotermsVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="TranshipmentVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.poplist.server.TranshipmentVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="TransportModeVO"
+      FullName="oracle.apps.sfc.lcissuance.multi.poplist.server.TransportModeVO"
+      ObjectType="ViewObject" >
+   </Containee>
+</JboPackage>
