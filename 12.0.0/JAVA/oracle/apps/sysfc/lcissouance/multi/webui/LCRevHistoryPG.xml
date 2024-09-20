@@ -1,0 +1,864 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayourRN" amDefName="oracle.apps.sfc.lcissuance.multi.server.LCMultiAM" windowTitle="Oracle Applications - LC Request" title="LC Request - Revison" controllerClass="oracle.apps.sfc.lcissuance.multi.webui.LCRevHistoryCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:header id="NonEditableRN1" text="LC Issuance Request Creation Page">
+               <ui:contents>
+                  <oa:rowLayout id="PoInfoNonEditRN1" width="100%">
+                     <ui:contents>
+                        <oa:contentContainer id="PoInfoHdrRN1" text="PO Information" width="100%">
+                           <ui:contents>
+                              <oa:advancedTable id="region1431" width="100%" viewName="LCPoDetailsRevVO">
+                                 <ui:contents>
+                                    <oa:column id="PoSnoCol1">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader5121" prompt="S.No"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="PoSnoNE1" viewAttr="Sno" dataType="NUMBER" readOnly="true"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="PoNumberCol1" columnDataFormat="numberFormat">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader411" prompt="PO Number"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="PoNumberNE1" prompt="PO Number" viewAttr="PoNumber" readOnly="true" columns="20"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="PODateCol1">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader1111" prompt="PO Date"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="PODateNE1" prompt="PO Date" viewAttr="PoDate" readOnly="true" dataType="DATE" maximumLength="15" columns="15"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="PoCurrencyCol1">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader1211" prompt="Po Currency"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="PoCurrencyNE1" prompt="Po Currency" viewAttr="PoCurrency" readOnly="true" columns="5"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="PoValueCol1" columnDataFormat="numberFormat">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader1311" prompt="PO Value"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="PoValueNE1" prompt="PO Value" viewAttr="PoValue" columns="15" readOnly="true" dataType="NUMBER"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="PoRemValueCol1" columnDataFormat="numberFormat">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader1411" prompt="PO Remaining Value"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="PoRemValueNE1" prompt="PO Remaining Value" viewAttr="PoRemainingValue" columns="15" readOnly="true" dataType="NUMBER"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="EnteredValCol1" columnDataFormat="numberFormat">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader1511" prompt="Entered Value"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="EnteredValNE1" prompt="Entered Value" viewAttr="PoEnteredValue" columns="15" readOnly="true" dataType="NUMBER">
+                                             <ui:primaryClientAction>
+                                                <ui:firePartialAction event="entvalue" id="firePartialAction51227461"/>
+                                             </ui:primaryClientAction>
+                                          </oa:messageTextInput>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="PerformaInvNoCol1" columnDataFormat="numberFormat">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader1611" prompt="Performa Invoice No."/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="PerformaInvNoNE1" prompt="Performa Invoice No." viewAttr="LcProformaInvNo" columns="15" readOnly="true" dataType="NUMBER"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="PerformaInvDateCol1">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader1711" prompt="Performa Invoice Date"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="PerformaInvDateNE1" prompt="Performa Invoice Date" dataType="DATE" viewAttr="LcProformaInvDate" columns="15" readOnly="true"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="PIVoucherNoCol1" columnDataFormat="numberFormat">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader16111" prompt="PI Voucher No."/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="PIVoucherNoNE" prompt="PI Voucher No." viewAttr="Attribute1" columns="15" readOnly="${oa.LCPoDetailsEVO.PiVoucherRO}" dataType="VARCHAR2"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="PIAttachmentCol1">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader17311" prompt="PI Document"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:attachmentImage id="PIAttachmentNE1" prompt="PI Attachment">
+                                             <oa:entityMappings>
+                                                <oa:entityMap id="entityMap4311" entityId="XXSIFY_LC_PO_LINE_ATTACH" showAll="true" insertAllowed="false" updateAllowed="false" deleteAllowed="false">
+                                                   <oa:primaryKeys>
+                                                      <oa:primaryKey id="primaryKey4411" viewAttr="LcPoDetId"/>
+                                                   </oa:primaryKeys>
+                                                </oa:entityMap>
+                                             </oa:entityMappings>
+                                          </oa:attachmentImage>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="PODocumentCol1">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader17211" prompt="PO Document"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:attachmentImage id="PODocumentNE1" prompt="PO Attachment">
+                                             <oa:entityMappings>
+                                                <oa:entityMap id="entityMap4411" showAll="true" insertAllowed="false" updateAllowed="false" deleteAllowed="false" entityId="PO_HEAD">
+                                                   <oa:primaryKeys>
+                                                      <oa:primaryKey id="primaryKey4311" viewAttr="PoHeaderId"/>
+                                                   </oa:primaryKeys>
+                                                </oa:entityMap>
+                                             </oa:entityMappings>
+                                          </oa:attachmentImage>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="CommentsCol1">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader1811" prompt="Comments"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="CommentNE1" prompt="Comments" viewAttr="LcPoComments" readOnly="true"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                 </ui:contents>
+                                 <ui:tableActions>
+                                    <oa:flowLayout id="region15511">
+                                       <ui:contents>
+                                          <oa:submitButton id="AddRow11" text="AddRow" prompt="AddRow" rendered="false">
+                                             <ui:primaryClientAction>
+                                                <ui:firePartialAction event="addRow" id="firePartialAction51227411"/>
+                                             </ui:primaryClientAction>
+                                          </oa:submitButton>
+                                       </ui:contents>
+                                    </oa:flowLayout>
+                                 </ui:tableActions>
+                              </oa:advancedTable>
+                           </ui:contents>
+                        </oa:contentContainer>
+                     </ui:contents>
+                  </oa:rowLayout>
+                  <oa:rowLayout id="LcInfoNonEditRN1">
+                     <ui:contents>
+                        <oa:cellFormat id="LcInfoNECRN1" width="60%">
+                           <ui:contents>
+                              <oa:header id="LcInfoHdrRN1" text="LC Information">
+                                 <ui:contents>
+                                    <oa:messageComponentLayout id="region611" rows="1" columns="3">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="originalLcNo1" readOnly="true" prompt="Original LC No" viewName="LCRequestHdrRevVO" viewAttr="OriginalLcNo"/>
+                                          <oa:messageLovInput id="OrganizationNE1" prompt="Organization" viewName="LCRequestHdrRevVO" viewAttr="LcOrgName" required="yes" readOnly="true">
+                                             <lovContents>
+                                                <oa:listOfValues id="region15611">
+                                                   <ui:contents>
+                                                      <oa:table name="region15611" id="OrganizationVO11">
+                                                         <ui:contents>
+                                                            <oa:formValue id="OrganizationId11" dataType="NUMBER" prompt="Organization Id" viewName="OrganizationVO" viewAttr="OrganizationId" queryable="true"/>
+                                                            <oa:messageStyledText id="OrgName11" dataType="VARCHAR2" prompt="Name" viewName="OrganizationVO" viewAttr="Name" maximumLength="240" queryable="true"/>
+                                                            <oa:messageStyledText id="ShortCode11" dataType="VARCHAR2" prompt="Short Code" viewName="OrganizationVO" viewAttr="ShortCode" maximumLength="150"/>
+                                                         </ui:contents>
+                                                      </oa:table>
+                                                   </ui:contents>
+                                                </oa:listOfValues>
+                                             </lovContents>
+                                             <lovMappings>
+                                                <lovMap id="lovMap151" lovItem="OrgName" resultTo="Organization" criteriaFrom="Organization"/>
+                                                <lovMap id="lovMap211" lovItem="OrganizationId" resultTo="OrgIdFV"/>
+                                             </lovMappings>
+                                          </oa:messageLovInput>
+                                          <oa:messageLovInput id="SupplierNE1" prompt="Supplier" viewName="LCRequestHdrRevVO" viewAttr="VendorName" required="yes" readOnly="true">
+                                             <lovContents>
+                                                <oa:listOfValues id="region15711">
+                                                   <ui:contents>
+                                                      <oa:table name="region15711" id="VendorVO11">
+                                                         <ui:contents>
+                                                            <oa:formValue id="VendorId11" dataType="NUMBER" prompt="Vendor Id" viewName="VendorVO" viewAttr="VendorId" queryable="true"/>
+                                                            <oa:messageStyledText id="VendorName11" dataType="VARCHAR2" prompt="Vendor Name" viewName="VendorVO" viewAttr="VendorName" maximumLength="240" queryable="true"/>
+                                                         </ui:contents>
+                                                      </oa:table>
+                                                   </ui:contents>
+                                                </oa:listOfValues>
+                                             </lovContents>
+                                             <lovMappings>
+                                                <lovMap id="lovMap311" lovItem="VendorName" resultTo="Supplier" criteriaFrom="Supplier"/>
+                                                <lovMap id="lovMap411" lovItem="VendorId" resultTo="vendorIdFV"/>
+                                             </lovMappings>
+                                          </oa:messageLovInput>
+                                          <oa:messageLovInput id="SupplierSiteNE1" prompt="Supplier Site" viewName="LCRequestHdrRevVO" viewAttr="VendorSiteCode" required="yes" readOnly="true">
+                                             <lovContents>
+                                                <oa:listOfValues id="region15811">
+                                                   <ui:contents>
+                                                      <oa:table name="region15811" id="VendorSiteVO11">
+                                                         <ui:contents>
+                                                            <oa:formValue id="VendorSiteId11" dataType="NUMBER" prompt="Vendor Site Id" viewName="VendorSiteVO" viewAttr="VendorSiteId" queryable="true"/>
+                                                            <oa:messageStyledText id="VendorSiteCode11" dataType="VARCHAR2" prompt="Vendor Site Code" viewName="VendorSiteVO" viewAttr="VendorSiteCode" maximumLength="15" queryable="true"/>
+                                                            <oa:messageStyledText id="VendorSiteAddr11" dataType="VARCHAR2" prompt="Vendor Site Address" viewName="VendorSiteVO" viewAttr="VendorSiteAddr" maximumLength="934"/>
+                                                            <oa:formValue id="SiteVendorId11" dataType="NUMBER" prompt="VendorId" viewName="VendorSiteVO" viewAttr="VendorId"/>
+                                                         </ui:contents>
+                                                      </oa:table>
+                                                   </ui:contents>
+                                                </oa:listOfValues>
+                                             </lovContents>
+                                             <lovMappings>
+                                                <lovMap id="lovMap511" lovItem="VendorSiteCode" resultTo="SupplierSite" criteriaFrom="SupplierSite"/>
+                                                <lovMap id="lovMap611" lovItem="SiteVendorId" criteriaFrom="vendorIdFV"/>
+                                                <lovMap id="lovMap711" lovItem="VendorSiteAddr" resultTo="SupplierAddrFV"/>
+                                                <lovMap id="lovMap1311" lovItem="VendorSiteId" resultTo="vendorSiteIdFV"/>
+                                             </lovMappings>
+                                          </oa:messageLovInput>
+                                          <oa:messageStyledText id="SupplierAddrNE1" prompt="Supplier Address" rows="5" columns="40" viewName="LCRequestHdrRevVO" viewAttr="VendorAddress"/>
+                                          <oa:messageChoice id="LcClassificationNE1" prompt="LC Classification" viewName="LCRequestHdrRevVO" viewAttr="LcClassification" required="yes" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.ClassificationVO" pickListViewName="ClassificationVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" serverUnvalidated="true" readOnly="true"/>
+                                          <oa:messageTextInput id="LcCurrencyNE1" prompt="LC Currency" viewName="LCRequestHdrRevVO" viewAttr="LcCurrencyCode" readOnly="true"/>
+                                          <oa:messageTextInput id="LcDateNE1" prompt="LC Date" viewName="LCRequestHdrRevVO" viewAttr="LcDate" dataType="DATE" readOnly="true"/>
+                                          <oa:messageTextInput id="TotalPoValueNE1" prompt="Total PO Value" viewName="LCRequestHdrRevVO" viewAttr="TotalPoValue" readOnly="true"/>
+                                          <oa:messageTextInput id="LcReqNoNE1" prompt="LC Request No." viewName="LCRequestHdrRevVO" viewAttr="LcRequestId" readOnly="true"/>
+                                          <oa:messageTextInput id="LcStatusNE1" prompt="LC Status" viewName="LCRequestHdrRevVO" viewAttr="FlowStatus" readOnly="true"/>
+                                          <oa:messageTextInput id="LcValueNE1" prompt="LC Value" viewName="LCRequestHdrRevVO" viewAttr="LcValue" readOnly="true">
+                                             <ui:primaryClientAction>
+                                                <ui:firePartialAction event="lcValueWordConv" id="firePartialAction51227211"/>
+                                             </ui:primaryClientAction>
+                                          </oa:messageTextInput>
+                                          <oa:messageStyledText id="LcValueWordsNE1" prompt="LC Value In Words" rows="5" columns="40" viewName="LCRequestHdrRevVO" viewAttr="LcValueWords"/>
+                                          <oa:messageTextInput id="Revision11" readOnly="true" viewName="LCRequestHdrRevVO" viewAttr="Attribute9" prompt="Revision No."/>
+                                       </ui:contents>
+                                    </oa:messageComponentLayout>
+                                 </ui:contents>
+                              </oa:header>
+                           </ui:contents>
+                        </oa:cellFormat>
+                        <oa:cellFormat id="region16131" width="10%"/>
+                        <oa:cellFormat id="BankInfoNECRN1" width="30%">
+                           <ui:contents>
+                              <oa:header id="BankHdrRN1" text="Vendor Bank Information">
+                                 <ui:contents>
+                                    <oa:messageComponentLayout id="region711" rows="1" columns="1">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="BankNameNE1" prompt="Bank Name" columns="30" viewName="LCRequestHdrRevVO" viewAttr="BankName" readOnly="true"/>
+                                          <oa:messageTextInput id="SwiftIfscCodeNE1" prompt="SWIFT/IFSC Code" columns="30" viewName="LCRequestHdrRevVO" viewAttr="BankIfscSwiftCode" readOnly="true"/>
+                                          <oa:messageTextInput id="IBANNonEd1" prompt="IBAN" columns="30" viewName="LCRequestHdrRevVO" viewAttr="BankIban" readOnly="true"/>
+                                          <oa:messageTextInput id="BankAddrNE1" prompt="Bank Address" rows="4" columns="28" viewName="LCRequestHdrRevVO" viewAttr="BankAddress" readOnly="true"/>
+                                       </ui:contents>
+                                    </oa:messageComponentLayout>
+                                 </ui:contents>
+                              </oa:header>
+                           </ui:contents>
+                        </oa:cellFormat>
+                     </ui:contents>
+                  </oa:rowLayout>
+                  <oa:rowLayout id="LcCondNonEditRN1" width="100%">
+                     <ui:contents>
+                        <oa:header id="LcCondHdrRN1" text="LC Conditions">
+                           <ui:contents>
+                              <oa:messageComponentLayout id="region1211" rows="1" columns="4">
+                                 <ui:contents>
+                                    <oa:messageChoice id="PartialShipmentNE1" prompt="Partial Shipment" viewName="LCRequestHdrRevVO" viewAttr="LcPartialShipment" pickListViewName="PartialShipmentVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.PartialShipmentVO" readOnly="true"/>
+                                    <oa:messageChoice id="TranshipmentNE1" prompt="Transhipment" viewName="LCRequestHdrRevVO" viewAttr="LcTranshipment" pickListViewName="TranshipmentVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.TranshipmentVO" readOnly="true"/>
+                                    <oa:messageChoice id="TransportModeNE1" prompt="Mode of Transport" viewName="LCRequestHdrRevVO" viewAttr="LcModeOfTransport" pickListViewName="TransportModeVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.TransportModeVO" readOnly="true"/>
+                                    <oa:messageTextInput id="CountryOfOriginNE1" prompt="Country Of Origin" viewName="LCRequestHdrRevVO" viewAttr="LcCountryOfOrigin" readOnly="true"/>
+                                    <oa:messageTextInput id="LcCountryExpiryNE1" prompt="LC Country Expiry" viewName="LCRequestHdrRevVO" viewAttr="LcCountryExpire" readOnly="true"/>
+                                    <oa:messageLovInput id="PaymentTermsNE1" prompt="Payment Terms" viewName="LCRequestHdrRevVO" viewAttr="LcPaymentTerms" readOnly="true">
+                                       <lovContents>
+                                          <oa:listOfValues id="region15911">
+                                             <ui:contents>
+                                                <oa:table name="region15911" id="PaymentTermsVO11">
+                                                   <ui:contents>
+                                                      <oa:messageStyledText id="LcPaymentTerms11" dataType="VARCHAR2" prompt="Payment Terms" viewName="PaymentTermsVO" viewAttr="LcPaymentTerms" maximumLength="80" queryable="true"/>
+                                                   </ui:contents>
+                                                </oa:table>
+                                             </ui:contents>
+                                          </oa:listOfValues>
+                                       </lovContents>
+                                       <lovMappings>
+                                          <lovMap id="lovMap811" lovItem="LcPaymentTerms1" resultTo="PaymentTermsNE" criteriaFrom="PaymentTermsNE"/>
+                                       </lovMappings>
+                                    </oa:messageLovInput>
+                                    <oa:messageLovInput id="TradeTermsNE1" prompt="Trade Terms" viewName="LCRequestHdrRevVO" viewAttr="LcTradeTerms" readOnly="true">
+                                       <lovContents>
+                                          <oa:listOfValues id="region16011">
+                                             <ui:contents>
+                                                <oa:table name="region16011" id="TradeTermsVO11">
+                                                   <ui:contents>
+                                                      <oa:messageStyledText id="Tradeterms11" dataType="VARCHAR2" prompt="Trade Terms" viewName="TradeTermsVO" viewAttr="Tradeterms" maximumLength="80" queryable="true"/>
+                                                   </ui:contents>
+                                                </oa:table>
+                                             </ui:contents>
+                                          </oa:listOfValues>
+                                       </lovContents>
+                                       <lovMappings>
+                                          <lovMap id="lovMap911" lovItem="Tradeterms1" resultTo="TradeTermsNE" criteriaFrom="TradeTermsNE"/>
+                                       </lovMappings>
+                                    </oa:messageLovInput>
+                                    <oa:messageTextInput id="PortOfLoadingNE1" prompt="Port Of Loading" viewName="LCRequestHdrRevVO" viewAttr="LcPortOfLoading" readOnly="true"/>
+                                    <oa:messageTextInput id="PortOfDischargeNE1" prompt="Port Of Discharge" viewName="LCRequestHdrRevVO" viewAttr="LcPortOfDischarge" readOnly="true"/>
+                                    <oa:messageTextInput id="LastDateOfShipmentNE1" dataType="DATE" prompt="Last Date Of Shipment" viewName="LCRequestHdrRevVO" viewAttr="LcLastDateOfShipment" readOnly="true" required="no">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="calculateLCExpiryDate" id="firePartialAction51227311"/>
+                                       </ui:primaryClientAction>
+                                    </oa:messageTextInput>
+                                    <oa:messageTextInput id="ExpiryDateOfLCNE1" prompt="Expiry Date Of LC" dataType="DATE" viewName="LCRequestHdrRevVO" viewAttr="LcExpiryDate" readOnly="true"/>
+                                    <oa:messageTextInput id="PeriodOfDocNE1" prompt="Period of Doc Presentation" readOnly="true" viewName="LCRequestHdrRevVO" viewAttr="LcPeriodOfDocument"/>
+                                    <oa:messageTextInput id="DescofgoodsNE1" prompt="Description of Goods" columns="28" rows="4" viewName="LCRequestHdrRevVO" viewAttr="DescOfGoods" readOnly="true"/>
+                                    <oa:messageTextInput id="TypeofLCNE1" prompt="Type of LC" viewName="LCRequestHdrRevVO" viewAttr="TypeOfLc" readOnly="true"/>
+                                    <oa:messageChoice id="LcIncoterms11" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.LCIncotermsVO" pickListViewName="LCIncotermsVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" viewName="LCRequestHdrRevVO" viewAttr="Lcincoterm" prompt="Inco Terms" readOnly="true">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="lcincoterms" unvalidated="true" id="firePartialAction51227431"/>
+                                       </ui:primaryClientAction>
+                                    </oa:messageChoice>
+                                 </ui:contents>
+                              </oa:messageComponentLayout>
+                              <oa:rowLayout id="FOBRN11" hAlign="center" rendered="${oa.LCRequestHdrEVO.RenFob}">
+                                 <ui:contents>
+                                    <oa:advancedTable id="region162211" viewName="LCRequestHdrRevVO">
+                                       <ui:contents>
+                                          <oa:column id="column111">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="FOB11" prompt="FOB Attachments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:attachmentImage id="item1211">
+                                                   <oa:entityMappings>
+                                                      <oa:entityMap id="entityMap111" entityId="XXSIFY_LC_FOB_ATTACH" insertAllowed="false" updateAllowed="false" deleteAllowed="false">
+                                                         <oa:primaryKeys>
+                                                            <oa:primaryKey id="primaryKey111" viewAttr="LcRequestId"/>
+                                                         </oa:primaryKeys>
+                                                         <oa:categoryMappings>
+                                                            <oa:categoryMap id="categoryMap1101" categoryName="CUSTOM1001204"/>
+                                                            <oa:categoryMap id="categoryMap271" categoryName="CUSTOM1001170"/>
+                                                            <oa:categoryMap id="categoryMap311" categoryName="CUSTOM1001171"/>
+                                                            <oa:categoryMap id="categoryMap411" categoryName="CUSTOM1001172"/>
+                                                            <oa:categoryMap id="categoryMap511" categoryName="CUSTOM1001173"/>
+                                                            <oa:categoryMap id="categoryMap611" categoryName="CUSTOM1001174"/>
+                                                         </oa:categoryMappings>
+                                                      </oa:entityMap>
+                                                   </oa:entityMappings>
+                                                </oa:attachmentImage>
+                                             </ui:contents>
+                                          </oa:column>
+                                       </ui:contents>
+                                    </oa:advancedTable>
+                                 </ui:contents>
+                              </oa:rowLayout>
+                              <oa:rowLayout id="CIFRN11" rendered="${oa.LCRequestHdrEVO.RenCif}" hAlign="center">
+                                 <ui:contents>
+                                    <oa:advancedTable id="region162311" viewName="LCRequestHdrRevVO">
+                                       <ui:contents>
+                                          <oa:column id="column211">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader5113211" prompt="CIF Attachments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:attachmentImage id="item1311">
+                                                   <oa:entityMappings>
+                                                      <oa:entityMap id="entityMap211" entityId="XXSIFY_LC_CIF_ATTACH" insertAllowed="false" updateAllowed="false" deleteAllowed="false">
+                                                         <oa:primaryKeys>
+                                                            <oa:primaryKey id="primaryKey211" viewAttr="LcRequestId"/>
+                                                         </oa:primaryKeys>
+                                                         <oa:categoryMappings>
+                                                            <oa:categoryMap id="categoryMap711" categoryName="CUSTOM1001177"/>
+                                                            <oa:categoryMap id="categoryMap811" categoryName="CUSTOM1001178"/>
+                                                            <oa:categoryMap id="categoryMap911" categoryName="CUSTOM1001179"/>
+                                                            <oa:categoryMap id="categoryMap1011" categoryName="CUSTOM1001180"/>
+                                                            <oa:categoryMap id="categoryMap1111" categoryName="CUSTOM1001181"/>
+                                                            <oa:categoryMap id="categoryMap1211" categoryName="CUSTOM1001182"/>
+                                                            <oa:categoryMap id="categoryMap1311" categoryName="CUSTOM1001200"/>
+                                                         </oa:categoryMappings>
+                                                      </oa:entityMap>
+                                                   </oa:entityMappings>
+                                                </oa:attachmentImage>
+                                             </ui:contents>
+                                          </oa:column>
+                                       </ui:contents>
+                                    </oa:advancedTable>
+                                 </ui:contents>
+                              </oa:rowLayout>
+                              <oa:rowLayout id="FOBFINRN" hAlign="center" rendered="false">
+                                 <ui:contents>
+                                    <oa:advancedTable id="region16222" viewName="LCRequestHdrRevVO">
+                                       <ui:contents>
+                                          <oa:column id="column12">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="FOB2" prompt="FOB Attachments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:attachmentImage id="item122">
+                                                   <oa:entityMappings>
+                                                      <oa:entityMap id="entityMap12" entityId="XXSIFY_LC_FOB_ATTACH" insertAllowed="false" updateAllowed="false" deleteAllowed="false">
+                                                         <oa:primaryKeys>
+                                                            <oa:primaryKey id="primaryKey12" viewAttr="LcRequestId"/>
+                                                         </oa:primaryKeys>
+                                                         <oa:categoryMappings>
+                                                            <oa:categoryMap id="categoryMap192" categoryName="CUSTOM1001204"/>
+                                                            <oa:categoryMap id="categoryMap262" categoryName="CUSTOM1001170"/>
+                                                            <oa:categoryMap id="categoryMap32" categoryName="CUSTOM1001171"/>
+                                                            <oa:categoryMap id="categoryMap42" categoryName="CUSTOM1001172"/>
+                                                            <oa:categoryMap id="categoryMap52" categoryName="CUSTOM1001173"/>
+                                                            <oa:categoryMap id="categoryMap62" categoryName="CUSTOM1001174"/>
+                                                         </oa:categoryMappings>
+                                                      </oa:entityMap>
+                                                   </oa:entityMappings>
+                                                </oa:attachmentImage>
+                                             </ui:contents>
+                                          </oa:column>
+                                       </ui:contents>
+                                    </oa:advancedTable>
+                                 </ui:contents>
+                              </oa:rowLayout>
+                              <oa:rowLayout id="CIFFINRN" rendered="false" hAlign="center">
+                                 <ui:contents>
+                                    <oa:advancedTable id="region16232" viewName="LCRequestHdrRevVO">
+                                       <ui:contents>
+                                          <oa:column id="column22">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader511322" prompt="CIF Attachments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:attachmentImage id="item132">
+                                                   <oa:entityMappings>
+                                                      <oa:entityMap id="entityMap22" entityId="XXSIFY_LC_CIF_ATTACH" insertAllowed="false" updateAllowed="false" deleteAllowed="false">
+                                                         <oa:primaryKeys>
+                                                            <oa:primaryKey id="primaryKey22" viewAttr="LcRequestId"/>
+                                                         </oa:primaryKeys>
+                                                         <oa:categoryMappings>
+                                                            <oa:categoryMap id="categoryMap72" categoryName="CUSTOM1001177"/>
+                                                            <oa:categoryMap id="categoryMap82" categoryName="CUSTOM1001178"/>
+                                                            <oa:categoryMap id="categoryMap92" categoryName="CUSTOM1001179"/>
+                                                            <oa:categoryMap id="categoryMap102" categoryName="CUSTOM1001180"/>
+                                                            <oa:categoryMap id="categoryMap112" categoryName="CUSTOM1001181"/>
+                                                            <oa:categoryMap id="categoryMap122" categoryName="CUSTOM1001182"/>
+                                                            <oa:categoryMap id="categoryMap132" categoryName="CUSTOM1001200"/>
+                                                         </oa:categoryMappings>
+                                                      </oa:entityMap>
+                                                   </oa:entityMappings>
+                                                </oa:attachmentImage>
+                                             </ui:contents>
+                                          </oa:column>
+                                       </ui:contents>
+                                    </oa:advancedTable>
+                                 </ui:contents>
+                              </oa:rowLayout>
+                           </ui:contents>
+                        </oa:header>
+                     </ui:contents>
+                  </oa:rowLayout>
+                  <oa:rowLayout id="PINonEditRRN1" width="100%">
+                     <ui:contents>
+                        <oa:contentContainer id="region11111" text="PI Details" width="100%">
+                           <ui:contents>
+                              <oa:messageComponentLayout id="region12211" rows="1" columns="4">
+                                 <ui:contents>
+                                    <oa:messageChoice id="PartialShipmentPINE1" prompt="Partial Shipment" viewName="LCRequestHdrRevVO" viewAttr="Attribute1" pickListViewName="PartialShipmentVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.PartialShipmentVO" required="yes" readOnly="true"/>
+                                    <oa:messageChoice id="TranshipmentPINE1" prompt="Transhipment" viewName="LCRequestHdrRevVO" viewAttr="Attribute2" pickListViewName="TranshipmentVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.TranshipmentVO" required="yes" readOnly="true"/>
+                                    <oa:messageChoice id="TransportModePINE1" prompt="Mode of Transport" viewName="LCRequestHdrRevVO" viewAttr="Attribute3" pickListViewName="TransportModeVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.TransportModeVO" required="yes" readOnly="true"/>
+                                    <oa:messageTextInput id="CountryOfOriginPINE1" prompt="Country Of Origin" viewName="LCRequestHdrRevVO" viewAttr="Attribute4" required="yes" readOnly="true"/>
+                                    <oa:messageLovInput id="PaymentTermsPINE1" prompt="Payment Terms" viewName="LCRequestHdrRevVO" viewAttr="Attribute5" required="no" readOnly="true">
+                                       <lovContents>
+                                          <oa:listOfValues id="region15921">
+                                             <ui:contents>
+                                                <oa:table name="region15921" id="PaymentTermsVO21">
+                                                   <ui:contents>
+                                                      <oa:messageStyledText id="LcPaymentTerms21" dataType="VARCHAR2" prompt="Payment Terms" viewName="PaymentTermsVO" viewAttr="LcPaymentTerms" maximumLength="80" queryable="true"/>
+                                                   </ui:contents>
+                                                </oa:table>
+                                             </ui:contents>
+                                          </oa:listOfValues>
+                                       </lovContents>
+                                       <lovMappings>
+                                          <lovMap id="lovMap821" lovItem="LcPaymentTerms21" resultTo="PaymentTermsPINE" criteriaFrom="PaymentTermsPINE"/>
+                                       </lovMappings>
+                                    </oa:messageLovInput>
+                                    <oa:messageLovInput id="TradeTermsPINE1" prompt="Trade Terms" viewName="LCRequestHdrRevVO" viewAttr="Attribute6" required="no" readOnly="true">
+                                       <lovContents>
+                                          <oa:listOfValues id="region16021">
+                                             <ui:contents>
+                                                <oa:table name="region16021" id="TradeTermsVO21">
+                                                   <ui:contents>
+                                                      <oa:messageStyledText id="Tradeterms21" dataType="VARCHAR2" prompt="Trade Terms" viewName="TradeTermsVO" viewAttr="Tradeterms" maximumLength="80" queryable="true"/>
+                                                   </ui:contents>
+                                                </oa:table>
+                                             </ui:contents>
+                                          </oa:listOfValues>
+                                       </lovContents>
+                                       <lovMappings>
+                                          <lovMap id="lovMap921" lovItem="Tradeterms21" resultTo="TradeTermsPINE" criteriaFrom="TradeTermsPINE"/>
+                                       </lovMappings>
+                                    </oa:messageLovInput>
+                                    <oa:messageTextInput id="PortOfLoadingPINE1" prompt="Port Of Loading" viewName="LCRequestHdrRevVO" viewAttr="Attribute7" required="yes" readOnly="true"/>
+                                    <oa:messageTextInput id="PortOfDischargePINE1" prompt="Port Of Discharge" viewName="LCRequestHdrRevVO" viewAttr="Attribute8" required="yes" readOnly="true"/>
+                                    <oa:messageTextInput id="LastDateOfShipNE" dataType="DATE" prompt="Last Date Of Shipment" viewName="LCRequestHdrRevVO" viewAttr="LastDateOfShipPi" required="yes" readOnly="true">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="lstdt" unvalidated="true" id="firePartialAction51227441"/>
+                                       </ui:primaryClientAction>
+                                    </oa:messageTextInput>
+                                    <oa:messageChoice id="Piincoterm11" viewAttr="Piincoterm" prompt="Inco Terms" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.LCIncotermsVO" pickListViewName="LCIncotermsVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" readOnly="true" viewName="LCRequestHdrRevVO">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="piincoterm" unvalidated="true" id="firePartialAction51227451"/>
+                                       </ui:primaryClientAction>
+                                    </oa:messageChoice>
+                                 </ui:contents>
+                              </oa:messageComponentLayout>
+                              <oa:rowLayout id="PIFOBRN11" rendered="${oa.LCRequestHdrEVO.PIRenFob}" hAlign="center">
+                                 <ui:contents>
+                                    <oa:advancedTable id="region162511" viewName="LCRequestHdrRevVO">
+                                       <ui:contents>
+                                          <oa:column id="column311">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader5113311" prompt="FOB Attachments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:attachmentImage id="item1411">
+                                                   <oa:entityMappings>
+                                                      <oa:entityMap id="entityMap311" entityId="XXSIFY_PI_FOB_ATTACH" insertAllowed="false" updateAllowed="false" deleteAllowed="false">
+                                                         <oa:primaryKeys>
+                                                            <oa:primaryKey id="primaryKey311" viewAttr="LcRequestId"/>
+                                                         </oa:primaryKeys>
+                                                         <oa:categoryMappings>
+                                                            <oa:categoryMap id="categoryMap1411" categoryName="CUSTOM1001204"/>
+                                                            <oa:categoryMap id="categoryMap1511" categoryName="CUSTOM1001170"/>
+                                                            <oa:categoryMap id="categoryMap1611" categoryName="CUSTOM1001171"/>
+                                                            <oa:categoryMap id="categoryMap1711" categoryName="CUSTOM1001172"/>
+                                                            <oa:categoryMap id="categoryMap1811" categoryName="CUSTOM1001173"/>
+                                                            <oa:categoryMap id="categoryMap1911" categoryName="CUSTOM1001174"/>
+                                                         </oa:categoryMappings>
+                                                      </oa:entityMap>
+                                                   </oa:entityMappings>
+                                                </oa:attachmentImage>
+                                             </ui:contents>
+                                          </oa:column>
+                                       </ui:contents>
+                                    </oa:advancedTable>
+                                 </ui:contents>
+                              </oa:rowLayout>
+                              <oa:rowLayout id="PICIFRN11" rendered="${oa.LCRequestHdrEVO.PIRenCif}" hAlign="center">
+                                 <ui:contents>
+                                    <oa:advancedTable id="region162611" viewName="LCRequestHdrRevVO">
+                                       <ui:contents>
+                                          <oa:column id="column411">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader5113411" prompt="CIF Attachments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:attachmentImage id="item1511">
+                                                   <oa:entityMappings>
+                                                      <oa:entityMap id="entityMap411" entityId="XXSIFY_PI_CIF_ATTACH" insertAllowed="false" updateAllowed="false" deleteAllowed="false">
+                                                         <oa:primaryKeys>
+                                                            <oa:primaryKey id="primaryKey411" viewAttr="LcRequestId"/>
+                                                         </oa:primaryKeys>
+                                                         <oa:categoryMappings>
+                                                            <oa:categoryMap id="categoryMap2011" categoryName="CUSTOM1001177"/>
+                                                            <oa:categoryMap id="categoryMap2111" categoryName="CUSTOM1001178"/>
+                                                            <oa:categoryMap id="categoryMap2211" categoryName="CUSTOM1001179"/>
+                                                            <oa:categoryMap id="categoryMap2311" categoryName="CUSTOM1001180"/>
+                                                            <oa:categoryMap id="categoryMap2411" categoryName="CUSTOM1001181"/>
+                                                            <oa:categoryMap id="categoryMap2511" categoryName="CUSTOM1001182"/>
+                                                            <oa:categoryMap id="categoryMap2611" categoryName="CUSTOM1001200"/>
+                                                         </oa:categoryMappings>
+                                                      </oa:entityMap>
+                                                   </oa:entityMappings>
+                                                </oa:attachmentImage>
+                                             </ui:contents>
+                                          </oa:column>
+                                       </ui:contents>
+                                    </oa:advancedTable>
+                                 </ui:contents>
+                              </oa:rowLayout>
+                              <oa:rowLayout id="PIFOBFINRN" rendered="false" hAlign="center">
+                                 <ui:contents>
+                                    <oa:advancedTable id="region16252" viewName="LCRequestHdrRevVO">
+                                       <ui:contents>
+                                          <oa:column id="column32">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader511332" prompt="FOB Attachments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:attachmentImage id="item142">
+                                                   <oa:entityMappings>
+                                                      <oa:entityMap id="entityMap32" entityId="XXSIFY_PI_FOB_ATTACH" insertAllowed="false" updateAllowed="false" deleteAllowed="false">
+                                                         <oa:primaryKeys>
+                                                            <oa:primaryKey id="primaryKey32" viewAttr="LcRequestId"/>
+                                                         </oa:primaryKeys>
+                                                         <oa:categoryMappings>
+                                                            <oa:categoryMap id="categoryMap142" categoryName="CUSTOM1001204"/>
+                                                            <oa:categoryMap id="categoryMap152" categoryName="CUSTOM1001170"/>
+                                                            <oa:categoryMap id="categoryMap162" categoryName="CUSTOM1001171"/>
+                                                            <oa:categoryMap id="categoryMap172" categoryName="CUSTOM1001172"/>
+                                                            <oa:categoryMap id="categoryMap182" categoryName="CUSTOM1001173"/>
+                                                            <oa:categoryMap id="categoryMap193" categoryName="CUSTOM1001174"/>
+                                                         </oa:categoryMappings>
+                                                      </oa:entityMap>
+                                                   </oa:entityMappings>
+                                                </oa:attachmentImage>
+                                             </ui:contents>
+                                          </oa:column>
+                                       </ui:contents>
+                                    </oa:advancedTable>
+                                 </ui:contents>
+                              </oa:rowLayout>
+                              <oa:rowLayout id="PICIFFINRN" rendered="false" hAlign="center">
+                                 <ui:contents>
+                                    <oa:advancedTable id="region16262" viewName="LCRequestHdrRevVO">
+                                       <ui:contents>
+                                          <oa:column id="column42">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader511342" prompt="CIF Attachments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:attachmentImage id="item152">
+                                                   <oa:entityMappings>
+                                                      <oa:entityMap id="entityMap42" entityId="XXSIFY_PI_CIF_ATTACH" insertAllowed="false" updateAllowed="false" deleteAllowed="false">
+                                                         <oa:primaryKeys>
+                                                            <oa:primaryKey id="primaryKey42" viewAttr="LcRequestId"/>
+                                                         </oa:primaryKeys>
+                                                         <oa:categoryMappings>
+                                                            <oa:categoryMap id="categoryMap202" categoryName="CUSTOM1001177"/>
+                                                            <oa:categoryMap id="categoryMap212" categoryName="CUSTOM1001178"/>
+                                                            <oa:categoryMap id="categoryMap222" categoryName="CUSTOM1001179"/>
+                                                            <oa:categoryMap id="categoryMap232" categoryName="CUSTOM1001180"/>
+                                                            <oa:categoryMap id="categoryMap242" categoryName="CUSTOM1001181"/>
+                                                            <oa:categoryMap id="categoryMap252" categoryName="CUSTOM1001182"/>
+                                                            <oa:categoryMap id="categoryMap263" categoryName="CUSTOM1001200"/>
+                                                         </oa:categoryMappings>
+                                                      </oa:entityMap>
+                                                   </oa:entityMappings>
+                                                </oa:attachmentImage>
+                                             </ui:contents>
+                                          </oa:column>
+                                       </ui:contents>
+                                    </oa:advancedTable>
+                                 </ui:contents>
+                              </oa:rowLayout>
+                           </ui:contents>
+                        </oa:contentContainer>
+                     </ui:contents>
+                  </oa:rowLayout>
+                  <oa:contentContainer id="ContentConRNNE1" text="Other LC Documents" width="100%">
+                     <ui:contents>
+                        <oa:advancedTable id="AdvancedTableRN111" width="100%" viewName="LCDocDetailsRevVO">
+                           <ui:contents>
+                              <oa:column id="DocsReqC11">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader19311" prompt="Documents Required"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="DocsRequired11" prompt="" columns="45" rows="2" viewAttr="DocumentsRequired" readOnly="true"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="AddiCondC11">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="sortableHeader2211" prompt="Additional Conditions"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="AddiCond11" prompt="Additional Conditions" columns="45" rows="2" viewAttr="AdditionalConditions" readOnly="true"/>
+                                 </ui:contents>
+                              </oa:column>
+                           </ui:contents>
+                           <ui:tableActions>
+                              <oa:flowLayout id="region8611">
+                                 <ui:contents>
+                                    <oa:submitButton id="AddDocument11" text="Add Documents" prompt="Add Documents">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="addDocument" id="firePartialAction21311"/>
+                                       </ui:primaryClientAction>
+                                    </oa:submitButton>
+                                 </ui:contents>
+                              </oa:flowLayout>
+                           </ui:tableActions>
+                        </oa:advancedTable>
+                     </ui:contents>
+                  </oa:contentContainer>
+                  <oa:contentContainer id="ConContainerRRNNE1" text="Additional Information" width="100%">
+                     <ui:contents>
+                        <oa:messageComponentLayout id="region16211" rows="1" columns="2">
+                           <ui:contents>
+                              <oa:messageTextInput id="AppliBankName111" prompt="Applicant Bank Name" dataType="VARCHAR2" viewName="LCRequestHdrRevVO" viewAttr="Attribute11" readOnly="true"/>
+                              <oa:messageTextInput id="BankChrg11" prompt="Bank Charges" dataType="VARCHAR2" viewName="LCRequestHdrRevVO" viewAttr="Attribute12" readOnly="true"/>
+                              <oa:messageTextInput id="PeriodOfPres11" prompt="Period Of Presentation" readOnly="true" viewName="LCRequestHdrRevVO" viewAttr="Attribute13"/>
+                              <oa:messageTextInput id="ConfirmInstr11" prompt="Confirmation Instruction" viewName="LCRequestHdrRevVO" viewAttr="Attribute14" readOnly="true"/>
+                           </ui:contents>
+                        </oa:messageComponentLayout>
+                     </ui:contents>
+                  </oa:contentContainer>
+                  <oa:rowLayout id="LcAttachApprNonEditRN1">
+                     <ui:contents>
+                        <oa:cellFormat id="AttachCRN1" width="20%">
+                           <ui:contents>
+                              <oa:header id="region16141" text="Attachments">
+                                 <ui:contents>
+                                    <oa:advancedTable id="AttachAdvTable11" viewName="LCRequestHdrRevVO">
+                                       <ui:contents>
+                                          <oa:column id="AttachCol1">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader1911" prompt="Attachment"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:attachmentImage id="item111">
+                                                   <oa:entityMappings>
+                                                      <oa:entityMap id="entityMapNE1" entityId="XXSIFY_LC_REQUEST_HDR_T" insertAllowed="false" updateAllowed="false" deleteAllowed="false">
+                                                         <oa:primaryKeys>
+                                                            <oa:primaryKey id="primaryKeyNE1" viewAttr="LcRequestId"/>
+                                                         </oa:primaryKeys>
+                                                      </oa:entityMap>
+                                                   </oa:entityMappings>
+                                                </oa:attachmentImage>
+                                             </ui:contents>
+                                          </oa:column>
+                                       </ui:contents>
+                                    </oa:advancedTable>
+                                 </ui:contents>
+                              </oa:header>
+                           </ui:contents>
+                        </oa:cellFormat>
+                        <oa:cellFormat id="CellFormatRN1" width="5%"/>
+                        <oa:cellFormat id="ApprCommCRN1" width="75%">
+                           <ui:contents>
+                              <oa:header id="ApprCommHdrRN1" text="Approver Comments">
+                                 <ui:contents>
+                                    <oa:advancedTable id="ApprActionAT1" viewName="LCRequestHdrRevVO">
+                                       <ui:contents>
+                                          <oa:column id="BuyerCol">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader1922" prompt="Buyer Comments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="BuyerNE" prompt="Buyer" viewAttr="Attribute16" columns="40" rows="2"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="APCommHeadCol">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader1921" prompt="AP Commercial Head Comments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="APCommHeadNE" prompt="AP Commercial Head" viewAttr="Attribute17" columns="40" rows="2"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="CommHeadCol1" rendered="false">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader1923" prompt="Commercial Head Comments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="CommHeadNE1" prompt="Commercial Head" viewAttr="CommheadComments" columns="40" rows="2"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="FinanceCol1">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader511311" prompt="Finance Comments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="FinanceNE1" viewAttr="FinanceComments" columns="30" rows="3"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="TreasuryCol1">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader211" prompt="Treasury Comments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="TreasuryNE1" prompt="Treasury" viewAttr="TreasuryComments" columns="40" rows="2"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="SupplierActionCol1">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader311" prompt="Supplier Comments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="SupplierActionNE1" prompt="Supplier" viewAttr="SupplierComments" columns="40" rows="2"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                       </ui:contents>
+                                    </oa:advancedTable>
+                                 </ui:contents>
+                              </oa:header>
+                           </ui:contents>
+                        </oa:cellFormat>
+                     </ui:contents>
+                  </oa:rowLayout>
+                  <oa:rowLayout id="ActionHistNonEditRN1" width="100%">
+                     <ui:contents>
+                        <oa:header id="ActionHistRN1" text="Action History">
+                           <ui:contents>
+                              <oa:advancedTable id="ApprActHistAT1" width="100%" viewName="LCApprHistoryRevVO">
+                                 <ui:contents>
+                                    <oa:column id="SnoCol1">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader51121" prompt="S.No"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="SnoAT1" readOnly="true" viewAttr="Sno"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="SubDateCol1">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader611" prompt="Submission Date"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="SubDateAT1" readOnly="true" viewAttr="SubmissionDate"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="ApprNameCol1">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader711" prompt="Approver Name"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="ApprNameAT1" readOnly="true" viewAttr="ApproverName"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="ActionDateCol1">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader811" prompt="Action Date"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="ActionDateAT1" readOnly="true" viewAttr="ActionDate"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="ResponseCol1">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader911" prompt="Response"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="ResponseAT1" readOnly="true" viewAttr="Response"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="CommentsAC1">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader1011" prompt="Comments"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="ApprCommentsAT1" readOnly="true" viewAttr="ApproverComments"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                 </ui:contents>
+                              </oa:advancedTable>
+                           </ui:contents>
+                        </oa:header>
+                     </ui:contents>
+                  </oa:rowLayout>
+               </ui:contents>
+            </oa:header>
+            <oa:pageButtonBar id="PageBtnBarRN" rendered="false">
+               <ui:contents>
+                  <oa:submitButton id="BackBtn" text="Back" prompt="Back" unvalidated="true">
+                     <ui:primaryClientAction>
+                        <ui:firePartialAction event="back" id="firePartialAction5122753"/>
+                     </ui:primaryClientAction>
+                  </oa:submitButton>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>
