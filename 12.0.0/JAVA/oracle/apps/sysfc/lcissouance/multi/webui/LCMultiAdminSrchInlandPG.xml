@@ -1,0 +1,1108 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="MainRN" amDefName="oracle.apps.sfc.lcissuance.multi.server.LCMultiAM" controllerClass="oracle.apps.sfc.lcissuance.multi.webui.LCMultiAdminSrchInlandCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:header id="HdrRN" text="LC Issuance Request Creation Page" rendered="false">
+               <ui:contents>
+                  <oa:rowLayout id="LcBtnRRN" hAlign="right" vAlign="top">
+                     <ui:contents>
+                        <oa:switcher id="ButtonSwitcherRN" viewName="LCRequestHdrEVO" viewAttr="ButtonSwitcher" rendered="false">
+                           <ui:case name="HideButtons">
+                              <oa:pageButtonBar id="HideButtons">
+                                 <ui:contents>
+                                    <oa:submitButton id="Draft" text="Draft" prompt="Draft">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="draft" id="firePartialAction4"/>
+                                       </ui:primaryClientAction>
+                                    </oa:submitButton>
+                                    <oa:submitButton id="Cancel" text="Cancel" prompt="Cancel" unvalidated="true">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="cancel" id="firePartialAction5"/>
+                                       </ui:primaryClientAction>
+                                    </oa:submitButton>
+                                 </ui:contents>
+                              </oa:pageButtonBar>
+                           </ui:case>
+                           <ui:case name="ShowInlandButtons">
+                              <oa:pageButtonBar id="ShowInlandButtons">
+                                 <ui:contents>
+                                    <oa:submitButton id="InlandReqSBtn" text="Inland Requested Document" prompt="Inland Requested Document">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="inlandreq" id="firePartialAction21">
+                                             <ui:parameters>
+                                                <ui:parameter key="p_lc_request_id" value="${oa.LCRequestHdrEVO.LcRequestId}"/>
+                                             </ui:parameters>
+                                          </ui:firePartialAction>
+                                       </ui:primaryClientAction>
+                                    </oa:submitButton>
+                                    <oa:submitButton id="Draft1" text="Draft" prompt="Draft">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="draft" id="firePartialAction41"/>
+                                       </ui:primaryClientAction>
+                                    </oa:submitButton>
+                                    <oa:submitButton id="Cancel1" text="Cancel" prompt="Cancel" unvalidated="true">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="cancel" id="firePartialAction51"/>
+                                       </ui:primaryClientAction>
+                                    </oa:submitButton>
+                                    <oa:submitButton id="Submit" text="Submit" prompt="Submit">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="submit" id="firePartialAction61"/>
+                                       </ui:primaryClientAction>
+                                    </oa:submitButton>
+                                 </ui:contents>
+                              </oa:pageButtonBar>
+                           </ui:case>
+                           <ui:case name="ApprovedInlandButtons">
+                              <oa:pageButtonBar id="ApprovedInlandButtons">
+                                 <ui:contents>
+                                    <oa:submitButton id="InlandReqSBtn1" text="Inland Requested Document" prompt="Inland Requested Document">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="inlandreq" id="firePartialAction211"/>
+                                       </ui:primaryClientAction>
+                                    </oa:submitButton>
+                                    <oa:submitButton id="Cancel114" text="Cancel" prompt="Cancel" unvalidated="true">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="cancel" id="firePartialAction51226"/>
+                                       </ui:primaryClientAction>
+                                    </oa:submitButton>
+                                 </ui:contents>
+                              </oa:pageButtonBar>
+                           </ui:case>
+                           <ui:case name="ShowImportButtons">
+                              <oa:pageButtonBar id="ShowImportButtons">
+                                 <ui:contents>
+                                    <oa:submitButton id="ImportReq2" text="Import Requested Document" prompt="Import Requested Document">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="importreq" id="firePartialAction312"/>
+                                       </ui:primaryClientAction>
+                                    </oa:submitButton>
+                                    <oa:submitButton id="Draft11" text="Draft" prompt="Draft">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="draft" id="firePartialAction411"/>
+                                       </ui:primaryClientAction>
+                                    </oa:submitButton>
+                                    <oa:submitButton id="Cancel112" text="Cancel" prompt="Cancel" unvalidated="true">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="cancel" id="firePartialAction51222"/>
+                                       </ui:primaryClientAction>
+                                    </oa:submitButton>
+                                    <oa:submitButton id="Submit1" text="Submit" prompt="Submit">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="submit" id="firePartialAction611"/>
+                                       </ui:primaryClientAction>
+                                    </oa:submitButton>
+                                 </ui:contents>
+                              </oa:pageButtonBar>
+                           </ui:case>
+                           <ui:case name="ApprovedImportButtons">
+                              <oa:pageButtonBar id="ApprovedImportButtons">
+                                 <ui:contents>
+                                    <oa:submitButton id="ImportReq11" text="Import Requested Document" prompt="Import Requested Document">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="importreq" id="firePartialAction3111"/>
+                                       </ui:primaryClientAction>
+                                    </oa:submitButton>
+                                    <oa:submitButton id="Cancel115" text="Cancel" prompt="Cancel" unvalidated="true">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction event="cancel" id="firePartialAction51227"/>
+                                       </ui:primaryClientAction>
+                                    </oa:submitButton>
+                                 </ui:contents>
+                              </oa:pageButtonBar>
+                           </ui:case>
+                        </oa:switcher>
+                     </ui:contents>
+                  </oa:rowLayout>
+               </ui:contents>
+            </oa:header>
+            <oa:switcher id="ReqHdrSwitcher" viewName="LCRequestHdrEVO" viewAttr="RnSwitcher">
+               <ui:case name="EditableRN">
+                  <oa:header id="EditableRN" text="LC Issuance Request Creation Page">
+                     <ui:contents>
+                        <oa:rowLayout id="LcInfoRRN">
+                           <ui:contents>
+                              <oa:contentContainer id="region4" text="LC Information">
+                                 <ui:contents>
+                                    <oa:messageComponentLayout id="region6" rows="1" columns="3">
+                                       <ui:contents>
+                                          <oa:messageLovInput id="Organization" prompt="Organization" viewName="LCRequestHdrEVO" viewAttr="LcOrgName" required="yes" unvalidated="true">
+                                             <lovContents>
+                                                <oa:listOfValues id="region1615">
+                                                   <ui:contents>
+                                                      <oa:table name="region1615" id="OrganizationVO">
+                                                         <ui:contents>
+                                                            <oa:formValue id="OrgId" dataType="NUMBER" prompt="Org Id" viewName="OrganizationVO" viewAttr="OrgId" queryable="true"/>
+                                                            <oa:messageStyledText id="OrganizationName" dataType="VARCHAR2" prompt="Organization Name" viewName="OrganizationVO" viewAttr="OrganizationName" maximumLength="240" queryable="true"/>
+                                                            <oa:formValue id="VendorId" dataType="NUMBER" prompt="Vendor Id" viewName="OrganizationVO" viewAttr="VendorId"/>
+                                                         </ui:contents>
+                                                      </oa:table>
+                                                   </ui:contents>
+                                                </oa:listOfValues>
+                                             </lovContents>
+                                             <lovMappings>
+                                                <lovMap id="lovMap146" lovItem="OrganizationName" resultTo="OrgNameFV" criteriaFrom="OrgNameFV"/>
+                                                <lovMap id="lovMap147" lovItem="VendorId" criteriaFrom="vendorIdFV"/>
+                                                <lovMap id="lovMap148" lovItem="OrgId" resultTo="OrgIdFV"/>
+                                             </lovMappings>
+                                          </oa:messageLovInput>
+                                          <oa:messageTextInput id="Supplier" prompt="Supplier" viewName="LCRequestHdrEVO" viewAttr="VendorName" required="yes" unvalidated="true" readOnly="true"/>
+                                          <oa:messageLovInput id="SupplierSite" prompt="Supplier Site" viewName="LCRequestHdrEVO" viewAttr="VendorSiteCode" required="yes" unvalidated="true">
+                                             <lovContents>
+                                                <oa:listOfValues id="region158">
+                                                   <ui:contents>
+                                                      <oa:table name="region158" id="VendorSiteVO">
+                                                         <ui:contents>
+                                                            <oa:formValue id="VendorSiteId" dataType="NUMBER" prompt="Vendor Site Id" viewName="VendorSiteVO" viewAttr="VendorSiteId" queryable="true"/>
+                                                            <oa:messageStyledText id="VendorSiteCode" dataType="VARCHAR2" prompt="Vendor Site Code" viewName="VendorSiteVO" viewAttr="VendorSiteCode" maximumLength="15" queryable="true"/>
+                                                            <oa:messageStyledText id="VendorSiteAddr" dataType="VARCHAR2" prompt="Vendor Site Address" viewName="VendorSiteVO" viewAttr="VendorSiteAddr" maximumLength="934"/>
+                                                            <oa:formValue id="SiteVendorId" dataType="NUMBER" prompt="VendorId" viewName="VendorSiteVO" viewAttr="VendorId"/>
+                                                            <oa:formValue id="LcClassificationSite" dataType="VARCHAR2" prompt="LcClassification" viewName="VendorSiteVO" viewAttr="LcClassification"/>
+                                                            <oa:formValue id="PoCurrencySite" dataType="VARCHAR2" prompt="PoCurrency" viewName="VendorSiteVO" viewAttr="PoCurrency"/>
+                                                         </ui:contents>
+                                                      </oa:table>
+                                                   </ui:contents>
+                                                </oa:listOfValues>
+                                             </lovContents>
+                                             <lovMappings>
+                                                <lovMap id="lovMap5" lovItem="VendorSiteCode" resultTo="SupplierSite" criteriaFrom="SupplierSite"/>
+                                                <lovMap id="lovMap6" lovItem="SiteVendorId" criteriaFrom="vendorIdFV"/>
+                                                <lovMap id="lovMap7" lovItem="VendorSiteAddr" resultTo="SupplierAddrFV"/>
+                                                <lovMap id="lovMap13" lovItem="VendorSiteId" resultTo="vendorSiteIdFV"/>
+                                             </lovMappings>
+                                          </oa:messageLovInput>
+                                          <oa:messageStyledText id="SupplierAddr" prompt="Supplier Address" rows="5" columns="40" viewName="LCRequestHdrEVO" viewAttr="VendorAddress"/>
+                                          <oa:messageTextInput id="LcReqNo" prompt="LC Request No." viewName="LCRequestHdrEVO" viewAttr="LcRequestId" readOnly="true"/>
+                                          <oa:messageTextInput id="LcClassification" prompt="LC Classification" viewName="LCRequestHdrEVO" viewAttr="LcClassification" required="yes" serverUnvalidated="true" readOnly="true"/>
+                                          <oa:messageTextInput id="LcCurrency" prompt="LC Currency" viewName="LCRequestHdrEVO" viewAttr="LcCurrencyCode" readOnly="true"/>
+                                          <oa:messageTextInput id="LcValue" prompt="LC Value" viewName="LCRequestHdrEVO" viewAttr="LcValue">
+                                             <ui:primaryClientAction>
+                                                <ui:firePartialAction event="lcValueWordConv" id="firePartialAction512272" unvalidated="true"/>
+                                             </ui:primaryClientAction>
+                                          </oa:messageTextInput>
+                                          <oa:messageTextInput id="LcStatus" prompt="LC Status" viewName="LCRequestHdrEVO" viewAttr="FlowStatus" readOnly="true"/>
+                                          <oa:messageTextInput id="LcDate" prompt="LC Request Date" viewName="LCRequestHdrEVO" viewAttr="LcDate" dataType="DATE" serverUnvalidated="true"/>
+                                          <oa:messageTextInput id="TotalPoValue" prompt="Total PO Value" viewName="LCRequestHdrEVO" viewAttr="TotalPoValue" readOnly="true"/>
+                                          <oa:messageStyledText id="LcValueWords" prompt="LC Value In Words" rows="5" columns="40" viewName="LCRequestHdrEVO" viewAttr="LcValueWords"/>
+                                       </ui:contents>
+                                    </oa:messageComponentLayout>
+                                 </ui:contents>
+                              </oa:contentContainer>
+                              <oa:contentContainer id="region5" text="Vendor Bank Information">
+                                 <ui:contents>
+                                    <oa:messageComponentLayout id="region7" rows="1" columns="1">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="BankName" prompt="Bank Name" columns="30" viewName="LCRequestHdrEVO" viewAttr="BankName"/>
+                                          <oa:messageTextInput id="SwiftIfscCode" prompt="SWIFT/IFSC Code" columns="30" viewName="LCRequestHdrEVO" viewAttr="BankIfscSwiftCode"/>
+                                          <oa:messageTextInput id="IBAN" prompt="IBAN" columns="30" viewName="LCRequestHdrEVO" viewAttr="BankIban"/>
+                                          <oa:messageTextInput id="BankAddr" prompt="Bank Address" rows="4" columns="28" viewName="LCRequestHdrEVO" viewAttr="BankAddress"/>
+                                       </ui:contents>
+                                    </oa:messageComponentLayout>
+                                 </ui:contents>
+                              </oa:contentContainer>
+                              <oa:formValue id="SupplierAddrFV" viewName="LCRequestHdrEVO" viewAttr="VendorAddress"/>
+                              <oa:formValue id="vendorSiteIdFV" viewName="LCRequestHdrEVO" viewAttr="VendorSiteId"/>
+                              <oa:formValue id="vendorIdFV" viewName="LCRequestHdrEVO" viewAttr="VendorId"/>
+                              <oa:formValue id="OrgNameFV" viewName="LCRequestHdrEVO" viewAttr="LcOrgName"/>
+                              <oa:formValue id="OrgIdFV" viewName="LCRequestHdrEVO" viewAttr="LcOrgId"/>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout id="LcCondRRN" width="100%">
+                           <ui:contents>
+                              <oa:contentContainer id="region11" text="LC Conditions" width="100%">
+                                 <ui:contents>
+                                    <oa:messageComponentLayout id="region12" rows="1" columns="4">
+                                       <ui:contents>
+                                          <oa:messageChoice id="PartialShipment" prompt="Partial Shipment" viewName="LCRequestHdrEVO" viewAttr="LcPartialShipment" pickListViewName="PartialShipmentVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.PartialShipmentVO" required="yes"/>
+                                          <oa:messageChoice id="Transhipment" prompt="Transhipment" viewName="LCRequestHdrEVO" viewAttr="LcTranshipment" pickListViewName="TranshipmentVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.TranshipmentVO" required="yes"/>
+                                          <oa:messageChoice id="TransportMode" prompt="Mode of Transport" viewName="LCRequestHdrEVO" viewAttr="LcModeOfTransport" pickListViewName="TransportModeVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.TransportModeVO" required="yes"/>
+                                          <oa:messageTextInput id="Descofgoods" prompt="Description of Goods" columns="28" rows="4"/>
+                                          <oa:messageTextInput id="CountryOfOrigin" prompt="Country Of Origin" viewName="LCRequestHdrEVO" viewAttr="LcCountryOfOrigin" required="yes"/>
+                                          <oa:messageTextInput id="LcCountryExpiry" prompt="LC Country Expiry" viewName="LCRequestHdrEVO" viewAttr="LcCountryExpire" required="yes"/>
+                                          <oa:messageLovInput id="PaymentTerms" prompt="Payment Terms" viewName="LCRequestHdrEVO" viewAttr="LcPaymentTerms" required="yes">
+                                             <lovContents>
+                                                <oa:listOfValues id="region159">
+                                                   <ui:contents>
+                                                      <oa:table name="region159" id="PaymentTermsVO">
+                                                         <ui:contents>
+                                                            <oa:messageStyledText id="LcPaymentTerms" dataType="VARCHAR2" prompt="Payment Terms" viewName="PaymentTermsVO" viewAttr="LcPaymentTerms" maximumLength="80" queryable="true"/>
+                                                         </ui:contents>
+                                                      </oa:table>
+                                                   </ui:contents>
+                                                </oa:listOfValues>
+                                             </lovContents>
+                                             <lovMappings>
+                                                <lovMap id="lovMap8" lovItem="LcPaymentTerms" resultTo="PaymentTerms" criteriaFrom="PaymentTerms"/>
+                                             </lovMappings>
+                                          </oa:messageLovInput>
+                                          <oa:messageLovInput id="TradeTerms" prompt="Trade Terms" viewName="LCRequestHdrEVO" viewAttr="LcTradeTerms" required="yes">
+                                             <lovContents>
+                                                <oa:listOfValues id="region160">
+                                                   <ui:contents>
+                                                      <oa:table name="region160" id="TradeTermsVO">
+                                                         <ui:contents>
+                                                            <oa:messageStyledText id="Tradeterms" dataType="VARCHAR2" prompt="Trade Terms" viewName="TradeTermsVO" viewAttr="Tradeterms" maximumLength="80" queryable="true"/>
+                                                         </ui:contents>
+                                                      </oa:table>
+                                                   </ui:contents>
+                                                </oa:listOfValues>
+                                             </lovContents>
+                                             <lovMappings>
+                                                <lovMap id="lovMap9" lovItem="Tradeterms" resultTo="TradeTerms" criteriaFrom="TradeTerms"/>
+                                             </lovMappings>
+                                          </oa:messageLovInput>
+                                          <oa:messageTextInput id="PortOfLoading" prompt="Port Of Loading" viewName="LCRequestHdrEVO" viewAttr="LcPortOfLoading" required="yes"/>
+                                          <oa:messageTextInput id="PortOfDischarge" prompt="Port Of Discharge" viewName="LCRequestHdrEVO" viewAttr="LcPortOfDischarge" required="yes"/>
+                                          <oa:messageTextInput id="LastDateOfShipment" dataType="DATE" prompt="Last Date Of Shipment" viewName="LCRequestHdrEVO" viewAttr="LcLastDateOfShipment" required="yes">
+                                             <ui:primaryClientAction>
+                                                <ui:firePartialAction event="calculateLCExpiryDate" id="firePartialAction512273" unvalidated="true"/>
+                                             </ui:primaryClientAction>
+                                          </oa:messageTextInput>
+                                          <oa:messageTextInput id="ExpiryDateOfLC" prompt="Expiry Date Of LC" dataType="DATE" viewName="LCRequestHdrEVO" viewAttr="LcExpiryDate" readOnly="true"/>
+                                          <oa:messageTextInput id="PeriodOfDoc" prompt="Period of Doc Presentation" readOnly="true" viewName="LCRequestHdrEVO" viewAttr="LcPeriodOfDocument"/>
+                                       </ui:contents>
+                                    </oa:messageComponentLayout>
+                                 </ui:contents>
+                              </oa:contentContainer>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout id="PIRRN" width="100%">
+                           <ui:contents>
+                              <oa:contentContainer id="region111" text="PI Details" width="100%">
+                                 <ui:contents>
+                                    <oa:messageComponentLayout id="region122" rows="1" columns="4">
+                                       <ui:contents>
+                                          <oa:messageChoice id="PartialShipmentPI" prompt="Partial Shipment" viewName="LCRequestHdrEVO" viewAttr="Attribute1" pickListViewName="PartialShipmentVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.PartialShipmentVO" required="yes"/>
+                                          <oa:messageChoice id="TranshipmentPI" prompt="Transhipment" viewName="LCRequestHdrEVO" viewAttr="Attribute2" pickListViewName="TranshipmentVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.TranshipmentVO" required="yes"/>
+                                          <oa:messageChoice id="TransportModePI" prompt="Mode of Transport" viewName="LCRequestHdrEVO" viewAttr="Attribute3" pickListViewName="TransportModeVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.TransportModeVO" required="yes"/>
+                                          <oa:messageTextInput id="CountryOfOriginPI" prompt="Country Of Origin" viewName="LCRequestHdrEVO" viewAttr="Attribute4" required="yes"/>
+                                          <oa:messageLovInput id="PaymentTermsPI" prompt="Payment Terms" viewName="LCRequestHdrEVO" viewAttr="Attribute5" required="yes">
+                                             <lovContents>
+                                                <oa:listOfValues id="region1592">
+                                                   <ui:contents>
+                                                      <oa:table name="region1592" id="PaymentTermsVO2">
+                                                         <ui:contents>
+                                                            <oa:messageStyledText id="LcPaymentTerms2" dataType="VARCHAR2" prompt="Payment Terms" viewName="PaymentTermsVO" viewAttr="LcPaymentTerms" maximumLength="80" queryable="true"/>
+                                                         </ui:contents>
+                                                      </oa:table>
+                                                   </ui:contents>
+                                                </oa:listOfValues>
+                                             </lovContents>
+                                             <lovMappings>
+                                                <lovMap id="lovMap82" lovItem="LcPaymentTerms2" resultTo="PaymentTermsPI" criteriaFrom="PaymentTermsPI"/>
+                                             </lovMappings>
+                                          </oa:messageLovInput>
+                                          <oa:messageLovInput id="TradeTermsPI" prompt="Trade Terms" viewName="LCRequestHdrEVO" viewAttr="Attribute6" required="yes">
+                                             <lovContents>
+                                                <oa:listOfValues id="region1602">
+                                                   <ui:contents>
+                                                      <oa:table name="region1602" id="TradeTermsVO2">
+                                                         <ui:contents>
+                                                            <oa:messageStyledText id="Tradeterms2" dataType="VARCHAR2" prompt="Trade Terms" viewName="TradeTermsVO" viewAttr="Tradeterms" maximumLength="80" queryable="true"/>
+                                                         </ui:contents>
+                                                      </oa:table>
+                                                   </ui:contents>
+                                                </oa:listOfValues>
+                                             </lovContents>
+                                             <lovMappings>
+                                                <lovMap id="lovMap92" lovItem="Tradeterms2" resultTo="TradeTermsPI" criteriaFrom="TradeTermsPI"/>
+                                             </lovMappings>
+                                          </oa:messageLovInput>
+                                          <oa:messageTextInput id="PortOfLoadingPI" prompt="Port Of Loading" viewName="LCRequestHdrEVO" viewAttr="Attribute7" required="yes"/>
+                                          <oa:messageTextInput id="PortOfDischargePI" prompt="Port Of Discharge" viewName="LCRequestHdrEVO" viewAttr="Attribute8" required="yes"/>
+                                          <oa:messageTextInput id="LastDateOfShipment1" dataType="DATE" prompt="Last Date Of Shipment" viewName="LCRequestHdrEVO" viewAttr="LcLastDateOfShipment" required="yes">
+                                             <ui:primaryClientAction>
+                                                <ui:firePartialAction event="calculateLCExpiryDate" id="firePartialAction5122732" unvalidated="true"/>
+                                             </ui:primaryClientAction>
+                                          </oa:messageTextInput>
+                                       </ui:contents>
+                                    </oa:messageComponentLayout>
+                                 </ui:contents>
+                              </oa:contentContainer>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout id="PoInfoRRN" width="100%">
+                           <ui:contents>
+                              <oa:contentContainer id="region15" text="PO Information">
+                                 <ui:contents>
+                                    <oa:advancedTable id="region14" width="100%" viewName="LCPoDetailsEVO">
+                                       <ui:contents>
+                                          <oa:column id="PoSnoC">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader51" prompt="S.No"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PoSno" viewAttr="Sno" dataType="NUMBER" readOnly="true"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="PoNumberC">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader42" prompt="PO Number"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageLovInput id="PoNumLov" prompt="PO Number" viewAttr="PoNumber">
+                                                   <lovContents>
+                                                      <oa:listOfValues id="region1612">
+                                                         <ui:contents>
+                                                            <oa:table name="region1612" id="PoDetailsVO">
+                                                               <ui:contents>
+                                                                  <oa:formValue id="PoHeaderIdER" dataType="NUMBER" prompt="PoHeaderId" viewName="PoDetailsVO" viewAttr="PoHeaderId"/>
+                                                                  <oa:messageStyledText id="PoNumER" dataType="VARCHAR2" prompt="PoNumber" viewName="PoDetailsVO" viewAttr="PoNumber" maximumLength="20" queryable="true"/>
+                                                                  <oa:messageStyledText id="PoCurrER" dataType="VARCHAR2" prompt="PoCurrency" viewName="PoDetailsVO" viewAttr="PoCurrency" maximumLength="15"/>
+                                                                  <oa:messageStyledText id="PoDateER" dataType="DATE" prompt="PoDate" viewName="PoDetailsVO" viewAttr="PoDate"/>
+                                                                  <oa:formValue id="VendorIdPo" dataType="NUMBER" prompt="VendorId" viewName="PoDetailsVO" viewAttr="VendorId"/>
+                                                               </ui:contents>
+                                                            </oa:table>
+                                                         </ui:contents>
+                                                      </oa:listOfValues>
+                                                   </lovContents>
+                                                   <lovMappings>
+                                                      <lovMap id="lovMap101" resultTo="PoNumLov" criteriaFrom="PoNumLov" lovItem="PoNumER"/>
+                                                      <lovMap id="lovMap142" lovItem="VendorIdPo" criteriaFrom="vendorIdFV"/>
+                                                      <lovMap id="lovMap143" lovItem="PoCurrER" resultTo="PoCurrFV"/>
+                                                      <lovMap id="lovMap144" lovItem="PoHeaderIdER" resultTo="PoHdrIdFV"/>
+                                                      <lovMap id="lovMap145" lovItem="PoDateER" resultTo="PoDateFV"/>
+                                                   </lovMappings>
+                                                </oa:messageLovInput>
+                                                <oa:formValue id="PoDateFV" viewAttr="PoDate" dataType="DATE"/>
+                                                <oa:formValue id="PoCurrFV" viewAttr="PoCurrency"/>
+                                                <oa:formValue id="PoHdrIdFV" viewAttr="PoHeaderId"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="PODateC">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader11" prompt="PO Date"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PODate" prompt="PO Date" viewAttr="PoDate" readOnly="true" dataType="DATE"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="PoCurrencyC">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader12" prompt="Po Currency"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PoCurrency" prompt="Po Currency" viewAttr="PoCurrency" readOnly="true" columns="5"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="PoValueC" columnDataFormat="numberFormat">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader13" prompt="PO Value"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PoValue" prompt="PO Value" viewAttr="PoValue" columns="15" dataType="NUMBER">
+                                                   <ui:primaryClientAction>
+                                                      <ui:firePartialAction event="poValCal" id="firePartialAction5122742"/>
+                                                   </ui:primaryClientAction>
+                                                </oa:messageTextInput>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="PoRemValueC" columnDataFormat="numberFormat">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader14" prompt="PO Remaining Value"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PoRemValue" prompt="PO Remaining Value" viewAttr="PoRemainingValue" columns="15" dataType="NUMBER"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="EnteredValC" columnDataFormat="numberFormat">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader15" prompt="Entered Value"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="EnteredVal" prompt="Entered Value" viewAttr="PoEnteredValue" columns="15" dataType="NUMBER"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="PerformaInvNoC" columnDataFormat="numberFormat">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader16" prompt="Performa Invoice No."/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PerformaInvNo" prompt="Performa Invoice No." viewAttr="LcProformaInvNo" columns="15" dataType="NUMBER"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="PerformaInvDateC">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader17" prompt="Performa Invoice Date"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PerformaInvDate" prompt="Performa Invoice Date" dataType="DATE" viewAttr="LcProformaInvDate" columns="15"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="Comments">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader18" prompt="Comments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Comment" prompt="Comments" viewAttr="LcPoComments" columns="20" rows="3"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="DELETE">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader511" prompt="Delete"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:image id="Delete" source="deleteicon_enabled.gif" serverUnvalidated="true">
+                                                   <ui:primaryClientAction>
+                                                      <ui:fireAction event="delete" unvalidated="true" id="fireAction1"/>
+                                                   </ui:primaryClientAction>
+                                                </oa:image>
+                                             </ui:contents>
+                                          </oa:column>
+                                       </ui:contents>
+                                       <ui:tableActions>
+                                          <oa:flowLayout id="region155">
+                                             <ui:contents>
+                                                <oa:submitButton id="AddRow" text="AddRow" prompt="AddRow" unvalidated="true">
+                                                   <ui:primaryClientAction>
+                                                      <ui:firePartialAction event="addRow" id="firePartialAction512274"/>
+                                                   </ui:primaryClientAction>
+                                                </oa:submitButton>
+                                             </ui:contents>
+                                          </oa:flowLayout>
+                                       </ui:tableActions>
+                                    </oa:advancedTable>
+                                 </ui:contents>
+                              </oa:contentContainer>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:contentContainer id="ContentConRN6" text="Other LC Documents" width="100%">
+                           <ui:contents>
+                              <oa:advancedTable id="AdvancedTableRN1" width="100%" viewName="LCDocDetailsEVO">
+                                 <ui:contents>
+                                    <oa:column id="DocsReqC">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader193" prompt="Documents Required"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="DocsRequired" prompt="" columns="45" rows="2" viewAttr="DocumentsRequired"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                    <oa:column id="AddiCondC">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeader22" prompt="Additional Conditions"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:messageTextInput id="AddiCond" prompt="Additional Conditions" columns="45" rows="2" viewAttr="AdditionalConditions"/>
+                                       </ui:contents>
+                                    </oa:column>
+                                 </ui:contents>
+                                 <ui:tableActions>
+                                    <oa:flowLayout id="region86">
+                                       <ui:contents>
+                                          <oa:submitButton id="AddDocument" text="Add Documents" prompt="Add Documents">
+                                             <ui:primaryClientAction>
+                                                <ui:firePartialAction event="addDocument" id="firePartialAction213"/>
+                                             </ui:primaryClientAction>
+                                          </oa:submitButton>
+                                       </ui:contents>
+                                    </oa:flowLayout>
+                                 </ui:tableActions>
+                              </oa:advancedTable>
+                           </ui:contents>
+                        </oa:contentContainer>
+                        <oa:contentContainer id="ConContainerRRN" text="Additional Information" width="100%">
+                           <ui:contents>
+                              <oa:messageComponentLayout id="region162" rows="1" columns="2">
+                                 <ui:contents>
+                                    <oa:messageTextInput id="AppliBankName1" prompt="Applicant Bank Name" dataType="VARCHAR2" viewName="LCInlandReqEVO" viewAttr="ApplicantBankName"/>
+                                    <oa:messageTextInput id="BankChrg" prompt="Bank Charges" dataType="VARCHAR2" viewName="LCInlandReqEVO" viewAttr="BankCharges"/>
+                                    <oa:messageTextInput id="PeriodOfPres" prompt="Period Of Presentation" readOnly="true" viewName="LCInlandReqEVO" viewAttr="PeriodOfPresentation"/>
+                                    <oa:messageTextInput id="ConfirmInstr" prompt="Confirmation Instruction" viewName="LCInlandReqEVO" viewAttr="ConfirmationInstr"/>
+                                 </ui:contents>
+                              </oa:messageComponentLayout>
+                           </ui:contents>
+                        </oa:contentContainer>
+                        <oa:rowLayout id="LcAttachRRN">
+                           <ui:contents>
+                              <oa:advancedTable id="AttachAdvTable" viewName="LCRequestHdrEVO">
+                                 <ui:contents>
+                                    <oa:column id="AttachC">
+                                       <ui:columnHeader>
+                                          <oa:sortableHeader id="sortableHeaderEN" prompt="Attachment"/>
+                                       </ui:columnHeader>
+                                       <ui:contents>
+                                          <oa:attachmentImage id="itemEN" autoCommitEnabled="true">
+                                             <oa:entityMappings>
+                                                <oa:entityMap id="entityMapEN" entityId="XXSIFY_LC_REQUEST_HDR_T">
+                                                   <oa:primaryKeys>
+                                                      <oa:primaryKey id="primaryKeyEN" viewAttr="LcRequestId"/>
+                                                   </oa:primaryKeys>
+                                                </oa:entityMap>
+                                             </oa:entityMappings>
+                                          </oa:attachmentImage>
+                                       </ui:contents>
+                                    </oa:column>
+                                 </ui:contents>
+                              </oa:advancedTable>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout id="ApprActionRRN" width="100%">
+                           <ui:contents>
+                              <oa:contentContainer id="ApprActConRN" text="Action" width="100%">
+                                 <ui:contents>
+                                    <oa:advancedTable id="region142" width="100%" viewName="LCRequestHdrEVO">
+                                       <ui:contents>
+                                          <oa:column id="CommHeadC">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader1" prompt="Commercial Head"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="CommHead" prompt="Commercial Head" viewAttr="CommheadComments" columns="30" rows="3" disabled="true" styleClass="OraDataText"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="TreasuryC">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader2" prompt="Treasury"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Treasury" prompt="Treasury" viewAttr="TreasuryComments" columns="30" rows="3" styleClass="OraDataText"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="SupplierActionC">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader3" prompt="Supplier"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="SupplierAction" prompt="Supplier" viewAttr="SupplierComments" columns="30" rows="3" disabled="true" styleClass="OraDataText"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                       </ui:contents>
+                                    </oa:advancedTable>
+                                 </ui:contents>
+                              </oa:contentContainer>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout id="ActionHistRRN" width="100%">
+                           <ui:contents>
+                              <oa:contentContainer id="region151" text="Action History" width="100%">
+                                 <ui:contents>
+                                    <oa:advancedTable id="region141" width="100%" viewName="LCApprHistoryEVO">
+                                       <ui:contents>
+                                          <oa:column id="SnoC">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader5" prompt="S.No"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Sno" viewAttr="Sno" readOnly="true"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="SubDateC">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader6" prompt="Submission Date"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="SubDate" viewAttr="SubmissionDate" readOnly="true"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="ApprNameC">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader7" prompt="Approver Name"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="ApprName" viewAttr="ApproverName" readOnly="true"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="ActionDateC">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader8" prompt="Action Date"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="ActionDate" viewAttr="ActionDate" readOnly="true"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="ResponseC">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader9" prompt="Response"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Response" viewAttr="Response" readOnly="true"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="CommentsC">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader10" prompt="Comments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="ApprComments" viewAttr="ApproverComments" readOnly="true"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                       </ui:contents>
+                                    </oa:advancedTable>
+                                 </ui:contents>
+                              </oa:contentContainer>
+                           </ui:contents>
+                        </oa:rowLayout>
+                     </ui:contents>
+                  </oa:header>
+               </ui:case>
+               <ui:case name="NonEditableRN">
+                  <oa:header id="NonEditableRN" text="LC Issuance Request Creation Page">
+                     <ui:contents>
+                        <oa:rowLayout id="LcInfoNonEditRN">
+                           <ui:contents>
+                              <oa:cellFormat id="LcInfoNECRN" width="60%">
+                                 <ui:contents>
+                                    <oa:header id="LcInfoHdrRN" text="LC Information">
+                                       <ui:contents>
+                                          <oa:messageComponentLayout id="region61" rows="1" columns="3">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="originalLcNo" readOnly="true" prompt="Original LC No" viewName="LCRequestHdrEVO" viewAttr="OriginalLcNo"/>
+                                                <oa:messageLovInput id="OrganizationNE" prompt="Organization" viewName="LCRequestHdrEVO" viewAttr="LcOrgName" required="yes" readOnly="true">
+                                                   <lovContents>
+                                                      <oa:listOfValues id="region1561">
+                                                         <ui:contents>
+                                                            <oa:table name="region1561" id="OrganizationVO1">
+                                                               <ui:contents>
+                                                                  <oa:formValue id="OrganizationId1" dataType="NUMBER" prompt="Organization Id" viewName="OrganizationVO" viewAttr="OrganizationId" queryable="true"/>
+                                                                  <oa:messageStyledText id="OrgName1" dataType="VARCHAR2" prompt="Name" viewName="OrganizationVO" viewAttr="Name" maximumLength="240" queryable="true"/>
+                                                                  <oa:messageStyledText id="ShortCode1" dataType="VARCHAR2" prompt="Short Code" viewName="OrganizationVO" viewAttr="ShortCode" maximumLength="150"/>
+                                                               </ui:contents>
+                                                            </oa:table>
+                                                         </ui:contents>
+                                                      </oa:listOfValues>
+                                                   </lovContents>
+                                                   <lovMappings>
+                                                      <lovMap id="lovMap15" lovItem="OrgName" resultTo="Organization" criteriaFrom="Organization"/>
+                                                      <lovMap id="lovMap21" lovItem="OrganizationId" resultTo="OrgIdFV"/>
+                                                   </lovMappings>
+                                                </oa:messageLovInput>
+                                                <oa:messageLovInput id="SupplierNE" prompt="Supplier" viewName="LCRequestHdrEVO" viewAttr="VendorName" required="yes" readOnly="true">
+                                                   <lovContents>
+                                                      <oa:listOfValues id="region1571">
+                                                         <ui:contents>
+                                                            <oa:table name="region1571" id="VendorVO1">
+                                                               <ui:contents>
+                                                                  <oa:formValue id="VendorId1" dataType="NUMBER" prompt="Vendor Id" viewName="VendorVO" viewAttr="VendorId" queryable="true"/>
+                                                                  <oa:messageStyledText id="VendorName1" dataType="VARCHAR2" prompt="Vendor Name" viewName="VendorVO" viewAttr="VendorName" maximumLength="240" queryable="true"/>
+                                                               </ui:contents>
+                                                            </oa:table>
+                                                         </ui:contents>
+                                                      </oa:listOfValues>
+                                                   </lovContents>
+                                                   <lovMappings>
+                                                      <lovMap id="lovMap31" lovItem="VendorName" resultTo="Supplier" criteriaFrom="Supplier"/>
+                                                      <lovMap id="lovMap41" lovItem="VendorId" resultTo="vendorIdFV"/>
+                                                   </lovMappings>
+                                                </oa:messageLovInput>
+                                                <oa:messageLovInput id="SupplierSiteNE" prompt="Supplier Site" viewName="LCRequestHdrEVO" viewAttr="VendorSiteCode" required="yes" readOnly="true">
+                                                   <lovContents>
+                                                      <oa:listOfValues id="region1581">
+                                                         <ui:contents>
+                                                            <oa:table name="region1581" id="VendorSiteVO1">
+                                                               <ui:contents>
+                                                                  <oa:formValue id="VendorSiteId1" dataType="NUMBER" prompt="Vendor Site Id" viewName="VendorSiteVO" viewAttr="VendorSiteId" queryable="true"/>
+                                                                  <oa:messageStyledText id="VendorSiteCode1" dataType="VARCHAR2" prompt="Vendor Site Code" viewName="VendorSiteVO" viewAttr="VendorSiteCode" maximumLength="15" queryable="true"/>
+                                                                  <oa:messageStyledText id="VendorSiteAddr1" dataType="VARCHAR2" prompt="Vendor Site Address" viewName="VendorSiteVO" viewAttr="VendorSiteAddr" maximumLength="934"/>
+                                                                  <oa:formValue id="SiteVendorId1" dataType="NUMBER" prompt="VendorId" viewName="VendorSiteVO" viewAttr="VendorId"/>
+                                                               </ui:contents>
+                                                            </oa:table>
+                                                         </ui:contents>
+                                                      </oa:listOfValues>
+                                                   </lovContents>
+                                                   <lovMappings>
+                                                      <lovMap id="lovMap51" lovItem="VendorSiteCode" resultTo="SupplierSite" criteriaFrom="SupplierSite"/>
+                                                      <lovMap id="lovMap61" lovItem="SiteVendorId" criteriaFrom="vendorIdFV"/>
+                                                      <lovMap id="lovMap71" lovItem="VendorSiteAddr" resultTo="SupplierAddrFV"/>
+                                                      <lovMap id="lovMap131" lovItem="VendorSiteId" resultTo="vendorSiteIdFV"/>
+                                                   </lovMappings>
+                                                </oa:messageLovInput>
+                                                <oa:messageStyledText id="SupplierAddrNE" prompt="Supplier Address" rows="5" columns="40" viewName="LCRequestHdrEVO" viewAttr="VendorAddress"/>
+                                                <oa:messageChoice id="LcClassificationNE" prompt="LC Classification" viewName="LCRequestHdrEVO" viewAttr="LcClassification" required="yes" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.ClassificationVO" pickListViewName="ClassificationVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" serverUnvalidated="true" readOnly="true"/>
+                                                <oa:messageTextInput id="LcCurrencyNE" prompt="LC Currency" viewName="LCRequestHdrEVO" viewAttr="LcCurrencyCode" readOnly="true"/>
+                                                <oa:messageTextInput id="LcDateNE" prompt="LC Date" viewName="LCRequestHdrEVO" viewAttr="LcDate" dataType="DATE" readOnly="true"/>
+                                                <oa:messageTextInput id="TotalPoValueNE" prompt="Total PO Value" viewName="LCRequestHdrEVO" viewAttr="TotalPoValue" readOnly="true"/>
+                                                <oa:messageTextInput id="LcReqNoNE" prompt="LC Request No." viewName="LCRequestHdrEVO" viewAttr="LcRequestId" readOnly="true"/>
+                                                <oa:messageTextInput id="LcStatusNE" prompt="LC Status" viewName="LCRequestHdrEVO" viewAttr="FlowStatus" readOnly="true"/>
+                                                <oa:messageTextInput id="LcValueNE" prompt="LC Value" viewName="LCRequestHdrEVO" viewAttr="LcValue" readOnly="true">
+                                                   <ui:primaryClientAction>
+                                                      <ui:firePartialAction event="lcValueWordConv" id="firePartialAction5122721"/>
+                                                   </ui:primaryClientAction>
+                                                </oa:messageTextInput>
+                                                <oa:messageStyledText id="LcValueWordsNE" prompt="LC Value In Words" rows="5" columns="40" viewName="LCRequestHdrEVO" viewAttr="LcValueWords"/>
+                                             </ui:contents>
+                                          </oa:messageComponentLayout>
+                                       </ui:contents>
+                                    </oa:header>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                              <oa:cellFormat id="region1613" width="10%"/>
+                              <oa:cellFormat id="BankInfoNECRN" width="30%">
+                                 <ui:contents>
+                                    <oa:header id="BankHdrRN" text="Bank Information">
+                                       <ui:contents>
+                                          <oa:messageComponentLayout id="region71" rows="1" columns="1">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="BankNameNE" prompt="Bank Name" columns="30" viewName="LCRequestHdrEVO" viewAttr="BankName" readOnly="true"/>
+                                                <oa:messageTextInput id="SwiftIfscCodeNE" prompt="SWIFT/IFSC Code" columns="30" viewName="LCRequestHdrEVO" viewAttr="BankIfscSwiftCode" readOnly="true"/>
+                                                <oa:messageTextInput id="IBANNonEd" prompt="IBAN" columns="30" viewName="LCRequestHdrEVO" viewAttr="BankIban" readOnly="true"/>
+                                                <oa:messageTextInput id="BankAddrNE" prompt="Bank Address" rows="4" columns="28" viewName="LCRequestHdrEVO" viewAttr="BankAddress" readOnly="true"/>
+                                             </ui:contents>
+                                          </oa:messageComponentLayout>
+                                       </ui:contents>
+                                    </oa:header>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout id="LcCondNonEditRN" width="100%">
+                           <ui:contents>
+                              <oa:header id="LcCondHdrRN" text="LC Conditions">
+                                 <ui:contents>
+                                    <oa:messageComponentLayout id="region121" rows="1" columns="4">
+                                       <ui:contents>
+                                          <oa:messageChoice id="PartialShipmentNE" prompt="Partial Shipment" viewName="LCRequestHdrEVO" viewAttr="LcPartialShipment" pickListViewName="PartialShipmentVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.PartialShipmentVO" readOnly="true"/>
+                                          <oa:messageChoice id="TranshipmentNE" prompt="Transhipment" viewName="LCRequestHdrEVO" viewAttr="LcTranshipment" pickListViewName="TranshipmentVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.TranshipmentVO" readOnly="true"/>
+                                          <oa:messageChoice id="TransportModeNE" prompt="Mode of Transport" viewName="LCRequestHdrEVO" viewAttr="LcModeOfTransport" pickListViewName="TransportModeVO" pickListDispAttr="Meaning" pickListValAttr="Meaning" pickListViewDef="oracle.apps.sfc.lcissuance.multi.poplist.server.TransportModeVO" readOnly="true"/>
+                                          <oa:messageTextInput id="CountryOfOriginNE" prompt="Country Of Origin" viewName="LCRequestHdrEVO" viewAttr="LcCountryOfOrigin" readOnly="true"/>
+                                          <oa:messageTextInput id="LcCountryExpiryNE" prompt="LC Country Expiry" viewName="LCRequestHdrEVO" viewAttr="LcCountryExpire" readOnly="true"/>
+                                          <oa:messageLovInput id="PaymentTermsNE" prompt="Payment Terms" viewName="LCRequestHdrEVO" viewAttr="LcPaymentTerms" readOnly="true">
+                                             <lovContents>
+                                                <oa:listOfValues id="region1591">
+                                                   <ui:contents>
+                                                      <oa:table name="region1591" id="PaymentTermsVO1">
+                                                         <ui:contents>
+                                                            <oa:messageStyledText id="LcPaymentTerms1" dataType="VARCHAR2" prompt="Payment Terms" viewName="PaymentTermsVO" viewAttr="LcPaymentTerms" maximumLength="80" queryable="true"/>
+                                                         </ui:contents>
+                                                      </oa:table>
+                                                   </ui:contents>
+                                                </oa:listOfValues>
+                                             </lovContents>
+                                             <lovMappings>
+                                                <lovMap id="lovMap81" lovItem="LcPaymentTerms" resultTo="PaymentTerms" criteriaFrom="PaymentTerms"/>
+                                             </lovMappings>
+                                          </oa:messageLovInput>
+                                          <oa:messageLovInput id="TradeTermsNE" prompt="Trade Terms" viewName="LCRequestHdrEVO" viewAttr="LcTradeTerms" readOnly="true">
+                                             <lovContents>
+                                                <oa:listOfValues id="region1601">
+                                                   <ui:contents>
+                                                      <oa:table name="region1601" id="TradeTermsVO1">
+                                                         <ui:contents>
+                                                            <oa:messageStyledText id="Tradeterms1" dataType="VARCHAR2" prompt="Trade Terms" viewName="TradeTermsVO" viewAttr="Tradeterms" maximumLength="80" queryable="true"/>
+                                                         </ui:contents>
+                                                      </oa:table>
+                                                   </ui:contents>
+                                                </oa:listOfValues>
+                                             </lovContents>
+                                             <lovMappings>
+                                                <lovMap id="lovMap91" lovItem="Tradeterms" resultTo="TradeTerms" criteriaFrom="TradeTerms"/>
+                                             </lovMappings>
+                                          </oa:messageLovInput>
+                                          <oa:messageTextInput id="PortOfLoadingNE" prompt="Port Of Loading" viewName="LCRequestHdrEVO" viewAttr="LcPortOfLoading" readOnly="true"/>
+                                          <oa:messageTextInput id="PortOfDischargeNE" prompt="Port Of Discharge" viewName="LCRequestHdrEVO" viewAttr="LcPortOfDischarge" readOnly="true"/>
+                                          <oa:messageTextInput id="LastDateOfShipmentNE" dataType="DATE" prompt="Last Date Of Shipment" viewName="LCRequestHdrEVO" viewAttr="LcLastDateOfShipment" readOnly="true">
+                                             <ui:primaryClientAction>
+                                                <ui:firePartialAction event="calculateLCExpiryDate" id="firePartialAction5122731"/>
+                                             </ui:primaryClientAction>
+                                          </oa:messageTextInput>
+                                          <oa:messageTextInput id="ExpiryDateOfLCNE" prompt="Expiry Date Of LC" dataType="DATE" viewName="LCRequestHdrEVO" viewAttr="LcExpiryDate" readOnly="true"/>
+                                          <oa:messageTextInput id="PeriodOfDocNE" prompt="Period of Doc Presentation" readOnly="true" viewName="LCRequestHdrEVO" viewAttr="LcPeriodOfDocument"/>
+                                       </ui:contents>
+                                    </oa:messageComponentLayout>
+                                 </ui:contents>
+                              </oa:header>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout id="PINonEditRRN" width="100%">
+                           <ui:contents>
+                              <oa:contentContainer id="region1111" text="PI Details" width="100%">
+                                 <ui:contents>
+                                    <oa:messageComponentLayout id="region1221" rows="1" columns="4">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="PartialShipmentPINE" prompt="Partial Shipment" viewName="LCRequestHdrEVO" viewAttr="Attribute1" readOnly="true"/>
+                                          <oa:messageTextInput id="TranshipmentPINE" prompt="Transhipment" viewName="LCRequestHdrEVO" viewAttr="Attribute2" readOnly="true"/>
+                                          <oa:messageTextInput id="TransportModePINE" prompt="Mode of Transport" viewName="LCRequestHdrEVO" viewAttr="Attribute3" readOnly="true"/>
+                                          <oa:messageTextInput id="CountryOfOriginPINE" prompt="Country Of Origin" viewName="LCRequestHdrEVO" viewAttr="Attribute4" readOnly="true"/>
+                                          <oa:messageTextInput id="PaymentTermsPINE" prompt="Payment Terms" viewName="LCRequestHdrEVO" viewAttr="Attribute5" readOnly="true"/>
+                                          <oa:messageTextInput id="TradeTermsPINE" prompt="Trade Terms" viewName="LCRequestHdrEVO" viewAttr="Attribute6" readOnly="true"/>
+                                          <oa:messageTextInput id="PortOfLoadingPINE" prompt="Port Of Loading" viewName="LCRequestHdrEVO" viewAttr="Attribute7" readOnly="true"/>
+                                          <oa:messageTextInput id="PortOfDischargePINE" prompt="Port Of Discharge" viewName="LCRequestHdrEVO" viewAttr="Attribute8" readOnly="true"/>
+                                       </ui:contents>
+                                    </oa:messageComponentLayout>
+                                 </ui:contents>
+                              </oa:contentContainer>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout id="PoInfoNonEditRN" width="100%">
+                           <ui:contents>
+                              <oa:header id="PoInfoHdrRN" text="PO Information">
+                                 <ui:contents>
+                                    <oa:advancedTable id="region143" width="100%" viewName="LCPoDetailsEVO">
+                                       <ui:contents>
+                                          <oa:column id="PoSnoCol">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader512" prompt="S.No"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PoSnoNE" viewAttr="Sno" dataType="NUMBER" readOnly="true"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="PoNumberCol" columnDataFormat="numberFormat">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader41" prompt="PO Number"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PoNumberNE" prompt="PO Number" viewAttr="PoNumber" readOnly="true" columns="20"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="PODateCol">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader111" prompt="PO Date"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PODateNE" prompt="PO Date" viewAttr="PoDate" readOnly="true" dataType="DATE" maximumLength="15" columns="15"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="PoCurrencyCol">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader121" prompt="Po Currency"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PoCurrencyNE" prompt="Po Currency" viewAttr="PoCurrency" readOnly="true" columns="5"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="PoValueCol" columnDataFormat="numberFormat">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader131" prompt="PO Value"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PoValueNE" prompt="PO Value" viewAttr="PoValue" columns="15" readOnly="true" dataType="NUMBER"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="PoRemValueCol" columnDataFormat="numberFormat">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader141" prompt="PO Remaining Value"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PoRemValueNE" prompt="PO Remaining Value" viewAttr="PoRemainingValue" columns="15" readOnly="true" dataType="NUMBER"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="EnteredValCol" columnDataFormat="numberFormat">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader151" prompt="Entered Value"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="EnteredValNE" prompt="Entered Value" viewAttr="PoEnteredValue" columns="15" readOnly="true" dataType="NUMBER"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="PerformaInvNoCol" columnDataFormat="numberFormat">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader161" prompt="Performa Invoice No."/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PerformaInvNoNE" prompt="Performa Invoice No." viewAttr="LcProformaInvNo" columns="15" readOnly="true" dataType="NUMBER"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="PerformaInvDateCol">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader171" prompt="Performa Invoice Date"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PerformaInvDateNE" prompt="Performa Invoice Date" dataType="DATE" viewAttr="LcProformaInvDate" columns="15" readOnly="true"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="CommentsCol">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader181" prompt="Comments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="CommentNE" prompt="Comments" viewAttr="LcPoComments" readOnly="true"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                       </ui:contents>
+                                       <ui:tableActions>
+                                          <oa:flowLayout id="region1551">
+                                             <ui:contents>
+                                                <oa:submitButton id="AddRow1" text="AddRow" prompt="AddRow" rendered="false">
+                                                   <ui:primaryClientAction>
+                                                      <ui:firePartialAction event="addRow" id="firePartialAction5122741"/>
+                                                   </ui:primaryClientAction>
+                                                </oa:submitButton>
+                                             </ui:contents>
+                                          </oa:flowLayout>
+                                       </ui:tableActions>
+                                    </oa:advancedTable>
+                                 </ui:contents>
+                              </oa:header>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout id="LcAttachApprNonEditRN">
+                           <ui:contents>
+                              <oa:cellFormat id="AttachCRN" width="20%">
+                                 <ui:contents>
+                                    <oa:header id="region1614" text="Attachments">
+                                       <ui:contents>
+                                          <oa:advancedTable id="AttachAdvTable1" viewName="LCRequestHdrEVO">
+                                             <ui:contents>
+                                                <oa:column id="AttachCol">
+                                                   <ui:columnHeader>
+                                                      <oa:sortableHeader id="sortableHeader191" prompt="Attachment"/>
+                                                   </ui:columnHeader>
+                                                   <ui:contents>
+                                                      <oa:attachmentImage id="item11">
+                                                         <oa:entityMappings>
+                                                            <oa:entityMap id="entityMapNE" entityId="XXSIFY_LC_REQUEST_HDR_T" insertAllowed="false" updateAllowed="false" deleteAllowed="false">
+                                                               <oa:primaryKeys>
+                                                                  <oa:primaryKey id="primaryKeyNE" viewAttr="LcRequestId"/>
+                                                               </oa:primaryKeys>
+                                                            </oa:entityMap>
+                                                         </oa:entityMappings>
+                                                      </oa:attachmentImage>
+                                                   </ui:contents>
+                                                </oa:column>
+                                             </ui:contents>
+                                          </oa:advancedTable>
+                                       </ui:contents>
+                                    </oa:header>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                              <oa:cellFormat id="CellFormatRN" width="5%"/>
+                              <oa:cellFormat id="ApprCommCRN" width="75%">
+                                 <ui:contents>
+                                    <oa:header id="ApprCommHdrRN" text="Approver Comments">
+                                       <ui:contents>
+                                          <oa:advancedTable id="ApprActionAT" viewName="LCRequestHdrEVO">
+                                             <ui:contents>
+                                                <oa:column id="CommHeadCol">
+                                                   <ui:columnHeader>
+                                                      <oa:sortableHeader id="sortableHeader192" prompt="Commercial Head-Comments"/>
+                                                   </ui:columnHeader>
+                                                   <ui:contents>
+                                                      <oa:messageTextInput id="CommHeadNE" prompt="Commercial Head" viewAttr="CommheadComments" columns="40" rows="2"/>
+                                                   </ui:contents>
+                                                </oa:column>
+                                                <oa:column id="TreasuryCol">
+                                                   <ui:columnHeader>
+                                                      <oa:sortableHeader id="sortableHeader21" prompt="Treasury Comments"/>
+                                                   </ui:columnHeader>
+                                                   <ui:contents>
+                                                      <oa:messageTextInput id="TreasuryNE" prompt="Treasury" viewAttr="TreasuryComments" columns="40" rows="2"/>
+                                                   </ui:contents>
+                                                </oa:column>
+                                                <oa:column id="SupplierActionCol">
+                                                   <ui:columnHeader>
+                                                      <oa:sortableHeader id="sortableHeader31" prompt="Supplier Comments"/>
+                                                   </ui:columnHeader>
+                                                   <ui:contents>
+                                                      <oa:messageTextInput id="SupplierActionNE" prompt="Supplier" viewAttr="SupplierComments" columns="40" rows="2"/>
+                                                   </ui:contents>
+                                                </oa:column>
+                                             </ui:contents>
+                                          </oa:advancedTable>
+                                       </ui:contents>
+                                    </oa:header>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout id="ActionHistNonEditRN" width="100%">
+                           <ui:contents>
+                              <oa:header id="ActionHistRN" text="Action History">
+                                 <ui:contents>
+                                    <oa:advancedTable id="ApprActHistAT" width="100%" viewName="LCApprHistoryEVO">
+                                       <ui:contents>
+                                          <oa:column id="SnoCol">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader5112" prompt="S.No"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="SnoAT" readOnly="true" viewAttr="Sno"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="SubDateCol">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader61" prompt="Submission Date"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="SubDateAT" readOnly="true" viewAttr="SubmissionDate"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="ApprNameCol">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader71" prompt="Approver Name"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="ApprNameAT" readOnly="true" viewAttr="ApproverName"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="ActionDateCol">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader81" prompt="Action Date"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="ActionDateAT" readOnly="true" viewAttr="ActionDate"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="ResponseCol">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader91" prompt="Response"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="ResponseAT" readOnly="true" viewAttr="Response"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                          <oa:column id="CommentsAC">
+                                             <ui:columnHeader>
+                                                <oa:sortableHeader id="sortableHeader101" prompt="Comments"/>
+                                             </ui:columnHeader>
+                                             <ui:contents>
+                                                <oa:messageTextInput id="ApprCommentsAT" readOnly="true" viewAttr="ApproverComments"/>
+                                             </ui:contents>
+                                          </oa:column>
+                                       </ui:contents>
+                                    </oa:advancedTable>
+                                 </ui:contents>
+                              </oa:header>
+                           </ui:contents>
+                        </oa:rowLayout>
+                     </ui:contents>
+                  </oa:header>
+               </ui:case>
+            </oa:switcher>
+            <oa:pageButtonBar id="PageBtnBarRN">
+               <ui:contents>
+                  <oa:submitButton id="DraftBtn" text="Draft" prompt="Draft">
+                     <ui:primaryClientAction>
+                        <ui:firePartialAction event="draft" id="firePartialAction5122743"/>
+                     </ui:primaryClientAction>
+                  </oa:submitButton>
+                  <oa:submitButton id="ImportBtn" text="Import" prompt="Import">
+                     <ui:primaryClientAction>
+                        <ui:firePartialAction event="importreq" id="firePartialAction5122744"/>
+                     </ui:primaryClientAction>
+                  </oa:submitButton>
+                  <oa:submitButton id="InlandBtn" text="Inland" prompt="Inland">
+                     <ui:primaryClientAction>
+                        <ui:firePartialAction event="inlandreq" id="firePartialAction5122745"/>
+                     </ui:primaryClientAction>
+                  </oa:submitButton>
+                  <oa:submitButton id="SubmitBtn" text="Submit" prompt="Submit">
+                     <ui:primaryClientAction>
+                        <ui:firePartialAction event="submit" id="firePartialAction5122746"/>
+                     </ui:primaryClientAction>
+                  </oa:submitButton>
+                  <oa:submitButton id="ApprBtn" text="Accept" prompt="Accept">
+                     <ui:primaryClientAction>
+                        <ui:firePartialAction event="accept" id="firePartialAction5122747"/>
+                     </ui:primaryClientAction>
+                  </oa:submitButton>
+                  <oa:submitButton id="RtnBtn" text="Return" prompt="Return">
+                     <ui:primaryClientAction>
+                        <ui:firePartialAction event="return" id="firePartialAction5122748"/>
+                     </ui:primaryClientAction>
+                  </oa:submitButton>
+                  <oa:submitButton id="CancelBtn" text="Cancel" prompt="Cancel" unvalidated="true">
+                     <ui:primaryClientAction>
+                        <ui:firePartialAction event="cancel" id="firePartialAction5122749"/>
+                     </ui:primaryClientAction>
+                  </oa:submitButton>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>
