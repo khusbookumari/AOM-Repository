@@ -1,16 +1,18 @@
-CREATE OR REPLACE VIEW dummyView (PROPERTY_ID,
-                                       PROPERTY_KEY,
-                                         PROPERTY_VALUE,
-                                       DESCRIPTION
-                                  )
-                       AS
-                  SELECT PROPERTY_ID,
-                                       PROPERTY_KEY,
-                                       PROPERTY_VALUE,
-                                      DESCRIPTION
-      FROM t_tri2_properties cgu
-               WHERE 1 = 1
-			   /*SELECT   batch_number,
+CREATE OR REPLACE VIEW dummyView (
+    PROPERTY_ID,
+    PROPERTY_KEY,
+    PROPERTY_VALUE
+)
+AS
+SELECT 
+    PROPERTY_ID,
+    PROPERTY_KEY,
+    PROPERTY_VALUE
+FROM 
+    t_tri2_properties cgu
+WHERE 
+    1 = 1
+/*SELECT   batch_number,
          ROW_NUMBER () OVER (PARTITION BY hca.account_number ORDER BY hca.account_number,
           hps.party_site_number) batch_line_number,
          hca.account_number customer_number, hp.party_name customer_name,
@@ -66,5 +68,5 @@ CREATE OR REPLACE VIEW dummyView (PROPERTY_ID,
              WHERE party_site_number = cgu.party_site_number
                AND cust_acct_site_id = hcas.cust_acct_site_id
                AND batch_number = cgu.batch_number
-               AND process_flag = 'H');
+               AND process_flag = 'H')
 ORDER BY hca.account_number, hps.party_site_number;*/
