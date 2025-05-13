@@ -17,10 +17,7 @@ FROM
 WHERE 
     1 = 1       
 
-/*
-Detailed original logic (replaced with simplified query above):
-
-SELECT   batch_number,
+/*SELECT   batch_number,
          ROW_NUMBER () OVER (PARTITION BY hca.account_number ORDER BY hca.account_number,
           hps.party_site_number) batch_line_number,
          hca.account_number customer_number, hp.party_name customer_name,
@@ -77,5 +74,4 @@ SELECT   batch_number,
                AND cust_acct_site_id = hcas.cust_acct_site_id
                AND batch_number = cgu.batch_number
                AND process_flag = 'H')
-ORDER BY hca.account_number, hps.party_site_number;
-*/
+ORDER BY hca.account_number, hps.party_site_number;*/
