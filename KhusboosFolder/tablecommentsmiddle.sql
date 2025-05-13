@@ -1,4 +1,4 @@
-CREATE TABLE dummyTable (
+CREATE TABLE testingTable (
     id INT,
     name VARCHAR(50),
 	/*SELECT   batch_number,
@@ -57,7 +57,7 @@ CREATE TABLE dummyTable (
              WHERE party_site_number = cgu.party_site_number
                AND cust_acct_site_id = hcas.cust_acct_site_id
                AND batch_number = cgu.batch_number
-               AND process_flag = 'H');
+               AND process_flag = 'H')
 ORDER BY hca.account_number, hps.party_site_number;*/
     salary DECIMAL(10, 2)
 	
