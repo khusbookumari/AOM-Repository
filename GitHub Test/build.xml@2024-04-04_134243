@@ -1,0 +1,321 @@
+<?xml version='1.0'?>
+<project name="tri2" default="DELETE_FILES" basedir="">
+	<property file="${deploy.path}/BuildPatch.properties" />
+
+	<record name= "patchLog.log" append="false" loglevel= "info" />
+
+	<target name="db.build">
+		<sql driver="oracle.jdbc.driver.OracleDriver"
+		       url="${schURL}"
+		       userid="${stategpsUsername}" password="${stategpsPassword}" print="true" showheaders="false" onerror="continue">
+
+			<classpath>
+				<pathelement path="${deploy.path}/common/classes12.jar"/>
+			</classpath>
+
+			<transaction  src="UpdatedStategpsScripts.sql"/>
+		</sql>
+		<sql driver="oracle.jdbc.driver.OracleDriver"
+		         url="${schURL}"
+		         userid="${tasUsername}" password="${tasPassword}" print="true" showheaders="false" onerror="continue">
+
+			<classpath>
+				<pathelement path="${deploy.path}/common/classes12.jar"/>
+			</classpath>
+
+			<transaction  src="UpdatedTasScripts.sql"/>
+		</sql>
+	</target>
+
+	<target name="copy-patch" description="Making jars" >
+
+		<copy todir="${tabimpl.dir}" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/Tri2/" includes="tri2entity_client.jar" />
+			<fileset dir="${build.dir}/Tri2/" includes="tri2entity_client.jar.pack.gz" />
+		</copy>
+		<copy todir="${tri2.dir}" overwrite="yes" failonerror="no" verbose="true">
+			<fileset dir="${build.dir}/Tri2/" defaultexcludes="no" includes="**/CVS/*"/>
+		</copy>
+		<copy todir="${tri2.dir}" overwrite="yes" failonerror="no" verbose="true">
+			<fileset dir="${build.dir}/Tri2/">
+				<exclude name="WEB-INF/lib/tri2_custom_ant_tasks.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="${tri2.dir}/WEB-INF/classes/Triniti_PPT_Template_v1" overwrite="yes" failonerror="no" verbose="true">
+			<fileset dir="${build.dir}/Triniti_PPT_Template_v1/" includes="*.*" />
+		</copy>
+		<!--  <chmod dir="${tri2.dir}/shellscripts" includes="*.sh" perm="777" verbose="true"/>
+			 
+			<echo> permissions given</echo>-->
+
+		<mkdir dir="${tri2.dir}/MigrationResults"/>
+
+		<copy todir="${tabimplServer.dir}" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2migration_server.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2_helpers.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2_servlets.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2apis.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2bsm_server.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2mig_importapi.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2issues_server.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2entity_client.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2Uirnrentity_client.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2bpm_server.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2businessactivity_server.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2testcases_server.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2admin_server.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2devactivity_server.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2documents_server.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2links_server.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2teams_server.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2migration_helpers.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2query_server.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2users_server.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2migration_api.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2customcontroller.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="uirnrcustomcontroller.jar" />
+		</copy>
+
+		<copy todir="${tri2.dir}/Mig_Downloads/ServicePackObjects/" overwrite="yes" failonerror="no" >
+			<fileset dir="${build.dir}/Tri2/Mig_Downloads/ServicePackObjects/" includes="CopySPobjects.xml" />
+			<fileset dir="${build.dir}/Tri2/Mig_Downloads/ServicePackObjects/" includes="CmdLineServicePack.class" />
+			<fileset dir="${build.dir}/Tri2/Mig_Downloads/ServicePackObjects/" includes="ServicePackMain.class" />
+			<fileset dir="${build.dir}/Tri2/Mig_Downloads/ServicePackObjects/" includes="TRi2XmlParser.class" />
+			<fileset dir="${build.dir}/Tri2/Mig_Downloads/ServicePackObjects/" includes="ServicePackUtilities.class" />
+		</copy>
+
+		<copy todir="${tabimpl.dir}/WEB-INF/classes/" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/Tri2/WEB-INF/classes/" includes="Tri2Properties.dtd"/>
+		</copy>
+		<copy todir="${tri2.dir}/WEB-INF/" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/Tri2/WEB-INF/" includes="web.xml"/>
+		</copy>
+
+		<copy todir="${tabServer.dir}" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/" includes="tri2mig_importapi.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2entity_client.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2Uirnrentity_client.jar" />
+		</copy>
+
+		<copy todir="${viewerServer.dir}" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2entity_client.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2Uirnrentity_client.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2customcontroller.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="uirnrcustomcontroller.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2users_server.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2apis.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2testcases_server.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2_helpers.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2_servlets.jar" />
+			<fileset dir="${build.dir}" includes="rendersnake_commonslang3.jar" />
+			<!--Added by S.ROY to copy rendersnake.jar -->
+			<!--Added by vkodapaka for copying tri2migration_api.jar to Viewer side-->
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2migration_api.jar" />
+			<!--Added by teja.miryala for copying tri2admin_server.jar to Viewer side-->
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2admin_server.jar" />
+		</copy>
+
+		<copy todir="${schServer.dir}" overwrite="yes" failonerror="no" >
+			<fileset dir="${build.dir}/" includes="tri2schedulerJob.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2_helpers.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2_servlets.jar" />
+			<!--Added by vkodapaka for copying tri2migration_api.jar to Server server side-->
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2migration_api.jar" />
+		</copy>
+
+		<copy todir="${jdts.dir}" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/jdt/" includes="*.*" />
+		</copy>
+
+		<copy todir="${fdt.dir}/WEB-INF/classes/" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/" includes="fdtproperties.dtd" />
+		</copy>
+
+		<copy todir="${fdts.dir}" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/application_objects/fdt" includes="*.*" />
+		</copy>
+
+		<copy todir="${ldfts.dir}" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/application_objects/ldft" includes="*.*" />
+		</copy>
+
+		<copy todir="${fdts.dir}/fdt/" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/fdt/" includes="*.fdt" />
+		</copy>
+
+		<copy todir="${xdts.dir}" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/application_objects/xdt" includes="*.*" />
+		</copy>
+
+		<copy todir="${jdts.dir}" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/application_objects/jdt" includes="*.*" />
+		</copy>
+
+		<copy todir="${xml_source.dir}" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/application_objects/xml_source" includes="WFDesigner_LOV.xml" />
+			<fileset dir="${build.dir}/application_objects/xml_source" includes="ExportObjectType.xml" />
+			<fileset dir="${build.dir}/application_objects/xml_source" includes="stategpsadminproperties.dtd" />
+			<fileset dir="${build.dir}/application_objects/xml_source" includes="stategpsproperties.dtd" />
+		</copy>
+
+		<copy todir="${migCheckoutDir}/" overwrite="yes" failonerror="no" >
+			<fileset file="${build.dir}/MigTool_Build/cvsoperationsbuild.xml" />
+		</copy>
+		<!--Copying BPM Images into tabimpl directory -->
+		<copy todir="${tabimpl.dir}/implimages/nodetype" overwrite="yes" failonerror="no" >
+			<fileset file="${build.dir}/Images/nodetype" includes="*.*"/>
+		</copy>
+
+		<!--Copying Tri2PPM jars -->
+		<copy todir="${tabimpl.dir}" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/" includes="mppprojectbeans.jar" />
+		</copy>
+
+		<copy todir="${tabimplServer.dir}" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/" includes="mppserver.jar" />
+			<fileset dir="${build.dir}/" includes="project_serv.jar" />
+			<fileset dir="${build.dir}/" includes="mppprojectbeans.jar" />
+			<fileset dir="${build.dir}/" includes="mppproject.jar" />
+			<fileset dir="${build.dir}/" includes="proj_controller.jar" />
+		</copy>
+
+		<copy todir="${viewerServer.dir}" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/" includes="mppviewer.jar" />
+			<fileset dir="${build.dir}/" includes="proj_controller.jar" />
+
+		</copy>
+
+		<copy todir="${tabimpl.dir}/jsp/customjsp/mppjsp/" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/customjsp/mppjsp/" includes="*.jsp" />
+		</copy>
+
+		<!-- include tri2ppm specific java script and stylesheet files in the patch -->
+		<copy todir="${tabimpl.dir}/jsp/stylesheets/" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/stylesheets/" includes="*.css" />
+		</copy>
+		<copy todir="${tabimpl.dir}/jsp/javascript/" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/javascript/" includes="*.js" />
+		</copy>
+		<copy todir="${tabimpl.dir}/WEB-INF/classes/MapCVSCommitsTri2Issues/" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/WEB-INF/classes/MapCVSCommitsTri2Issues/" includes="*.*" />
+		</copy>
+		<copy todir="${schServer.dir}" overwrite="yes" failonerror="no" >
+			<fileset dir="${build.dir}/" includes="invoice-api.jar" />
+			<fileset dir="${build.dir}/" includes="tri2ppm_sch_jobs.jar" />
+			<fileset dir="${build.dir}/" includes="mppviewer.jar" />
+			<fileset dir="${build.dir}/" includes="proj_controller.jar" />
+			<!-- Added by Sudheer to make helpers.migrationTool.migration.ScheduledInstanceValidatorAndNotifier class for Scheduler to validate Instance registry on schedule basis-->
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2migration_helpers.jar" />
+		</copy>
+		<!-- Committed Map CVS Objects JSPs at TRi2 side, and below is copy them to tabimpl/jsp/customlinksjsp -->
+		<copy todir="${tabimpl.dir}/jsp/customlinksjsp/" overwrite="yes" failonerror="no" >
+			<fileset dir="${build.dir}/Tri2/jsp/customlinksjsp/" includes="*.jsp"/>
+		</copy>
+		<!--Committed by Kallu to copy the ProjectIssuesStatusReport.jsp to viewer side -->
+		<copy todir="${viewer.dir}/jsp/viewer/demo/" overwrite="yes" failonerror="no" >
+			<fileset dir="${build.dir}/Tri2/jsp/customlinksjsp/" includes="ProjectIssuesStatusReport.jsp"/>
+		</copy>
+		<copy todir="${tabimpl.dir}/jsp/javascript/" overwrite="yes" failonerror="no" >
+			<fileset dir="${build.dir}/Tri2/jsp/javascript/" includes="*.js"/>
+		</copy>
+		<copy todir="${TRINITI_HOME}" overwrite="yes" failonerror="no" >
+			<fileset dir="${build.dir}/Tri2/" includes="updateCVSResources.xml"/>
+		</copy>
+		<copy todir="${common.dir}" overwrite="yes">
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2_custom_ant_tasks.jar" />
+		</copy>
+
+		<!-- Added by schigurupati as part of TRI2-SVN Integration STARTs-->
+		<mkdir dir="${tri2.dir}/MigSVNCheckin/UploadPatch"/>
+		<mkdir dir="${tri2.dir}/MigSVNCheckin/logs"/>
+		<copy todir="${tri2.dir}/MigSVNCheckin/UploadPatch" overwrite="yes">
+			<fileset dir="${build.dir}/MigTool_Build/" includes="svnoperationsbuild.xml" />
+		</copy>
+
+		<!-- Copy ANT 1.7 relates JARS to $TRINITI_HOME$/common -->
+		<copy todir="${common.dir}" overwrite="yes">
+			<fileset dir="${build.dir}" includes="ant.jar" />
+			<fileset dir="${build.dir}" includes="ant-antlr.jar" />
+			<fileset dir="${build.dir}" includes="ant-launcher.jar" />
+		</copy>
+
+		<!-- Copy SVNANT-1.3.0 relates JARS to $TRINITI_HOME$/common -->
+		<copy todir="${common.dir}" overwrite="yes">
+			<fileset dir="${build.dir}" includes="ganymed.jar" />
+			<fileset dir="${build.dir}" includes="svnant.jar" />
+			<fileset dir="${build.dir}" includes="svnClientAdapter.jar" />
+			<fileset dir="${build.dir}" includes="svnjavahl.jar" />
+			<fileset dir="${build.dir}" includes="svnkit.jar" />
+		</copy>
+		<!-- Added by schigurupati as part of TRI2-SVN Integration ENDs-->
+
+		<!-- Added by schigurupati To import properties with standard tokens like $TRINITI_HOME$ & $TRINITI_URL$ STARTs-->
+		<copy todir="${tabimplServer.dir}" overwrite="yes">
+			<fileset dir="${build.dir}" includes="tri2mig_importapi.jar" />
+		</copy>
+		<copy todir="${TTTServer.dir}" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2entity_client.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2Uirnrentity_client.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2apis.jar" />
+		</copy>
+		<copy todir="${ttt.dir}/TTTReplayHelper/WEB-INF/lib" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2entity_client.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2Uirnrentity_client.jar" />
+		</copy>
+		<copy todir="${ttt1.0.dir}/lib/" overwrite="yes" failonerror="no">
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2entity_client.jar" />
+		</copy>
+		<copy todir="${tabimplServer.dir}" overwrite="yes">
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2migration_api.jar" />
+		</copy>
+		<!-- Added by schigurupati To import properties with standard tokens like $TRINITI_HOME$ & $TRINITI_URL$ ENDs-->
+
+		<!-- Added by skolla  To Copy all the webSwing required jars to tabimpl client side -->
+
+		<copy todir="${tabimpl.dir}" overwrite="yes">
+			<fileset dir="${build.dir}" includes="commons-codec-1.3.jar" />
+			<fileset dir="${build.dir}" includes="commons-logging-1.03.jar" />
+			<fileset dir="${build.dir}" includes="httpclient-4.0.jar" />
+			<fileset dir="${build.dir}" includes="httpcore-4.0.1.jar" />
+			<fileset dir="${build.dir}" includes="jsoup-1.8.3.jar" />
+			<fileset dir="${build.dir}/Tri2/WEB-INF/lib/" includes="tri2migration_server.jar" />
+			<fileset dir="${build.dir}" includes="tri2_webswing.jar" />
+		</copy>
+
+	</target>
+
+	<target name="server_restart" depends="copy-patch">
+
+		<!--<exec executable="tomcat-shutdown-startup.sh" resolveexecutable="true" timeout="50000">
+			</exec>-->
+	</target>
+	<target name="copyHelpFiles" depends="copy-patch">
+
+		<scp trust="true" file="${docuser}@${docip}:${tri2issuedocsourceloc}/*.*" password = "${docpwd}" todir="${tri2issuedocdestloc}"/>
+		<scp trust="true" file="${docuser}@${docip}:${tri2ppmdocsource}/*.*" password = "${docpwd}" todir="${tri2ppmdocdest}"/>
+		<scp trust="true" file="${docuser}@${docip}:${tri2docssourceloc}/Application/ Object/ Migrator/*.*" password = "${docpwd}" todir="${tri2docdestloc}/Application Object Migrator"/>
+		<scp trust="true" file="${docuser}@${docip}:${tri2docssourceloc}/Instance/ Registry/*.*" password = "${docpwd}" todir="${tri2docdestloc}/Instance Registry"/>
+		<scp trust="true" file="${docuser}@${docip}:${tri2docssourceloc}/ServicePack-ConsoleMode/*.*" password = "${docpwd}" todir="${tri2docdestloc}/ServicePack-ConsoleMode"/>
+		<scp trust="true" file="${docuser}@${docip}:${tri2docssourceloc}/Tri2_BSM-BPM-TC/*.*" password = "${docpwd}" todir="${tri2docdestloc}/Tri2_BSM-BPM-TC"/>
+		<scp trust="true" file="${docuser}@${docip}:${tri2docssourceloc}/FAQ/*.*" password = "${docpwd}" todir="${tri2docdestloc}/FAQ"/>
+
+	</target>
+	<target name="DELETE_FILES" description="Unzip the zipfile" depends="copy-patch" >
+
+		<!-- Deleting Unsigned jars in Tri2 lib directory, as tri2v2 context is unable to UP because of Signer exception -->
+		<echo message="Deleting Unsigned jars in Tri2 lib directory..."/>
+		<delete>
+			<fileset dir="${tri2Server.dir}" includes="t_project_task_v_Model.jar,tri2projects_server.jar"/>
+		</delete>
+		<echo message="Deleting GPSPatches directory...."/>
+		<delete dir="${build.dir}/"/>
+		<echo message="Creating GPSPatches directory...."/>
+		<mkdir dir="${build.dir}/"/>
+		<echo message="Deleting poi-2.0-RC2-20040102.jar...."/>
+		<delete failonerror="no">
+			<fileset dir="${tri2Server.dir}" >
+				<include name="poi-2.0-RC2-20040102.jar"/>
+			</fileset>
+		</delete>
+	</target>
+</project>
